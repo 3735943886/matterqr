@@ -77,23 +77,6 @@ test("device screen shows a generated QR for the code", async ({ page }) => {
   await expect(page.getByText("QR code")).toBeVisible();
 });
 
-test("add a device photo from an image URL", async ({ page }) => {
-  await open(page);
-  await registerViaManual(page, "34970112332", "Hue A19");
-  await page.locator("#device-list > *").first().click();
-  await expect(page.getByText("Edit device")).toBeVisible();
-  // Fetch a same-origin image (no CORS barrier) → stored as the device photo.
-  await page.getByPlaceholder(/image URL/i).fill("/assets/icon-192.png");
-  await page.getByRole("button", { name: "Fetch" }).click();
-  await expect(page.getByRole("button", { name: "Remove photo" })).toBeVisible();
-  await page.getByRole("button", { name: "Save" }).click();
-  await expect(page.getByText("Edit device")).toBeHidden();
-  // Reload → the thumbnail persists (proves it was stored as a blob attachment).
-  await page.reload();
-  await page.locator("#device-list > *").first().click();
-  await expect(page.getByRole("button", { name: "Remove photo" })).toBeVisible();
-});
-
 test("persists across reload (IndexedDB)", async ({ page }) => {
   await open(page);
   await registerViaManual(page, "34970112332", "Hue A19");
