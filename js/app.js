@@ -101,6 +101,26 @@ function setupUpdatePrompt(reg) {
   navigator.serviceWorker.addEventListener("controllerchange", () => {
     if (triggered) window.location.reload();
   });
+
+  // Poll for a new deploy so a long-lived (never-restarted) app still notices:
+  // the browser only auto-checks sw.js on navigation. The real trigger is
+  // regaining focus (fires immediately when the user returns to the app); the
+  // interval is just a slow backstop for an app left open and visible for a
+  // long time. update() re-fetches sw.js bypassing the HTTP cache; a changed
+  // build fires updatefound → the prompt.
+  const POLL_MS = 6 * 60 * 60 * 1000; // 6h backstop
+  let lastCheck = 0;
+  const check = () => {
+    const now = Date.now();
+    if (now - lastCheck < 60_000) return; // throttle bursts (e.g. focus toggling)
+    lastCheck = now;
+    reg.update().catch(() => {});
+  };
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") check();
+  });
+  window.addEventListener("focus", check);
+  setInterval(check, POLL_MS);
 }
 
 function refreshSyncBadge() {
