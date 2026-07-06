@@ -2,7 +2,7 @@
 
 import { h, qs, escapeHtml, formatAgo, photoURL } from "./dom.js";
 import { t } from "./i18n.js";
-import { getState, filteredDevices, catName } from "./store.js";
+import { getState, filteredDevices, catName, getSort } from "./store.js";
 import { openDeviceModal } from "./device-modal.js";
 
 const KIND_BADGE = {
@@ -88,14 +88,59 @@ function card(d) {
   );
 }
 
+// Location/Type sorts render as grouped sections; the rest are flat.
+const GROUPED = { loc: true, type: true };
+
+function deviceName(d) {
+  return d.model || catName("type", d.deviceTypeId) || d.codeRaw || d.identity;
+}
+
+function flatSorted(list, key, dir) {
+  const mul = dir === "asc" ? 1 : -1;
+  const cmp =
+    {
+      created: (a, b) => (a.createdAt || "").localeCompare(b.createdAt || ""),
+      name: (a, b) => deviceName(a).localeCompare(deviceName(b), undefined, { sensitivity: "base" }),
+    }[key] || ((a, b) => (a.updatedAt || "").localeCompare(b.updatedAt || "")); // "updated"
+  return [...list].sort((a, b) => cmp(a, b) * mul);
+}
+
+function sectionHeader(name, count) {
+  return h("div", { class: "mt-3 flex items-baseline gap-2 px-1 first:mt-0" }, [
+    h("span", { class: "text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400" }, name),
+    h("span", { class: "text-[11px] text-slate-400" }, count),
+  ]);
+}
+
+// Group by a category (loc/type); groups ordered by name, items by recency.
+function groupedNodes(list, key, dir) {
+  const mul = dir === "asc" ? 1 : -1;
+  const noneLabel = key === "loc" ? t("filter.unassigned") : t("filter.none");
+  const groups = new Map();
+  for (const d of list) {
+    const id = key === "loc" ? d.locationId : d.deviceTypeId;
+    const name = (id && catName(key, id)) || noneLabel;
+    (groups.get(name) || groups.set(name, []).get(name)).push(d);
+  }
+  const names = [...groups.keys()].sort((a, b) => a.localeCompare(b) * mul);
+  const nodes = [];
+  for (const name of names) {
+    const items = groups.get(name).sort((a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""));
+    nodes.push(sectionHeader(name, items.length), ...items.map(card));
+  }
+  return nodes;
+}
+
 export function renderList() {
   const list = qs("#device-list");
   const empty = qs("#empty");
   const meta = qs("#list-meta");
   const { devices } = getState();
   const shown = filteredDevices();
+  const { key, dir } = getSort();
 
-  list.replaceChildren(...shown.map(card));
+  const nodes = GROUPED[key] ? groupedNodes(shown, key, dir) : flatSorted(shown, key, dir).map(card);
+  list.replaceChildren(...nodes);
   meta.textContent = t("list.count", { n: shown.length }) + (shown.length !== devices.length ? ` / ${devices.length}` : "");
 
   if (!shown.length) {

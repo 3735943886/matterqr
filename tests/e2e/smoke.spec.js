@@ -96,6 +96,27 @@ test("manual-code device shows no QR (would misrepresent the real one)", async (
   await expect(page.getByRole("img", { name: "QR" })).toHaveCount(0);
 });
 
+test("sort reorders by name and groups by location", async ({ page }) => {
+  await open(page);
+  await registerViaManual(page, "34970112332", "Zebra");
+  await registerViaManual(page, "11111111111", "Apple");
+  await registerViaManual(page, "22222222222", "Mango");
+
+  const titles = () => page.locator("#device-list .truncate.font-semibold").allTextContents();
+  // Default = recently updated → the newest (Mango) is first.
+  expect((await titles())[0]).toBe("Mango");
+
+  // Name → alphabetical.
+  await page.locator("#btn-sort").click();
+  await page.getByRole("button", { name: /^Name/ }).click();
+  await expect.poll(titles).toEqual(["Apple", "Mango", "Zebra"]);
+
+  // Location → grouped list with a section header (all here are unassigned).
+  await page.locator("#btn-sort").click();
+  await page.getByRole("button", { name: /^Location/ }).click();
+  await expect(page.locator("#device-list .uppercase").filter({ hasText: "Unassigned" })).toBeVisible();
+});
+
 test("persists across reload (IndexedDB)", async ({ page }) => {
   await open(page);
   await registerViaManual(page, "34970112332", "Hue A19");

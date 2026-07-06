@@ -7,6 +7,7 @@ import { createDb } from "./db.js";
 import { initStore, reload, onChange, getState } from "./store.js";
 import { renderList } from "./render.js";
 import { renderFilters, initFilters } from "./filters.js";
+import { renderSort, initSort } from "./sort.js";
 import { openScanModal } from "./scan.js";
 import { openSettingsModal } from "./settings-modal.js";
 import { openBackupModal } from "./backup.js";
@@ -26,9 +27,11 @@ async function main() {
   onChange(() => {
     renderList();
     renderFilters();
+    renderSort();
   });
 
   initFilters();
+  initSort();
   await reload();
 
   // Re-apply translations + re-render when the language changes.
@@ -36,6 +39,7 @@ async function main() {
     applyDom();
     initFilters();
     renderFilters();
+    renderSort();
     renderList();
     refreshSyncBadge();
   });

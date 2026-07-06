@@ -7,10 +7,12 @@ const state = {
   devices: [],
   cats: { type: [], loc: [], status: [] },
   filters: { q: "", type: null, loc: null, status: null },
+  sort: { key: "updated", dir: "desc" },
   subscribers: new Set(),
 };
 
 const FILTER_KEY = "matterqr.filters";
+const SORT_KEY = "matterqr.sort";
 
 export function initStore(db) {
   state.db = db;
@@ -20,6 +22,22 @@ export function initStore(db) {
   } catch {
     /* ignore */
   }
+  try {
+    const s = JSON.parse(localStorage.getItem(SORT_KEY) || "null");
+    if (s?.key) state.sort = { key: s.key, dir: s.dir === "asc" ? "asc" : "desc" };
+  } catch {
+    /* ignore */
+  }
+}
+
+export function getSort() {
+  return state.sort;
+}
+
+export function setSort({ key, dir }) {
+  state.sort = { key, dir };
+  localStorage.setItem(SORT_KEY, JSON.stringify(state.sort));
+  emit();
 }
 
 export function getState() {

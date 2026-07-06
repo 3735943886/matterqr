@@ -24,6 +24,12 @@
   "filter.reset": "Reset",
   "filter.clear": "Clear",
   "filter.showResults": "Show {n}",
+  "sort.title": "Sort",
+  "sort.updated": "Recently updated",
+  "sort.created": "Recently added",
+  "sort.name": "Name",
+  "sort.loc": "Location",
+  "sort.type": "Type",
 
   "list.empty": "No devices yet. Start by scanning.",
   "list.empty.filtered": "No devices match the filters.",
