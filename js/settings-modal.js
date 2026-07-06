@@ -11,13 +11,24 @@ import { APP_VERSION } from "./version.js";
 export async function openSettingsModal() {
   const db = getState().db;
   const s = await db.getSettings();
+  openWith(db, s);
+}
 
+// Built as a function so a language change can re-render the whole modal in the
+// new language — reopening with the current (possibly unsaved) field values so
+// nothing the user typed is lost.
+function openWith(db, s) {
   // --- language ---
   const lang = h("select", { class: "w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-900" }, [
     h("option", { value: "ko", selected: getLang() === "ko" }, "한국어"),
     h("option", { value: "en", selected: getLang() === "en" }, "English"),
   ]);
-  lang.addEventListener("change", () => setLang(lang.value));
+  lang.addEventListener("change", async () => {
+    await setLang(lang.value);
+    m.close();
+    // Reopen in the new language, carrying over whatever is in the fields now.
+    openWith(db, { ...s, syncEnabled: enable.checked, syncUrl: url.value, syncUser: user.value, syncPass: pass.value });
+  });
 
   // --- sync ---
   const enable = h("input", { type: "checkbox", class: "h-4 w-4", checked: !!s.syncEnabled });

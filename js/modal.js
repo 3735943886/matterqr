@@ -24,7 +24,7 @@ export function openModal({ title, body, actions = null, onClose } = {}) {
     "div",
     {
       class:
-        "flex max-h-[90dvh] w-full max-w-md flex-col rounded-2xl bg-white shadow-2xl dark:bg-slate-900",
+        "sheet-in flex max-h-[90dvh] w-full max-w-md flex-col rounded-2xl bg-white shadow-2xl dark:bg-slate-900",
       role: "dialog",
       "aria-modal": "true",
     },
@@ -43,7 +43,7 @@ export function openModal({ title, body, actions = null, onClose } = {}) {
     "div",
     {
       class:
-        "fixed inset-0 z-40 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4",
+        "overlay-in fixed inset-0 z-40 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4",
     },
     panel,
   );

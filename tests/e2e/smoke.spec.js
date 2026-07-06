@@ -117,6 +117,16 @@ test("sort reorders by name and groups by location", async ({ page }) => {
   await expect(page.locator("#device-list .uppercase").filter({ hasText: "Unassigned" })).toBeVisible();
 });
 
+test("changing language re-renders the open settings modal", async ({ page }) => {
+  await open(page);
+  await page.locator("#btn-settings").click();
+  await expect(page.getByRole("heading", { name: "Settings" })).toBeVisible();
+  // Switch to Korean from within the still-open modal.
+  await page.getByRole("combobox").selectOption("ko");
+  // The modal itself updates without needing to be reopened.
+  await expect(page.getByRole("heading", { name: "설정" })).toBeVisible();
+});
+
 test("persists across reload (IndexedDB)", async ({ page }) => {
   await open(page);
   await registerViaManual(page, "34970112332", "Hue A19");
