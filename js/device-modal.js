@@ -171,6 +171,52 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     clearPreview();
   });
 
+  // Keyless "find an image online" helpers (direct upload still works above).
+  // 1) open Google Images prefilled with the model name in a new tab.
+  const searchBtn = h(
+    "button",
+    { type: "button", class: "rounded-lg border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700" },
+    t("device.photo.search"),
+  );
+  searchBtn.addEventListener("click", () => {
+    const q = (model.value || codeRaw || "matter device").trim();
+    window.open("https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(q), "_blank", "noopener");
+  });
+  // 2) paste an image URL → fetch, downscale, store as a blob (offline-capable).
+  const urlPhoto = h("input", {
+    class: "min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700 dark:bg-slate-900",
+    placeholder: t("device.photo.url.ph"),
+    inputmode: "url",
+    autocapitalize: "off",
+    autocorrect: "off",
+    spellcheck: false,
+  });
+  const fetchBtn = h(
+    "button",
+    { type: "button", class: "shrink-0 rounded-lg bg-sky-600 px-3 py-1.5 text-sm font-semibold text-white" },
+    t("device.photo.fetch"),
+  );
+  fetchBtn.addEventListener("click", async () => {
+    const u = urlPhoto.value.trim();
+    if (!u) return;
+    fetchBtn.disabled = true;
+    try {
+      // Cross-origin reads need the host to allow CORS; otherwise this throws.
+      const res = await fetch(u, { mode: "cors" });
+      const blob = await res.blob();
+      if (!res.ok || !blob.type.startsWith("image/")) throw new Error("not an image");
+      const resized = await resizeImage(new File([blob], "web", { type: blob.type }));
+      photoState = resized;
+      showPreview(photoURL(resized.blob));
+      urlPhoto.value = "";
+      toast(t("device.photo.fetchOk"), "success");
+    } catch {
+      toast(t("device.photo.fetchFail"), "error", 4200);
+    } finally {
+      fetchBtn.disabled = false;
+    }
+  });
+
   // --- code / matter hint (read-only) + rendered QR ---
   const hintParts = [];
   if (matter?.vendorId != null) hintParts.push(`${t("device.hint.vendor")}: 0x${matter.vendorId.toString(16).toUpperCase()}`);
@@ -202,7 +248,15 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     field(t("device.type"), typeSel.el),
     field(t("device.model"), model),
     field(t("device.url"), url),
-    field(t("device.photo"), h("div", { class: "flex items-center gap-3" }, [preview, addBtn, removeBtn, fileInput])),
+    // Not field() here: it wraps in a <label>, which would fold every button's
+    // accessible name into the label text. Use a plain container instead.
+    h("div", { class: "space-y-1" }, [
+      h("span", { class: "text-xs font-medium text-slate-500" }, t("device.photo")),
+      h("div", { class: "space-y-2" }, [
+        h("div", { class: "flex items-center gap-3" }, [preview, addBtn, removeBtn, fileInput]),
+        h("div", { class: "flex flex-wrap items-center gap-2" }, [searchBtn, urlPhoto, fetchBtn]),
+      ]),
+    ]),
     field(t("device.location"), locSel.el),
     field(t("device.status"), statusSel.el),
     field(t("device.notes"), notes),
