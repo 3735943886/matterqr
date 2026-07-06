@@ -43,6 +43,10 @@ export function onChange(fn) {
   state.subscribers.add(fn);
 }
 
+export function offChange(fn) {
+  state.subscribers.delete(fn);
+}
+
 export function emit() {
   state.subscribers.forEach((fn) => fn());
 }

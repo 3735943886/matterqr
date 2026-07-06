@@ -47,7 +47,7 @@ test("re-entering the same code warns duplicate and opens edit", async ({ page }
   await page.locator("#btn-scan").click();
   await page.getByPlaceholder(/pairing code/i).fill("34970112332");
   await page.getByRole("button", { name: "Look up" }).click();
-  await expect(page.getByText("Edit device")).toBeVisible();
+  await expect(page.getByText("Device details")).toBeVisible();
   // model preserved from the first registration
   await expect(page.getByPlaceholder(/Philips Hue/)).toHaveValue("Hue A19");
 });
@@ -59,21 +59,28 @@ test("QR form of the same device dedups to one record", async ({ page }) => {
   await page.locator("#btn-scan").click();
   await page.getByPlaceholder(/pairing code/i).fill("MT:Y.K9042C00KA0648G00");
   await page.getByRole("button", { name: "Look up" }).click();
-  await expect(page.getByText("Edit device")).toBeVisible();
+  await expect(page.getByText("Device details")).toBeVisible();
   await page.getByRole("button", { name: "Cancel" }).click();
   await expect(page.locator("#device-list > *")).toHaveCount(1);
 });
 
-test("device screen shows a generated QR for a scanned Matter code", async ({ page }) => {
+test("device screen shows a generated QR for a scanned Matter code", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await open(page);
   // Register from the QR (MT:) form — only real Matter codes render a QR; a
   // manual numeric code deliberately shows none (it can't be rebuilt into one).
   await registerViaManual(page, "MT:Y.K9042C00KA0648G00", "Hue A19");
   // Open the device from the list
   await page.locator("#device-list > *").first().click();
-  await expect(page.getByText("Edit device")).toBeVisible();
+  await expect(page.getByText("Device details")).toBeVisible();
   const qr = page.getByRole("img", { name: "QR" }).first();
   await expect(qr).toBeVisible();
+  // The numeric manual pairing code is derived from the QR and shown 4-3-4.
+  await expect(page.getByText("3497-011-2332")).toBeVisible();
+  // Tapping it copies the plain digits to the clipboard.
+  await page.getByRole("button", { name: "Copy pairing code" }).click();
+  await expect(page.getByText("Pairing code copied")).toBeVisible();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("34970112332");
   // tapping it opens the enlarged view
   await qr.click();
   await expect(page.getByText("QR code")).toBeVisible();
@@ -83,7 +90,7 @@ test("manual-code device shows no QR (would misrepresent the real one)", async (
   await open(page);
   await registerViaManual(page, "34970112332", "Hue A19");
   await page.locator("#device-list > *").first().click();
-  await expect(page.getByText("Edit device")).toBeVisible();
+  await expect(page.getByText("Device details")).toBeVisible();
   // The numeric code is still shown, but no regenerated QR.
   await expect(page.getByText("34970112332")).toBeVisible();
   await expect(page.getByRole("img", { name: "QR" })).toHaveCount(0);

@@ -158,6 +158,24 @@ export function matterFields(decoded) {
   return { vendorId, productId, discriminator, passcode, version, serial };
 }
 
+/**
+ * Build the 11-digit short-form manual pairing code (the number typed into a
+ * commissioner) from a decoded payload. It needs the passcode + the full 12-bit
+ * discriminator, both present in a QR — so a QR-registered device can display
+ * its manual code even though only the QR was scanned. Returns null when those
+ * fields are missing (e.g. a device registered from a manual code already has
+ * the code as its raw string, and 'other' codes have neither).
+ */
+export function manualPairingCode(m) {
+  if (!m || m.passcode == null || m.discriminator == null) return null;
+  const shortDisc = (m.discriminator >> 8) & 0xf; // manual codes carry only the top 4 bits
+  const chunk1 = (shortDisc >> 2) & 0x3; // VID/PID absent (short form) → top bit is 0
+  const chunk2 = ((shortDisc & 0x3) << 14) | (m.passcode & 0x3fff);
+  const chunk3 = (m.passcode >> 14) & 0x1fff;
+  const body = `${chunk1}${String(chunk2).padStart(5, "0")}${String(chunk3).padStart(4, "0")}`;
+  return body + verhoeffGenerate(body);
+}
+
 /** Normalise an 'other' raw code so trivial formatting differences dedup. */
 export function normalizeRaw(raw) {
   return (raw ?? "").trim().toUpperCase().replace(/\s+/g, " ");
@@ -204,4 +222,18 @@ function verhoeffValidate(digits) {
     c = V_D[c][V_P[i % 8][Number(rev[i])]];
   }
   return c === 0;
+}
+
+// Inverse-permutation table: the check digit that makes verhoeffValidate pass.
+const V_INV = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
+
+// Compute the Verhoeff check digit for a body of digits (the check occupies
+// position 0, so the running index is offset by one vs. validation).
+function verhoeffGenerate(digits) {
+  let c = 0;
+  const rev = digits.split("").reverse();
+  for (let i = 0; i < rev.length; i++) {
+    c = V_D[c][V_P[(i + 1) % 8][Number(rev[i])]];
+  }
+  return V_INV[c];
 }

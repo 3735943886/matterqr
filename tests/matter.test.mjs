@@ -7,6 +7,7 @@ import {
   decodeManual,
   identity,
   normalizeRaw,
+  manualPairingCode,
 } from "../js/matter.js";
 
 // Canonical CHIP onboarding example: QR + manual code for the same device.
@@ -27,6 +28,22 @@ test("decodeManual recovers the full 27-bit passcode", () => {
   assert.equal(d.passcode, 20202021);
   assert.equal(d.shortDiscriminator, 0xf); // top 4 bits of 0xF00
   assert.equal(d.checkDigitValid, true);
+});
+
+test("manualPairingCode derives the canonical manual code from a scanned QR", () => {
+  // The QR carries the full discriminator, so we can rebuild the 11-digit code.
+  assert.equal(manualPairingCode(decodeQR(QR)), MANUAL);
+  // Round-trips: the derived code decodes back to the same passcode and passes
+  // its own Verhoeff check.
+  const d = decodeManual(manualPairingCode(decodeQR(QR)));
+  assert.equal(d.passcode, 20202021);
+  assert.equal(d.checkDigitValid, true);
+});
+
+test("manualPairingCode returns null without a full discriminator", () => {
+  // A manual-code decode has only the short discriminator → can't rebuild.
+  assert.equal(manualPairingCode(decodeManual(MANUAL)), null);
+  assert.equal(manualPairingCode(decode("hello")), null);
 });
 
 test("QR and manual code of one device share an identity (dedup key)", () => {

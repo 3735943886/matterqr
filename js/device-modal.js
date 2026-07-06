@@ -5,7 +5,7 @@ import { h, toast, photoURL, resizeImage } from "./dom.js";
 import { t } from "./i18n.js";
 import { openModal, confirm, field } from "./modal.js";
 import { getState, reload } from "./store.js";
-import { identity as identityOf, matterFields } from "./matter.js";
+import { identity as identityOf, matterFields, manualPairingCode } from "./matter.js";
 import { qrImage } from "./qr.js";
 
 const ADD = "__add__";
@@ -195,8 +195,44 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
       qrImg,
     );
 
+  // For a QR-registered device, derive the numeric manual pairing code so it's
+  // available even though only the QR was scanned. (Manual-code devices already
+  // show that number as their raw code above, so don't repeat it.)
+  const derivedManual = codeKind === "matter_qr" ? manualPairingCode(matter) : null;
+  // Group the 11-digit code 4-3-4 for readability; copy the plain digits.
+  const prettyManual =
+    derivedManual?.length === 11
+      ? `${derivedManual.slice(0, 4)}-${derivedManual.slice(4, 7)}-${derivedManual.slice(7)}`
+      : derivedManual;
+
+  const manualRow =
+    derivedManual &&
+    h(
+      "button",
+      {
+        type: "button",
+        class:
+          "mt-1.5 flex w-full items-center gap-1.5 rounded text-left transition hover:text-emerald-700 active:opacity-70 dark:hover:text-emerald-400",
+        "aria-label": t("device.copy"),
+        onClick: async () => {
+          try {
+            await navigator.clipboard.writeText(derivedManual);
+            toast(t("device.copied"), "success");
+          } catch {
+            toast(t("err.generic"), "error");
+          }
+        },
+      },
+      [
+        h("span", { class: "text-slate-500" }, t("device.manual")),
+        h("span", { class: "font-mono font-medium tracking-wide" }, prettyManual),
+        h("span", { class: "ml-auto text-sm opacity-70" }, "📋"),
+      ],
+    );
+
   const codeBox = h("div", { class: "rounded-lg bg-slate-100 px-3 py-2 text-xs dark:bg-slate-800" }, [
     h("div", { class: "break-all font-mono" }, codeRaw || identity),
+    manualRow,
     hintParts.length && h("div", { class: "mt-1 text-slate-500" }, hintParts.join("  ·  ")),
   ]);
 
@@ -267,6 +303,6 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   });
   actions.push(cancel, save);
 
-  const m = openModal({ title: isEdit ? t("device.edit") : t("device.new"), body, actions });
+  const m = openModal({ title: isEdit ? t("device.detail") : t("device.new"), body, actions });
   return m;
 }
