@@ -53,6 +53,7 @@
   "device.hint.product": "Product",
   "device.hint.testVendor": "Test vendor",
   "device.photo.add": "Add / take photo",
+  "device.photo.change": "Change photo",
   "device.photo.remove": "Remove photo",
   "device.added": "Registered",
   "device.updated": "Saved",

@@ -70,9 +70,9 @@ function card(d) {
     [
       img,
       h("div", { class: "min-w-0 flex-1" }, [
-        h("div", { class: "flex items-center gap-2" }, [
+        h("div", { class: "flex min-w-0 items-center gap-2" }, [
           h("span", { class: `shrink-0 rounded-md px-1.5 py-0.5 text-[10px] font-bold ${badge.cls}` }, badge.label),
-          h("span", { class: "truncate font-semibold" }, title),
+          h("span", { class: "min-w-0 truncate font-semibold" }, title),
         ]),
         meta.length ? h("div", { class: "mt-0.5 truncate text-xs text-slate-500 dark:text-slate-400" }, meta.join(" · ")) : null,
         h("div", { class: "mt-1.5 flex flex-wrap items-center gap-1" }, [

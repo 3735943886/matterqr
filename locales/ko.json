@@ -53,6 +53,7 @@
   "device.hint.product": "제품",
   "device.hint.testVendor": "테스트 벤더",
   "device.photo.add": "사진 추가/촬영",
+  "device.photo.change": "사진 변경",
   "device.photo.remove": "사진 제거",
   "device.added": "등록되었습니다",
   "device.updated": "저장되었습니다",

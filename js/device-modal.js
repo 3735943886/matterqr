@@ -89,6 +89,14 @@ function enlargeQR(text) {
   });
 }
 
+// Enlarged view of the device photo (tap the thumbnail to open).
+function enlargePhoto(src) {
+  openModal({
+    title: t("device.photo"),
+    body: h("img", { src, class: "mx-auto max-h-[70dvh] w-auto rounded-lg", alt: "" }),
+  });
+}
+
 // Small text-input modal used by the "+add category" flow.
 function promptText(title, placeholder = "") {
   return new Promise((resolve) => {
@@ -200,39 +208,67 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   notes.value = device?.notes || "";
 
   // --- photo ---
-  const preview = h("img", { class: "h-24 w-24 rounded-lg object-cover", hidden: true, alt: "" });
-  const fileInput = h("input", { type: "file", accept: "image/*", capture: "environment", class: "hidden" });
-  const removeBtn = h(
-    "button",
-    { class: "rounded-lg border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700", hidden: true },
-    t("device.photo.remove"),
-  );
+  // Tapping the thumbnail enlarges it; change/remove are separate icon buttons.
+  const preview = h("img", {
+    class: "h-24 w-24 cursor-zoom-in rounded-lg object-cover ring-1 ring-slate-200 dark:ring-slate-700",
+    hidden: true,
+    alt: "",
+  });
+  // No `capture` attribute → the OS offers Photo Library *and* Take Photo.
+  const fileInput = h("input", { type: "file", accept: "image/*", class: "hidden" });
+
+  const iconBtn = (label, glyph) =>
+    h(
+      "button",
+      {
+        type: "button",
+        class:
+          "grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-slate-300 text-base hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800",
+        "aria-label": label,
+        title: label,
+        hidden: true,
+      },
+      glyph,
+    );
+  const changeBtn = iconBtn(t("device.photo.change"), "🔁");
+  const removeBtn = iconBtn(t("device.photo.remove"), "🗑");
   const addBtn = h(
     "button",
-    { class: "rounded-lg border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700" },
+    { type: "button", class: "rounded-lg border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700" },
     "📷 " + t("device.photo.add"),
   );
+
   function showPreview(url2) {
     preview.src = url2;
     preview.hidden = false;
+    changeBtn.hidden = false;
     removeBtn.hidden = false;
     addBtn.hidden = true;
   }
   function clearPreview() {
     preview.hidden = true;
+    changeBtn.hidden = true;
     removeBtn.hidden = true;
     addBtn.hidden = false;
   }
   if (isEdit) {
     db.getPhoto(identity).then((b) => b && photoState === "keep" && showPreview(photoURL(b)));
   }
+  preview.addEventListener("click", () => preview.src && enlargePhoto(preview.src));
   addBtn.addEventListener("click", () => fileInput.click());
+  changeBtn.addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", async () => {
     const f = fileInput.files?.[0];
     if (!f) return;
-    const resized = await resizeImage(f);
-    photoState = resized;
-    showPreview(photoURL(resized.blob));
+    try {
+      const resized = await resizeImage(f);
+      photoState = resized;
+      showPreview(photoURL(resized.blob));
+    } catch {
+      toast(t("err.generic"), "error"); // e.g. an unreadable / unsupported image
+    } finally {
+      fileInput.value = ""; // let the same file be re-picked later
+    }
   });
   removeBtn.addEventListener("click", () => {
     photoState = "remove";
@@ -316,7 +352,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     field(t("device.type"), typeSel.el),
     field(t("device.model"), modelField),
     field(t("device.url"), url),
-    field(t("device.photo"), h("div", { class: "flex items-center gap-3" }, [preview, addBtn, removeBtn, fileInput])),
+    field(t("device.photo"), h("div", { class: "flex items-center gap-3" }, [preview, changeBtn, removeBtn, addBtn, fileInput])),
     field(t("device.location"), locSel.el),
     field(t("device.status"), statusSel.el),
     field(t("device.notes"), notes),
