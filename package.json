@@ -1,0 +1,17 @@
+{
+  "name": "matterqr",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Matter QR device inventory — offline-first PWA",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "e2e": "playwright test",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "pouchdb": "^9.0.0",
+    "pouchdb-adapter-memory": "^9.0.0"
+  }
+}

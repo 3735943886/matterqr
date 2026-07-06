@@ -1,0 +1,11 @@
+node_modules/
+test-results/
+playwright-report/
+.playwright/
+_shot.mjs
+_dashboard.png
+_scan.png
+*.local
+.DS_Store
+
+.claude/
