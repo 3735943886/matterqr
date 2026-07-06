@@ -6,6 +6,7 @@ import { t } from "./i18n.js";
 import { openModal, confirm, field } from "./modal.js";
 import { getState, reload } from "./store.js";
 import { identity as identityOf, matterFields, manualPairingCode } from "./matter.js";
+import { vendorName, isTestVendor } from "./vendors.js";
 import { qrImage } from "./qr.js";
 
 const ADD = "__add__";
@@ -172,9 +173,15 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   });
 
   // --- code / matter hint (read-only) + rendered QR ---
+  const hex4 = (n) => `0x${n.toString(16).toUpperCase().padStart(4, "0")}`;
   const hintParts = [];
-  if (matter?.vendorId != null) hintParts.push(`${t("device.hint.vendor")}: 0x${matter.vendorId.toString(16).toUpperCase()}`);
-  if (matter?.productId != null) hintParts.push(`${t("device.hint.product")}: 0x${matter.productId.toString(16).toUpperCase()}`);
+  if (matter?.vendorId != null) {
+    // Resolve the numeric vendor ID to a manufacturer name (CSA DCL snapshot).
+    const label = isTestVendor(matter.vendorId) ? t("device.hint.testVendor") : vendorName(matter.vendorId);
+    const hex = hex4(matter.vendorId);
+    hintParts.push(`${t("device.hint.vendor")}: ${label ? `${label} (${hex})` : hex}`);
+  }
+  if (matter?.productId != null) hintParts.push(`${t("device.hint.product")}: ${hex4(matter.productId)}`);
 
   // Regenerate a scannable QR from the stored code so it can be shown/re-scanned.
   // Skip it for manual pairing codes: we'd only have the numeric code, so the QR

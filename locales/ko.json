@@ -51,6 +51,7 @@
   "device.notes.ph": "메모…",
   "device.hint.vendor": "제조사",
   "device.hint.product": "제품",
+  "device.hint.testVendor": "테스트 벤더",
   "device.photo.add": "사진 추가/촬영",
   "device.photo.remove": "사진 제거",
   "device.added": "등록되었습니다",

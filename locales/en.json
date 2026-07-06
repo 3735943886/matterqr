@@ -51,6 +51,7 @@
   "device.notes.ph": "Notes…",
   "device.hint.vendor": "Vendor",
   "device.hint.product": "Product",
+  "device.hint.testVendor": "Test vendor",
   "device.photo.add": "Add / take photo",
   "device.photo.remove": "Remove photo",
   "device.added": "Registered",
