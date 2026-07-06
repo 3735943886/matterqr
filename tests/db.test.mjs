@@ -19,9 +19,41 @@ test("ensureSeed populates type + status once, idempotently", async () => {
   await db.ensureSeed(); // second run must not duplicate
   const types = await db.listCategory("type");
   const statuses = await db.listCategory("status");
-  assert.equal(types.length, 5);
+  assert.equal(types.length, 32); // the standard Matter device-type set
   assert.equal(statuses.length, 4);
-  assert.ok(types.some((t) => t.name === "Light"));
+  assert.ok(types.some((t) => t.name === "Door Lock"));
+  await db.destroy();
+});
+
+test("migrateTypes upgrades a legacy install, keeping in-use types", async () => {
+  const db = freshDb();
+  // Simulate a pre-standard install: the old auto-seeded default types.
+  const ids = {};
+  for (const n of ["Light", "Plug", "Sensor", "Door lock", "Thermostat"]) {
+    ids[n] = (await db.addCategory("type", n)).id;
+  }
+  // A device still references "Plug" → that legacy type must survive.
+  await db.putDevice({ identity: "mt:1", codeKind: "manual", deviceTypeId: ids["Plug"] });
+
+  assert.equal(await db.migrateTypes(), true);
+  const names = (await db.listCategory("type")).map((t) => t.name);
+
+  assert.ok(names.includes("On/Off Light"), "standard types added");
+  assert.ok(names.includes("Door Lock"));
+  assert.ok(!names.includes("Light"), "unused legacy default removed");
+  assert.ok(!names.includes("Sensor"));
+  assert.ok(names.includes("Plug"), "in-use legacy type kept");
+
+  assert.equal(await db.migrateTypes(), false, "runs once");
+  await db.destroy();
+});
+
+test("migrateTypes is a no-op on a fresh standard install", async () => {
+  const db = freshDb();
+  await db.ensureSeed();
+  const before = (await db.listCategory("type")).length;
+  await db.migrateTypes();
+  assert.equal((await db.listCategory("type")).length, before);
   await db.destroy();
 });
 
@@ -96,7 +128,7 @@ test("exportAll → clearData → upsertRaw restores devices + categories", asyn
 
   for (const doc of backup.docs) await db.upsertRaw(doc);
   assert.equal((await db.listDevices()).length, 2);
-  assert.equal((await db.listCategory("type")).length, 5);
+  assert.equal((await db.listCategory("type")).length, 32);
   await db.destroy();
 });
 

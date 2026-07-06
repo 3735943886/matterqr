@@ -125,6 +125,29 @@ export function createDb(PouchDB, name = "matterqr") {
     }
   }
 
+  // One-time upgrade for installs seeded before device types used the Matter
+  // standard names. Adds the standard types and drops the old auto-seeded
+  // defaults that no device references — custom, renamed, or in-use categories
+  // are left untouched, so nothing a user set up (or assigned) is lost.
+  const LEGACY_TYPE_DEFAULTS = ["light", "plug", "sensor", "door lock", "thermostat"];
+  async function migrateTypes() {
+    const settings = await getSettings();
+    if (settings.typeStdMigrated) return false;
+
+    const [types, devices] = await Promise.all([listCategory("type"), listDevices()]);
+    const usedIds = new Set(devices.map((d) => d.deviceTypeId).filter(Boolean));
+
+    for (const c of types) {
+      if (LEGACY_TYPE_DEFAULTS.includes(c.name.toLowerCase()) && !usedIds.has(c.id)) {
+        await deleteCategory(c.id);
+      }
+    }
+    for (const name of SEED.type) await addCategory("type", name);
+
+    await saveSettings({ typeStdMigrated: true });
+    return true;
+  }
+
   // --- devices ------------------------------------------------------------
   function devId(identity) {
     return `dev:${identity}`;
@@ -266,6 +289,7 @@ export function createDb(PouchDB, name = "matterqr") {
     renameCategory,
     deleteCategory,
     ensureSeed,
+    migrateTypes,
     // devices
     getDevice,
     listDevices,

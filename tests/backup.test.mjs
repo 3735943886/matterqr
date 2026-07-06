@@ -94,7 +94,7 @@ test("replace wipes then restores exactly the backup", async () => {
   await applyImport(db, backup, { mode: "replace" });
   const ids = (await db.listDevices()).map((d) => d.identity).sort();
   assert.deepEqual(ids, ["mt:1", "mt:2"]); // mt:zap gone, mt:1/mt:2 restored
-  assert.equal((await db.listCategory("type")).length, 5);
+  assert.equal((await db.listCategory("type")).length, 32);
   await db.destroy();
   await db2.destroy();
 });

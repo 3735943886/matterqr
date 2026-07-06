@@ -18,6 +18,7 @@ async function main() {
 
   const db = createDb(window.PouchDB, "matterqr");
   await db.ensureSeed();
+  await db.migrateTypes(); // bring pre-standard installs up to the Matter type set
   initStore(db);
   await initI18n();
 
