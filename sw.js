@@ -1,12 +1,13 @@
 // Service worker: precache the app shell for offline + installable PWA.
 // Data lives in IndexedDB (PouchDB), so it is never touched here.
 //
-// The semver version lives HERE, in the SW script itself: a browser only detects
-// an update when sw.js's own bytes change, so this literal is the update
-// authority. Bumping it changes the cache name, which rolls users onto the new
-// shell (old cache deleted on activate). Keep it in sync with js/version.js
-// (the app-facing copy shown in Settings) and package.json.
-const APP_VERSION = "0.0.1-alpha.2";
+// The version must live HERE as a literal: a browser only detects an update when
+// sw.js's own bytes change, so this line is the update authority — changing it
+// changes the cache name and rolls users onto the new shell (old cache deleted
+// on activate). GENERATED — do not hand-edit: the source of truth is
+// package.json "version"; `npm run stamp` writes it here. See
+// scripts/stamp-version.mjs.
+const APP_VERSION = "0.0.1-alpha.3";
 
 const CACHE = `matterqr-${APP_VERSION}`;
 
