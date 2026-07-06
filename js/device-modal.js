@@ -352,7 +352,13 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     field(t("device.type"), typeSel.el),
     field(t("device.model"), modelField),
     field(t("device.url"), url),
-    field(t("device.photo"), h("div", { class: "flex items-center gap-3" }, [preview, changeBtn, removeBtn, addBtn, fileInput])),
+    // Not field(): field() wraps in a <label>, and a hidden file <input> inside a
+    // label fires on any click within it — so tapping the preview would also open
+    // the picker. A plain <div> keeps the preview tap = enlarge only.
+    h("div", { class: "space-y-1" }, [
+      h("span", { class: "text-xs font-medium text-slate-500" }, t("device.photo")),
+      h("div", { class: "flex items-center gap-3" }, [preview, changeBtn, removeBtn, addBtn, fileInput]),
+    ]),
     field(t("device.location"), locSel.el),
     field(t("device.status"), statusSel.el),
     field(t("device.notes"), notes),
