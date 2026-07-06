@@ -2,6 +2,10 @@
 
 **An offline-first web app for cataloguing Matter smart-home devices by their QR / pairing codes.**
 
+### ▶︎ Live app: **https://3735943886.github.io/matterqr/**
+
+Open that URL on your iPhone in Safari and **Share → Add to Home Screen** to install it.
+
 Every Matter device ships with an onboarding QR code (and a printed numeric
 pairing code beneath it). MatterQR lets you scan or type that code to build a
 searchable inventory of your devices — what they are, where they're installed,
@@ -49,7 +53,7 @@ implemented from the Matter specification in [`js/matter.js`](js/matter.js).
 
 ## Install on iOS (primary use)
 
-1. Open the deployed URL in **Safari** on your iPhone/iPad.
+1. Open **https://3735943886.github.io/matterqr/** in **Safari** on your iPhone/iPad.
 2. Tap **Share → Add to Home Screen**.
 3. Launch it from the home screen — it runs full-screen with camera access.
 
