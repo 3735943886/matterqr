@@ -177,7 +177,11 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   if (matter?.productId != null) hintParts.push(`${t("device.hint.product")}: 0x${matter.productId.toString(16).toUpperCase()}`);
 
   // Regenerate a scannable QR from the stored code so it can be shown/re-scanned.
-  const qrImg = qrImage(codeRaw || identity, { size: 148 });
+  // Skip it for manual pairing codes: we'd only have the numeric code, so the QR
+  // would encode those digits — a code that looks scannable but isn't the
+  // device's real Matter QR (the manual code can't be rebuilt into one, as it
+  // drops most of the discriminator). Showing it would mislead.
+  const qrImg = codeKind === "manual" ? null : qrImage(codeRaw || identity, { size: 148 });
   const qrPanel =
     qrImg &&
     h(

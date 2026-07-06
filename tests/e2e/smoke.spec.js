@@ -64,9 +64,11 @@ test("QR form of the same device dedups to one record", async ({ page }) => {
   await expect(page.locator("#device-list > *")).toHaveCount(1);
 });
 
-test("device screen shows a generated QR for the code", async ({ page }) => {
+test("device screen shows a generated QR for a scanned Matter code", async ({ page }) => {
   await open(page);
-  await registerViaManual(page, "34970112332", "Hue A19");
+  // Register from the QR (MT:) form — only real Matter codes render a QR; a
+  // manual numeric code deliberately shows none (it can't be rebuilt into one).
+  await registerViaManual(page, "MT:Y.K9042C00KA0648G00", "Hue A19");
   // Open the device from the list
   await page.locator("#device-list > *").first().click();
   await expect(page.getByText("Edit device")).toBeVisible();
@@ -75,6 +77,16 @@ test("device screen shows a generated QR for the code", async ({ page }) => {
   // tapping it opens the enlarged view
   await qr.click();
   await expect(page.getByText("QR code")).toBeVisible();
+});
+
+test("manual-code device shows no QR (would misrepresent the real one)", async ({ page }) => {
+  await open(page);
+  await registerViaManual(page, "34970112332", "Hue A19");
+  await page.locator("#device-list > *").first().click();
+  await expect(page.getByText("Edit device")).toBeVisible();
+  // The numeric code is still shown, but no regenerated QR.
+  await expect(page.getByText("34970112332")).toBeVisible();
+  await expect(page.getByRole("img", { name: "QR" })).toHaveCount(0);
 });
 
 test("persists across reload (IndexedDB)", async ({ page }) => {
