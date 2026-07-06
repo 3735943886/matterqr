@@ -54,6 +54,14 @@
     .safe-x { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
     /* Modal bodies scroll internally without bouncing the page. */
     .modal-scroll { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+    /* Horizontal facet rows: scrollable, no visible scrollbar. */
+    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    /* Staggered fade-in for list cards — subtle, respects reduced-motion. */
+    @keyframes cardIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: no-preference) {
+      .card-in { animation: cardIn .28s cubic-bezier(.22,.61,.36,1) both; }
+    }
     [hidden] { display: none !important; }
   </style>
 </head>
@@ -79,26 +87,29 @@
   </div>
 
   <!-- Filter bar -->
-  <div class="safe-x sticky top-[49px] z-20 border-b border-slate-200 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
-    <div class="mx-auto max-w-3xl space-y-2 px-3 py-2">
-      <input id="search" type="search" inputmode="search" autocapitalize="off" autocorrect="off"
-             class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900"
-             data-i18n-attr="placeholder:search.placeholder" />
-      <div id="filter-chips" class="flex flex-wrap gap-1.5"></div>
+  <div class="safe-x sticky top-[49px] z-20 border-b border-slate-200/80 bg-slate-50/85 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-950/85">
+    <div class="mx-auto max-w-3xl space-y-2.5 px-3 py-2.5">
+      <div class="relative">
+        <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-slate-400">🔍</span>
+        <input id="search" type="search" inputmode="search" autocapitalize="off" autocorrect="off"
+               class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-sm shadow-sm outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-700 dark:bg-slate-900"
+               data-i18n-attr="placeholder:search.placeholder" />
+      </div>
+      <div id="filter-chips" class="space-y-1.5"></div>
     </div>
   </div>
 
   <!-- Device list -->
-  <main class="safe-x safe-bottom mx-auto max-w-3xl px-3 py-3">
-    <div id="list-meta" class="mb-2 text-xs text-slate-500"></div>
-    <div id="device-list" class="grid gap-2"></div>
-    <div id="empty" hidden class="py-16 text-center text-sm text-slate-500"></div>
+  <main class="safe-x safe-bottom mx-auto max-w-3xl px-3 pb-28 pt-3">
+    <div id="list-meta" class="mb-2.5 px-1 text-xs font-medium uppercase tracking-wide text-slate-400"></div>
+    <div id="device-list" class="grid gap-2.5"></div>
+    <div id="empty" hidden class="py-20 text-center text-sm text-slate-500"></div>
   </main>
 
   <!-- Floating scan button -->
   <button id="btn-scan"
-          class="safe-bottom fixed bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-xl hover:bg-emerald-500 active:scale-95">
-    <span>📷</span><span data-i18n="action.scan">Scan</span>
+          class="safe-bottom fixed bottom-5 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 ring-1 ring-emerald-500/50 transition hover:bg-emerald-500 hover:shadow-xl hover:shadow-emerald-600/40 active:scale-95">
+    <span class="text-lg">📷</span><span data-i18n="action.scan">Scan</span>
   </button>
 
   <!-- Toast + modal roots -->

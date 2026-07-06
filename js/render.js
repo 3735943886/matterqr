@@ -11,18 +11,39 @@ const KIND_BADGE = {
   other: { label: "•", cls: "bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300" },
 };
 
+const THUMB = "h-16 w-16 shrink-0 rounded-xl object-cover ring-1 ring-slate-200/70 dark:ring-slate-700/60";
+
 async function loadThumb(imgEl, identity) {
   const db = getState().db;
   const blob = await db.getPhoto(identity).catch(() => null);
   if (blob) imgEl.src = photoURL(blob);
-  else imgEl.replaceWith(h("div", { class: "grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-slate-100 text-xl dark:bg-slate-800" }, "🔲"));
+  else
+    imgEl.replaceWith(
+      h(
+        "div",
+        {
+          class:
+            "grid h-16 w-16 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 text-2xl ring-1 ring-slate-200/70 dark:from-slate-800 dark:to-slate-800/60 dark:ring-slate-700/60",
+        },
+        "🔲",
+      ),
+    );
 }
 
-function statusChip(name, tone = "slate") {
-  const map = {
-    slate: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
-  };
-  return h("span", { class: `rounded-full px-2 py-0.5 text-[11px] ${map[tone]}` }, name);
+// Small neutral pill for the location/status metadata line. `muted` dims the
+// value when it's a placeholder (e.g. an unassigned location).
+function pill(icon, name, muted = false) {
+  return h(
+    "span",
+    {
+      class:
+        "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium " +
+        (muted
+          ? "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
+          : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"),
+    },
+    [icon && h("span", { class: "text-[10px]" }, icon), name],
+  );
 }
 
 function card(d) {
@@ -32,34 +53,37 @@ function card(d) {
   const locName = d.locationId ? catName("loc", d.locationId) : t("filter.unassigned");
   const statusName = catName("status", d.statusId);
 
-  const img = h("img", { class: "h-14 w-14 shrink-0 rounded-lg object-cover", alt: "" });
+  const img = h("img", { class: THUMB, alt: "" });
   loadThumb(img, d.identity);
 
-  const sub = [typeName, d.matter ? `V:${d.matter.vendorId ?? "-"} P:${d.matter.productId ?? "-"}` : null]
-    .filter(Boolean)
-    .join(" · ");
+  // Secondary line — device type only. Raw vendor/product IDs live in the modal;
+  // on a list card they're noise (and meaningless for manual pairing codes).
+  const meta = typeName ? [typeName] : [];
 
   return h(
     "button",
     {
       class:
-        "flex w-full items-center gap-3 rounded-xl border border-slate-200 bg-white p-2.5 text-left hover:border-slate-300 active:scale-[.99] dark:border-slate-800 dark:bg-slate-900",
+        "card-in group flex w-full items-center gap-3 rounded-2xl bg-white p-3 text-left shadow-sm ring-1 ring-slate-200/70 transition hover:shadow-md hover:ring-slate-300 active:scale-[.99] dark:bg-slate-900 dark:ring-slate-800 dark:hover:ring-slate-700",
       onClick: () => openDeviceModal({ device: d }),
     },
     [
       img,
       h("div", { class: "min-w-0 flex-1" }, [
         h("div", { class: "flex items-center gap-2" }, [
-          h("span", { class: `rounded px-1.5 py-0.5 text-[10px] font-bold ${badge.cls}` }, badge.label),
-          h("span", { class: "truncate font-medium" }, title),
+          h("span", { class: `shrink-0 rounded-md px-1.5 py-0.5 text-[10px] font-bold ${badge.cls}` }, badge.label),
+          h("span", { class: "truncate font-semibold" }, title),
         ]),
-        sub && h("div", { class: "truncate text-xs text-slate-500" }, sub),
-        h("div", { class: "mt-1 flex flex-wrap items-center gap-1" }, [
-          statusChip("📍 " + locName),
-          statusName && statusChip(statusName),
+        meta.length ? h("div", { class: "mt-0.5 truncate text-xs text-slate-500 dark:text-slate-400" }, meta.join(" · ")) : null,
+        h("div", { class: "mt-1.5 flex flex-wrap items-center gap-1" }, [
+          pill("📍", locName, !d.locationId),
+          statusName && pill(null, statusName),
         ]),
       ]),
-      h("div", { class: "shrink-0 self-start text-[11px] text-slate-400" }, formatAgo(d.updatedAt, t)),
+      h("div", { class: "flex shrink-0 flex-col items-end gap-1.5 self-stretch" }, [
+        h("span", { class: "text-[11px] text-slate-400" }, formatAgo(d.updatedAt, t)),
+        h("span", { class: "text-lg leading-none text-slate-300 transition group-hover:translate-x-0.5 group-hover:text-slate-400 dark:text-slate-600" }, "›"),
+      ]),
     ],
   );
 }

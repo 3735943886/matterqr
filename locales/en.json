@@ -22,7 +22,7 @@
 
   "list.empty": "No devices yet. Start by scanning.",
   "list.empty.filtered": "No devices match the filters.",
-  "list.count": "{n}",
+  "list.count": "{n} devices",
 
   "device.new": "Register device",
   "device.edit": "Edit device",
