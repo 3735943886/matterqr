@@ -1,10 +1,13 @@
-# MatterQR
+ MatterQR
 
 **An offline-first web app for cataloguing Matter smart-home devices by their QR / pairing codes.**
 
 ### ▶︎ Live app: **https://3735943886.github.io/matterqr/**
 
+<a href="https://3735943886.github.io/matterqr/"><img src="assets/live-qr.svg" alt="QR code — scan to open the live app on your phone" width="150" align="right"></a>
+
 Open that URL on your iPhone in Safari and **Share → Add to Home Screen** to install it.
+Reading this on a PC? **Scan the QR on the right** to open it straight on your phone.
 
 Every Matter device ships with an onboarding QR code (and a printed numeric
 pairing code beneath it). MatterQR lets you scan or type that code to build a
