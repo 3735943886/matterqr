@@ -65,7 +65,7 @@ export function formatDate(iso) {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-/** Human "N일 전" style age, falls back to date for old items. */
+/** Human "N min/hours/days ago" style age, falls back to date for old items. */
 export function formatAgo(iso, t = (k) => k) {
   if (!iso) return "";
   const diff = (Date.now() - new Date(iso).getTime()) / 1000;

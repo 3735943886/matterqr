@@ -8,7 +8,7 @@ export default defineConfig({
   timeout: 30000,
   use: {
     baseURL: "http://localhost:8000",
-    locale: "ko-KR",
+    locale: "en-US",
     ...devices["Pixel 7"],
   },
   webServer: {

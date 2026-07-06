@@ -19,9 +19,9 @@ const CAT_KINDS = ["type", "loc", "status"];
 
 // Seed categories so the dropdowns are never empty on first run.
 const SEED = {
-  type: ["조명", "플러그", "센서", "도어락", "온도조절기"],
-  status: ["재고", "설치됨", "불량", "폐기"],
-  loc: [], // locations are user-specific; "미설치" is represented by locationId=null
+  type: ["Light", "Plug", "Sensor", "Door lock", "Thermostat"],
+  status: ["In stock", "Installed", "Faulty", "Retired"],
+  loc: [], // locations are user-specific; "unassigned" is locationId=null
 };
 
 function uuid() {
@@ -49,7 +49,7 @@ export function createDb(PouchDB, name = "matterqr") {
   async function addCategory(kind, name) {
     const trimmed = (name ?? "").trim();
     if (!trimmed) throw new Error("category name required");
-    // Reject case-insensitive duplicates so "+추가" can't fork a category.
+    // Reject case-insensitive duplicates so "+add" can't fork a category.
     const existing = await listCategory(kind);
     const hit = existing.find((c) => c.name.toLowerCase() === trimmed.toLowerCase());
     if (hit) return hit;

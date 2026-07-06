@@ -20,7 +20,7 @@ async function seedTwo(db) {
 test("toCSV emits a header + one row per device, escaping commas", () => {
   const csv = toCSV(
     [{ identity: "mt:1", codeKind: "manual", codeRaw: "x", model: "Hue, white", matter: { passcode: 9 } }],
-    () => "타입A",
+    () => "TypeA",
   );
   const lines = csv.split("\n");
   assert.match(lines[0], /^identity,codeKind/);

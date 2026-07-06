@@ -10,16 +10,16 @@ async function open(page) {
 
 async function registerViaManual(page, code, model) {
   await page.locator("#btn-scan").click();
-  const manual = page.getByPlaceholder(/페어링 코드/);
+  const manual = page.getByPlaceholder(/pairing code/i);
   await expect(manual).toBeVisible();
   await manual.fill(code);
-  await page.getByRole("button", { name: "확인" }).click();
+  await page.getByRole("button", { name: "Look up" }).click();
   // New-device modal opens
-  await expect(page.getByText("신규 등록")).toBeVisible();
+  await expect(page.getByText("Register device")).toBeVisible();
   if (model) await page.getByPlaceholder(/Philips Hue/).fill(model);
-  await page.getByRole("button", { name: "저장" }).click();
+  await page.getByRole("button", { name: "Save" }).click();
   // Wait for the save to commit (modal closes only after put + reload).
-  await expect(page.getByText("신규 등록")).toBeHidden();
+  await expect(page.getByText("Register device")).toBeHidden();
 }
 
 test("loads without fatal errors and shows the empty state", async ({ page }) => {
@@ -45,9 +45,9 @@ test("re-entering the same code warns duplicate and opens edit", async ({ page }
 
   // Scan the same code again → duplicate branch → edit modal
   await page.locator("#btn-scan").click();
-  await page.getByPlaceholder(/페어링 코드/).fill("34970112332");
-  await page.getByRole("button", { name: "확인" }).click();
-  await expect(page.getByText("디바이스 편집")).toBeVisible();
+  await page.getByPlaceholder(/pairing code/i).fill("34970112332");
+  await page.getByRole("button", { name: "Look up" }).click();
+  await expect(page.getByText("Edit device")).toBeVisible();
   // model preserved from the first registration
   await expect(page.getByPlaceholder(/Philips Hue/)).toHaveValue("Hue A19");
 });
@@ -57,10 +57,10 @@ test("QR form of the same device dedups to one record", async ({ page }) => {
   await registerViaManual(page, "34970112332", "Hue A19");
   // The QR encodes the same passcode → identity collision → edit, not a 2nd row
   await page.locator("#btn-scan").click();
-  await page.getByPlaceholder(/페어링 코드/).fill("MT:Y.K9042C00KA0648G00");
-  await page.getByRole("button", { name: "확인" }).click();
-  await expect(page.getByText("디바이스 편집")).toBeVisible();
-  await page.getByRole("button", { name: "취소" }).click();
+  await page.getByPlaceholder(/pairing code/i).fill("MT:Y.K9042C00KA0648G00");
+  await page.getByRole("button", { name: "Look up" }).click();
+  await expect(page.getByText("Edit device")).toBeVisible();
+  await page.getByRole("button", { name: "Cancel" }).click();
   await expect(page.locator("#device-list > *")).toHaveCount(1);
 });
 

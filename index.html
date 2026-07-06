@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <!-- viewport-fit=cover so we can pad against the notch / home indicator -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>매터 QR 관리</title>
+  <title>Matter QR Inventory</title>
 
   <!-- PWA / iOS home-screen install -->
   <link rel="manifest" href="./manifest.webmanifest" />
@@ -62,11 +62,11 @@
   <header class="safe-top safe-x sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90">
     <div class="mx-auto flex max-w-3xl items-center gap-2 px-3 py-2">
       <h1 class="mr-auto flex items-center gap-2 text-base font-semibold">
-        <span>🔳</span><span data-i18n="app.title">매터 QR 관리</span>
+        <span>🔳</span><span data-i18n="app.title">Matter QR Inventory</span>
       </h1>
       <span id="sync-badge" class="rounded-full px-2 py-0.5 text-xs font-medium"></span>
-      <button id="btn-backup" class="rounded-lg p-2 text-lg hover:bg-slate-100 dark:hover:bg-slate-800" title="백업">💾</button>
-      <button id="btn-settings" class="rounded-lg p-2 text-lg hover:bg-slate-100 dark:hover:bg-slate-800" title="설정">⚙️</button>
+      <button id="btn-backup" class="rounded-lg p-2 text-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n-attr="title:action.backup" title="Backup">💾</button>
+      <button id="btn-settings" class="rounded-lg p-2 text-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n-attr="title:action.settings" title="Settings">⚙️</button>
     </div>
   </header>
 
@@ -97,7 +97,7 @@
   <!-- Floating scan button -->
   <button id="btn-scan"
           class="safe-bottom fixed bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-xl hover:bg-emerald-500 active:scale-95">
-    <span>📷</span><span data-i18n="action.scan">스캔</span>
+    <span>📷</span><span data-i18n="action.scan">Scan</span>
   </button>
 
   <!-- Toast + modal roots -->

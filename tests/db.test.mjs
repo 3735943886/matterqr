@@ -21,15 +21,15 @@ test("ensureSeed populates type + status once, idempotently", async () => {
   const statuses = await db.listCategory("status");
   assert.equal(types.length, 5);
   assert.equal(statuses.length, 4);
-  assert.ok(types.some((t) => t.name === "조명"));
+  assert.ok(types.some((t) => t.name === "Light"));
   await db.destroy();
 });
 
 test("addCategory dedups case-insensitively", async () => {
   const db = freshDb();
-  const a = await db.addCategory("loc", "거실");
-  const b = await db.addCategory("loc", "거실"); // exact dup
-  const c = await db.addCategory("loc", "  거실  "); // padded dup
+  const a = await db.addCategory("loc", "Living room");
+  const b = await db.addCategory("loc", "Living room"); // exact dup
+  const c = await db.addCategory("loc", "  Living room  "); // padded dup
   assert.equal(a.id, b.id);
   assert.equal(a.id, c.id);
   assert.equal((await db.listCategory("loc")).length, 1);

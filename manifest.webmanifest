@@ -1,7 +1,7 @@
 {
-  "name": "매터 QR 관리",
+  "name": "Matter QR Inventory",
   "short_name": "MatterQR",
-  "description": "Matter 디바이스 QR 인벤토리 — 오프라인 우선 PWA",
+  "description": "Offline-first inventory of Matter devices by their QR / pairing codes",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -7,7 +7,7 @@
 
 let messages = {};
 let fallback = {};
-let current = "ko";
+let current = "en";
 const listeners = new Set();
 
 async function load(lang) {
@@ -19,13 +19,11 @@ async function load(lang) {
 
 export async function initI18n() {
   fallback = await load("en").catch(() => ({}));
-  current = localStorage.getItem("lang") || navigatorLang();
+  // English is the default UI language; Korean is available via the selector.
+  current = localStorage.getItem("lang") || "en";
   messages = current === "en" ? fallback : await load(current).catch(() => fallback);
+  document.documentElement.lang = current;
   applyDom();
-}
-
-function navigatorLang() {
-  return (navigator.language || "ko").toLowerCase().startsWith("ko") ? "ko" : "en";
 }
 
 export function t(key, vars) {
