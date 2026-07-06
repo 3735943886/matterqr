@@ -6,8 +6,22 @@ import { t } from "./i18n.js";
 import { openModal, confirm, field } from "./modal.js";
 import { getState, reload } from "./store.js";
 import { identity as identityOf, matterFields } from "./matter.js";
+import { qrImage } from "./qr.js";
 
 const ADD = "__add__";
+
+// Fullscreen-ish QR for scanning from another device's camera.
+function enlargeQR(text) {
+  const big = qrImage(text, { size: Math.min(320, Math.floor(window.innerWidth * 0.8)) });
+  if (!big) return;
+  openModal({
+    title: t("device.qr"),
+    body: h("div", { class: "space-y-3 text-center" }, [
+      h("div", { class: "mx-auto inline-block rounded-xl bg-white p-4" }, big),
+      h("div", { class: "break-all px-2 font-mono text-xs text-slate-500" }, text),
+    ]),
+  });
+}
 
 // Small text-input modal used by the "+add category" flow.
 function promptText(title, placeholder = "") {
@@ -157,16 +171,33 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     clearPreview();
   });
 
-  // --- code / matter hint (read-only) ---
+  // --- code / matter hint (read-only) + rendered QR ---
   const hintParts = [];
   if (matter?.vendorId != null) hintParts.push(`${t("device.hint.vendor")}: 0x${matter.vendorId.toString(16).toUpperCase()}`);
   if (matter?.productId != null) hintParts.push(`${t("device.hint.product")}: 0x${matter.productId.toString(16).toUpperCase()}`);
+
+  // Regenerate a scannable QR from the stored code so it can be shown/re-scanned.
+  const qrImg = qrImage(codeRaw || identity, { size: 148 });
+  const qrPanel =
+    qrImg &&
+    h(
+      "button",
+      {
+        type: "button",
+        class: "mx-auto block rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-200",
+        title: t("device.qr.enlarge"),
+        onClick: () => enlargeQR(codeRaw || identity),
+      },
+      qrImg,
+    );
+
   const codeBox = h("div", { class: "rounded-lg bg-slate-100 px-3 py-2 text-xs dark:bg-slate-800" }, [
     h("div", { class: "break-all font-mono" }, codeRaw || identity),
     hintParts.length && h("div", { class: "mt-1 text-slate-500" }, hintParts.join("  ·  ")),
   ]);
 
   const body = h("div", { class: "space-y-3" }, [
+    qrPanel,
     field(t("device.code"), codeBox),
     field(t("device.type"), typeSel.el),
     field(t("device.model"), model),

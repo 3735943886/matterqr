@@ -28,6 +28,8 @@
   "device.edit": "디바이스 편집",
   "device.duplicate": "이미 등록된 디바이스입니다 — 편집 모드로 엽니다.",
   "device.code": "코드",
+  "device.qr": "QR 코드",
+  "device.qr.enlarge": "탭하면 확대",
   "device.type": "타입",
   "device.model": "모델명",
   "device.url": "URL",

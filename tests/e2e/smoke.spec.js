@@ -64,6 +64,19 @@ test("QR form of the same device dedups to one record", async ({ page }) => {
   await expect(page.locator("#device-list > *")).toHaveCount(1);
 });
 
+test("device screen shows a generated QR for the code", async ({ page }) => {
+  await open(page);
+  await registerViaManual(page, "34970112332", "Hue A19");
+  // Open the device from the list
+  await page.locator("#device-list > *").first().click();
+  await expect(page.getByText("Edit device")).toBeVisible();
+  const qr = page.getByRole("img", { name: "QR" }).first();
+  await expect(qr).toBeVisible();
+  // tapping it opens the enlarged view
+  await qr.click();
+  await expect(page.getByText("QR code")).toBeVisible();
+});
+
 test("persists across reload (IndexedDB)", async ({ page }) => {
   await open(page);
   await registerViaManual(page, "34970112332", "Hue A19");

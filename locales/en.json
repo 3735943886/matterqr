@@ -28,6 +28,8 @@
   "device.edit": "Edit device",
   "device.duplicate": "Already registered — opening for edit.",
   "device.code": "Code",
+  "device.qr": "QR code",
+  "device.qr.enlarge": "Tap to enlarge",
   "device.type": "Type",
   "device.model": "Model",
   "device.url": "URL",

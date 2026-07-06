@@ -2,7 +2,7 @@
 // Data lives in IndexedDB (PouchDB), so it is never touched here. Bump CACHE
 // on each deploy to roll users onto the new shell.
 
-const CACHE = "matterqr-v1";
+const CACHE = "matterqr-v2";
 
 const SHELL = [
   "./",
@@ -11,6 +11,7 @@ const SHELL = [
   "./js/app.js",
   "./js/db.js",
   "./js/matter.js",
+  "./js/qr.js",
   "./js/dom.js",
   "./js/i18n.js",
   "./js/modal.js",
@@ -25,6 +26,7 @@ const SHELL = [
   "./vendor/tailwind.js",
   "./vendor/pouchdb.js",
   "./vendor/jsQR.js",
+  "./vendor/qrcode.js",
   "./locales/ko.json",
   "./locales/en.json",
   "./assets/icon-192.png",
