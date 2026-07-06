@@ -17,9 +17,52 @@
 
 const CAT_KINDS = ["type", "loc", "status"];
 
-// Seed categories so the dropdowns are never empty on first run.
+// Seed categories so the dropdowns are never empty on first run. Device types
+// use the standard Matter Device Library names (grouped by domain) rather than
+// arbitrary labels, so the inventory lines up with the Matter spec.
 const SEED = {
-  type: ["Light", "Plug", "Sensor", "Door lock", "Thermostat"],
+  type: [
+    // Lighting
+    "On/Off Light",
+    "Dimmable Light",
+    "Color Temperature Light",
+    "Extended Color Light",
+    // Plugs & switches
+    "On/Off Plug-in Unit",
+    "Dimmable Plug-in Unit",
+    "On/Off Light Switch",
+    "Dimmer Switch",
+    "Generic Switch",
+    // Sensors
+    "Contact Sensor",
+    "Occupancy Sensor",
+    "Temperature Sensor",
+    "Humidity Sensor",
+    "Light Sensor",
+    "Air Quality Sensor",
+    "Smoke/CO Alarm",
+    "Water Leak Detector",
+    // Closures
+    "Door Lock",
+    "Window Covering",
+    // Climate
+    "Thermostat",
+    "Fan",
+    "Air Purifier",
+    "Room Air Conditioner",
+    // Appliances
+    "Refrigerator",
+    "Dishwasher",
+    "Laundry Washer",
+    "Robotic Vacuum Cleaner",
+    // Energy
+    "EV Supply Equipment",
+    "Water Heater",
+    // Media & other
+    "Speaker",
+    "Video Player",
+    "Bridge",
+  ],
   status: ["In stock", "Installed", "Faulty", "Retired"],
   loc: [], // locations are user-specific; "unassigned" is locationId=null
 };
@@ -43,7 +86,11 @@ export function createDb(PouchDB, name = "matterqr") {
   // --- categories (type / location / status) ------------------------------
   async function listCategory(kind) {
     const res = await db.allDocs({ include_docs: true, ...prefixRange(`cat:${kind}:`) });
-    return res.rows.map((r) => ({ id: r.doc._id, name: r.doc.name, kind }));
+    // Docs are keyed by random UUID, so sort by name for a stable, findable
+    // order in dropdowns/chips (matters now that types are the ~30 Matter ones).
+    return res.rows
+      .map((r) => ({ id: r.doc._id, name: r.doc.name, kind }))
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
 
   async function addCategory(kind, name) {
