@@ -1,0 +1,53 @@
+name: Refresh Matter vendor list
+
+# Regenerate js/vendors.js from the CSA Distributed Compliance Ledger weekly.
+# If the list changed, bump the version (so sw.js changes and installed clients
+# pick it up via the in-app update prompt), commit, and trigger a Pages rebuild.
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch: {} # allow manual runs
+
+permissions:
+  contents: write # commit + push the refreshed list
+  pages: write # request a Pages build for the bot commit
+
+concurrency:
+  group: refresh-vendors
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Regenerate vendor list from the CSA DCL
+        run: node scripts/fetch-vendors.mjs
+
+      - name: Commit, version-bump, and deploy if the list changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- js/vendors.js; then
+            echo "Vendor list unchanged — nothing to do."
+            exit 0
+          fi
+          echo "Vendor list changed — shipping a new build."
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Bump the prerelease so sw.js changes → clients see the update prompt.
+          node scripts/bump-prerelease.mjs
+          npm run stamp
+
+          git add js/vendors.js package.json sw.js js/version.js
+          git commit -m "Refresh Matter vendor list from the CSA DCL (automated)"
+          git push
+
+          # A push made with GITHUB_TOKEN may not auto-trigger the branch Pages
+          # build, so request one explicitly — this is what rolls it out.
+          gh api --method POST "repos/${{ github.repository }}/pages/builds"
