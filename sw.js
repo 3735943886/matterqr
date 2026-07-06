@@ -6,7 +6,7 @@
 // authority. Bumping it changes the cache name, which rolls users onto the new
 // shell (old cache deleted on activate). Keep it in sync with js/version.js
 // (the app-facing copy shown in Settings) and package.json.
-const APP_VERSION = "0.0.1-alpha";
+const APP_VERSION = "0.0.1-alpha.2";
 
 const CACHE = `matterqr-${APP_VERSION}`;
 

@@ -7,4 +7,4 @@
 //
 // Pre-release progression: 0.0.1-alpha → 0.0.1-alpha.2 → 0.0.1-beta → 0.0.1-rc.1
 // → 0.0.1 → 0.0.2 …
-export const APP_VERSION = "0.0.1-alpha";
+export const APP_VERSION = "0.0.1-alpha.2";
