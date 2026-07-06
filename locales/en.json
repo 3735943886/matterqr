@@ -104,6 +104,8 @@
   "install.banner": "To install as an app: Share → “Add to Home Screen”",
   "install.dismiss": "Dismiss",
 
+  "update.available": "New version available — tap to refresh",
+
   "confirm.delete": "Delete this device?",
   "confirm.yes": "Yes",
   "confirm.no": "No",

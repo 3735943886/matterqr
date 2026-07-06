@@ -6,6 +6,7 @@ import { openModal, field } from "./modal.js";
 import { getState, reload } from "./store.js";
 import { startSync, testConnection } from "./sync.js";
 import { lastBackupLabel } from "./backup.js";
+import { APP_VERSION } from "./version.js";
 
 export async function openSettingsModal() {
   const db = getState().db;
@@ -59,6 +60,7 @@ export async function openSettingsModal() {
       testBtn,
     ]),
     h("div", { class: "text-xs text-slate-500" }, lastBackupLabel(s)),
+    h("div", { class: "border-t border-slate-200 pt-2 text-center text-[11px] text-slate-400 dark:border-slate-800" }, `MatterQR v${APP_VERSION}`),
   ]);
 
   const cancel = h("button", { class: "rounded-lg px-4 py-2 text-sm", onClick: () => m.close() }, t("action.cancel"));

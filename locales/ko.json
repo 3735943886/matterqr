@@ -104,6 +104,8 @@
   "install.banner": "앱으로 설치하려면: 공유 → “홈 화면에 추가”",
   "install.dismiss": "닫기",
 
+  "update.available": "새 버전이 있습니다 — 탭하여 새로고침",
+
   "confirm.delete": "이 디바이스를 삭제할까요?",
   "confirm.yes": "예",
   "confirm.no": "아니오",

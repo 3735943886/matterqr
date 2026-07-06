@@ -1,13 +1,20 @@
 // Service worker: precache the app shell for offline + installable PWA.
-// Data lives in IndexedDB (PouchDB), so it is never touched here. Bump CACHE
-// on each deploy to roll users onto the new shell.
+// Data lives in IndexedDB (PouchDB), so it is never touched here.
+//
+// The semver version lives HERE, in the SW script itself: a browser only detects
+// an update when sw.js's own bytes change, so this literal is the update
+// authority. Bumping it changes the cache name, which rolls users onto the new
+// shell (old cache deleted on activate). Keep it in sync with js/version.js
+// (the app-facing copy shown in Settings) and package.json.
+const APP_VERSION = "0.0.1-alpha";
 
-const CACHE = "matterqr-v2";
+const CACHE = `matterqr-${APP_VERSION}`;
 
 const SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
+  "./js/version.js",
   "./js/app.js",
   "./js/db.js",
   "./js/matter.js",
@@ -35,9 +42,11 @@ const SHELL = [
 ];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(
-    caches.open(CACHE).then((c) => c.addAll(SHELL.map((u) => new Request(u, { cache: "reload" })))).then(() => self.skipWaiting()),
-  );
+  // Precache the shell, but don't skipWaiting automatically: the new worker
+  // waits so the page can surface a "new version — tap to refresh" prompt and
+  // activate it on demand (message below). It also activates on its own on the
+  // next cold start once the old worker has no clients left.
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL.map((u) => new Request(u, { cache: "reload" })))));
 });
 
 self.addEventListener("activate", (e) => {

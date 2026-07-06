@@ -1,7 +1,7 @@
 // MatterQR entry point. Wires the DB, store, i18n, rendering and actions.
 // The server is nothing but a static host; all logic lives here in the client.
 
-import { qs, toast } from "./dom.js";
+import { qs, toast, h } from "./dom.js";
 import { initI18n, onLangChange, applyDom, t } from "./i18n.js";
 import { createDb } from "./db.js";
 import { initStore, reload, onChange, getState } from "./store.js";
@@ -53,10 +53,54 @@ async function main() {
   // Register the service worker (offline / installable). Relative path so it
   // works under a GitHub Pages subpath.
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
+    navigator.serviceWorker
+      .register("./sw.js")
+      .then(setupUpdatePrompt)
+      .catch(() => {});
   }
 
   window.__matterqrReady = true; // readiness signal for e2e
+}
+
+// Surface a tap-to-refresh prompt when a newer app version is installed and
+// waiting. Tapping it tells the waiting worker to take over, then reloads onto
+// the new shell. Data (IndexedDB) is untouched by any of this.
+function setupUpdatePrompt(reg) {
+  let triggered = false;
+
+  const prompt = (worker) => {
+    // Ignore the very first install (no existing controller) — that's not an
+    // update, and we don't want a "new version" toast on a fresh load.
+    if (!worker || !navigator.serviceWorker.controller) return;
+    if (qs("#update-toast")) return; // already prompting
+    const btn = h(
+      "button",
+      {
+        id: "update-toast",
+        class:
+          "pointer-events-auto flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow-lg ring-1 ring-white/10 active:scale-95 dark:bg-white dark:text-slate-900",
+        onClick: () => {
+          triggered = true;
+          btn.disabled = true;
+          worker.postMessage("skipWaiting");
+        },
+      },
+      [h("span", {}, "🔄"), h("span", {}, t("update.available"))],
+    );
+    qs("#toasts").append(btn);
+  };
+
+  if (reg.waiting) prompt(reg.waiting);
+  reg.addEventListener("updatefound", () => {
+    const nw = reg.installing;
+    nw?.addEventListener("statechange", () => {
+      if (nw.state === "installed") prompt(nw);
+    });
+  });
+  // The new worker activated (after our postMessage) — reload onto it once.
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (triggered) window.location.reload();
+  });
 }
 
 function refreshSyncBadge() {
