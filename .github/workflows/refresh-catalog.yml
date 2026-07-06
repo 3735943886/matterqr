@@ -1,0 +1,50 @@
+name: Refresh MatterCatalog snapshot
+
+# Regenerate js/catalog.js from MatterCatalog every 6 hours (its stats only
+# carry a day-level lastUpdated, so we can't tell the hour it flips — q6h keeps
+# lag under ~6h). When it changes, bump the version so installed clients pick it
+# up via the in-app update prompt, commit, and trigger a Pages build.
+on:
+  schedule:
+    - cron: "0 */6 * * *" # 00:00, 06:00, 12:00, 18:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: refresh-catalog
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Regenerate the catalog snapshot
+        run: node scripts/fetch-catalog.mjs
+
+      - name: Commit, version-bump, and deploy if it changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- js/catalog.js; then
+            echo "Catalog unchanged — nothing to do."
+            exit 0
+          fi
+          echo "Catalog changed — shipping a new build."
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          node scripts/bump-prerelease.mjs
+          npm run stamp
+
+          git add js/catalog.js package.json sw.js js/version.js
+          git commit -m "Refresh MatterCatalog snapshot (automated)"
+          git push
+          gh api --method POST "repos/${{ github.repository }}/pages/builds"
