@@ -7,6 +7,71 @@ import { openModal, confirm, field } from "./modal.js";
 import { getState, reload } from "./store.js";
 import { identity as identityOf, matterFields, manualPairingCode } from "./matter.js";
 import { vendorName, isTestVendor } from "./vendors.js";
+import { CATALOG } from "./catalog.js";
+
+// Substring search over the bundled MatterCatalog snapshot (title + brand),
+// ranked by how early the match starts, then by shorter title. Offline, cheap.
+function searchCatalog(query, limit = 8) {
+  const s = query.trim().toLowerCase();
+  if (s.length < 2) return [];
+  const hits = [];
+  for (const p of CATALOG) {
+    const idx = (p.t + " " + p.b).toLowerCase().indexOf(s);
+    if (idx >= 0) hits.push([idx, p]);
+  }
+  hits.sort((a, b) => a[0] - b[0] || a[1].t.length - b[1].t.length);
+  return hits.slice(0, limit).map((h2) => h2[1]);
+}
+
+// Wrap the model <input> with a suggestions dropdown fed by searchCatalog.
+// Picking a suggestion fills the model name (only). Returns the wrapper node.
+function catalogAutocomplete(input) {
+  const box = h("div", {
+    class:
+      "absolute inset-x-0 top-full z-10 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-900",
+    hidden: true,
+  });
+  const hide = () => {
+    box.hidden = true;
+    box.replaceChildren();
+  };
+  const draw = () => {
+    const hits = searchCatalog(input.value);
+    // Don't suggest when the field already equals the only/exact match.
+    if (!hits.length || (hits.length === 1 && hits[0].t === input.value.trim())) return hide();
+    box.replaceChildren(
+      ...hits.map((p) =>
+        h(
+          "button",
+          {
+            type: "button",
+            class:
+              "block w-full border-b border-slate-100 px-3 py-2 text-left last:border-0 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800",
+            onMousedown: (e) => e.preventDefault(), // keep input focused so blur doesn't beat the click
+            onClick: () => {
+              input.value = p.t;
+              hide();
+              input.dispatchEvent(new Event("change"));
+            },
+          },
+          [
+            h("div", { class: "text-sm font-medium leading-tight" }, p.t),
+            (p.b || p.c) && h("div", { class: "text-xs text-slate-500" }, [p.b, p.c].filter(Boolean).join(" · ")),
+          ],
+        ),
+      ),
+    );
+    box.hidden = false;
+  };
+  let deb;
+  input.addEventListener("input", () => {
+    clearTimeout(deb);
+    deb = setTimeout(draw, 140);
+  });
+  input.addEventListener("focus", draw);
+  input.addEventListener("blur", () => setTimeout(hide, 150));
+  return h("div", { class: "relative" }, [input, box]);
+}
 import { qrImage } from "./qr.js";
 
 const ADD = "__add__";
@@ -114,8 +179,10 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     placeholder: t("device.model.ph"),
     autocapitalize: "off",
     autocorrect: "off",
+    autocomplete: "off",
     spellcheck: false,
   });
+  const modelField = catalogAutocomplete(model);
   const url = h("input", {
     class: "w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-900",
     value: device?.url || "",
@@ -247,7 +314,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     qrPanel,
     field(t("device.code"), codeBox),
     field(t("device.type"), typeSel.el),
-    field(t("device.model"), model),
+    field(t("device.model"), modelField),
     field(t("device.url"), url),
     field(t("device.photo"), h("div", { class: "flex items-center gap-3" }, [preview, addBtn, removeBtn, fileInput])),
     field(t("device.location"), locSel.el),
