@@ -14,6 +14,13 @@ import { openBackupModal } from "./backup.js";
 import { startSync, setSyncBadge } from "./sync.js";
 import { initTheme } from "./theme.js";
 
+// iOS Safari still allows two-finger page pinch-zoom even with touch-action set,
+// and it warps the fixed layout. Block Safari's pinch gesture events globally.
+// The photo viewer zooms via Pointer Events, not these, so it's unaffected.
+["gesturestart", "gesturechange", "gestureend"].forEach((ev) =>
+  document.addEventListener(ev, (e) => e.preventDefault(), { passive: false }),
+);
+
 async function main() {
   initTheme(); // keep the pre-painted theme in sync + follow system changes
   // Best-effort durable storage (helps on browsers that honor it; iOS ignores).
