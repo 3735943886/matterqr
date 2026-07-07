@@ -11,7 +11,7 @@ let openCount = 0;
  *   body:    a Node (the modal content)
  *   actions: array of Nodes for the footer (buttons), or null
  */
-export function openModal({ title, body, actions = null, onClose } = {}) {
+export function openModal({ title, body, actions = null, onClose, beforeClose } = {}) {
   const root = qs("#modal-root");
 
   const closeBtn = h(
@@ -50,7 +50,21 @@ export function openModal({ title, body, actions = null, onClose } = {}) {
   // Bottom-sheet feel on phones, centered card on wider screens.
   panel.classList.add("rounded-b-none", "sm:rounded-b-2xl");
 
-  function close() {
+  // close(true) forces past beforeClose — used by callers that already committed
+  // (e.g. Save/Delete) so they don't trip the "discard changes?" guard.
+  let guarding = false;
+  async function close(force) {
+    if (guarding) return; // a guard prompt is already up
+    if (!force && beforeClose) {
+      guarding = true;
+      let ok;
+      try {
+        ok = await beforeClose();
+      } finally {
+        guarding = false;
+      }
+      if (!ok) return;
+    }
     overlay.remove();
     openCount = Math.max(0, openCount - 1);
     if (!openCount) document.body.style.overflow = "";
@@ -68,7 +82,7 @@ export function openModal({ title, body, actions = null, onClose } = {}) {
     panel.style.maxHeight = `${Math.min(vv.height - 16, window.innerHeight * 0.9)}px`;
   }
 
-  closeBtn.addEventListener("click", close);
+  closeBtn.addEventListener("click", () => close());
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) close();
   });

@@ -247,6 +247,8 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
 
   // photoState: "keep" | File-like {content_type,data,blob} | "remove"
   let photoState = "keep";
+  // Re-check the dirty state after a photo change; wired to refreshSave below.
+  let markDirty = () => {};
 
   const typeSel = buildSelect("type", device?.deviceTypeId, t("filter.none"));
   const locSel = buildSelect("loc", device?.locationId, t("filter.unassigned"));
@@ -337,6 +339,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
       const resized = await resizeImage(f);
       photoState = resized;
       showPreview(photoURL(resized.blob));
+      markDirty();
     } catch {
       toast(t("err.generic"), "error"); // e.g. an unreadable / unsupported image
     } finally {
@@ -346,6 +349,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   removeBtn.addEventListener("click", () => {
     photoState = "remove";
     clearPreview();
+    markDirty();
   });
 
   // --- code / matter hint (read-only) + rendered QR ---
@@ -453,7 +457,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
             if (!(await confirm(t("confirm.delete"), { danger: true }))) return;
             await db.deleteDevice(identity);
             await reload();
-            m.close();
+            m.close(true);
             toast(t("device.deleted"), "success");
           },
         },
@@ -487,7 +491,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
         photoArg,
       );
       await reload();
-      m.close();
+      m.close(true);
       toast(isEdit ? t("device.updated") : t("device.added"), "success");
     } catch (e) {
       console.error(e);
@@ -497,6 +501,39 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   });
   actions.push(cancel, save);
 
-  const m = openModal({ title: isEdit ? t("device.detail") : t("device.new"), body, actions });
+  // Dirty tracking: enable Save only once something changed (edit mode — a new
+  // registration can always be saved), and warn before discarding edits on
+  // cancel/close. Snapshot everything Save writes; photo counts as changed once
+  // it's no longer "keep".
+  const snapshot = () =>
+    JSON.stringify({
+      type: typeSel.value(),
+      loc: locSel.value(),
+      status: statusSel.value(),
+      model: model.value.trim(),
+      url: url.value.trim(),
+      notes: notes.value.trim(),
+      photo: photoState !== "keep",
+    });
+  const baseline = snapshot();
+  const isDirty = () => snapshot() !== baseline;
+  const refreshSave = () => {
+    save.disabled = isEdit && !isDirty();
+  };
+  markDirty = refreshSave;
+  // model/url/notes fire "input"; selects and the catalog-pick fire "change".
+  [model, url, notes].forEach((el) => {
+    el.addEventListener("input", refreshSave);
+    el.addEventListener("change", refreshSave);
+  });
+  [typeSel.el, locSel.el, statusSel.el].forEach((el) => el.addEventListener("change", refreshSave));
+  refreshSave();
+
+  const m = openModal({
+    title: isEdit ? t("device.detail") : t("device.new"),
+    body,
+    actions,
+    beforeClose: async () => !isDirty() || (await confirm(t("confirm.discard"))),
+  });
   return m;
 }

@@ -117,6 +117,30 @@ test("sort reorders by name and groups by location", async ({ page }) => {
   await expect(page.locator("#device-list .uppercase").filter({ hasText: "Unassigned" })).toBeVisible();
 });
 
+test("edit: Save is gated on changes and closing with edits warns", async ({ page }) => {
+  await open(page);
+  await registerViaManual(page, "34970112332", "Hue A19");
+  await page.locator("#device-list > *").first().click();
+  await expect(page.getByText("Device details")).toBeVisible();
+
+  const save = page.getByRole("button", { name: "Save" });
+  await expect(save).toBeDisabled(); // nothing changed yet
+
+  await page.getByPlaceholder(/Philips Hue/).fill("Hue A19 v2");
+  await expect(save).toBeEnabled();
+
+  // Cancelling with unsaved edits asks to confirm; "No" keeps the modal open.
+  await page.getByRole("button", { name: "Cancel" }).click();
+  await expect(page.getByText("Discard unsaved changes?")).toBeVisible();
+  await page.getByRole("button", { name: "No", exact: true }).click();
+  await expect(page.getByText("Device details")).toBeVisible();
+
+  // Saving persists and closes without a discard prompt.
+  await save.click();
+  await expect(page.getByText("Device details")).toBeHidden();
+  await expect(page.locator("#device-list").getByText("Hue A19 v2")).toBeVisible();
+});
+
 test("changing language re-renders the open settings modal", async ({ page }) => {
   await open(page);
   await page.locator("#btn-settings").click();
