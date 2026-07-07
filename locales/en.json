@@ -72,7 +72,7 @@
   "scan.start": "Start camera",
   "scan.stop": "Stop",
   "scan.manual": "Manual entry",
-  "scan.manual.ph": "QR text (MT:…) or numeric pairing code",
+  "scan.manual.ph": "Pairing code",
   "scan.lookup": "Look up",
   "scan.hint": "Line up the QR in view",
   "scan.nocam": "Camera unavailable here (needs https). Use manual entry.",

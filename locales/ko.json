@@ -72,7 +72,7 @@
   "scan.start": "카메라 시작",
   "scan.stop": "중지",
   "scan.manual": "수동 입력",
-  "scan.manual.ph": "QR 내용(MT:…) 또는 숫자 페어링 코드",
+  "scan.manual.ph": "페어링 코드",
   "scan.lookup": "확인",
   "scan.hint": "QR을 화면 안에 맞추세요",
   "scan.nocam": "이 환경에서는 카메라를 쓸 수 없습니다(https 필요). 수동 입력을 사용하세요.",
