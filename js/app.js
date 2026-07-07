@@ -21,6 +21,22 @@ import { initTheme } from "./theme.js";
   document.addEventListener(ev, (e) => e.preventDefault(), { passive: false }),
 );
 
+// Block double-tap-to-zoom directly. touch-action:manipulation should cover it
+// but Safari ignores it on some elements (e.g. the sticky, backdrop-blurred
+// header), so catch it at the source: preventDefault a second touchend within
+// 300ms. Text fields are exempt so double-tap-to-select still works there.
+let lastTouchEnd = 0;
+document.addEventListener(
+  "touchend",
+  (e) => {
+    const now = Date.now();
+    const doubleTap = now - lastTouchEnd <= 300;
+    lastTouchEnd = now;
+    if (doubleTap && !e.target.closest?.("input, textarea, [contenteditable]")) e.preventDefault();
+  },
+  { passive: false },
+);
+
 async function main() {
   initTheme(); // keep the pre-painted theme in sync + follow system changes
   // Best-effort durable storage (helps on browsers that honor it; iOS ignores).
