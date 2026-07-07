@@ -14,6 +14,7 @@ import { openBackupModal } from "./backup.js";
 import { startSync, setSyncBadge } from "./sync.js";
 import { initTheme } from "./theme.js";
 import { initGestureGuards } from "./gestures.js";
+import { initInstallPrompt } from "./install.js";
 
 async function main() {
   // Safety net: never trap the user behind the splash if init stalls (e.g. a
@@ -64,7 +65,7 @@ async function main() {
   qs("#btn-settings").addEventListener("click", () => openSettingsModal());
   qs("#btn-backup").addEventListener("click", () => openBackupModal());
 
-  setupInstallBanner();
+  initInstallPrompt();
 
   // Start CouchDB sync if configured.
   const settings = await db.getSettings();
@@ -156,19 +157,6 @@ function refreshSyncBadge() {
   const el = qs("#sync-badge");
   // Keep whatever sync.js last set; only re-label if empty.
   if (el && !el.textContent) setSyncBadge("off");
-}
-
-// iOS has no beforeinstallprompt — nudge the user to "Add to Home Screen".
-function setupInstallBanner() {
-  const banner = qs("#install-banner");
-  const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent);
-  const standalone = window.navigator.standalone || window.matchMedia("(display-mode: standalone)").matches;
-  const dismissed = localStorage.getItem("installDismissed") === "1";
-  if (isIOS && !standalone && !dismissed) banner.hidden = false;
-  qs("#install-dismiss").addEventListener("click", () => {
-    banner.hidden = true;
-    localStorage.setItem("installDismissed", "1");
-  });
 }
 
 main().catch((e) => {

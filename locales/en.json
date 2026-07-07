@@ -122,8 +122,12 @@
   "backup.last": "Last backup {when}",
   "backup.never": "Never backed up — export regularly",
 
-  "install.banner": "To install as an app: Share → “Add to Home Screen”",
-  "install.dismiss": "Dismiss",
+  "install.title": "Install this app",
+  "install.body": "Install to keep your data safe: Safari can erase an uninstalled site's storage after about a week of not using it. Installed to your home screen, your devices are kept — plus offline, full-screen use.",
+  "install.cta": "Install",
+  "install.later": "Maybe later",
+  "install.ios.step1": "Tap the Share button in Safari's toolbar",
+  "install.ios.step2": "Choose “Add to Home Screen”",
 
   "update.available": "New version available — tap to refresh",
 
