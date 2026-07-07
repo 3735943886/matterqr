@@ -16,16 +16,27 @@ import { initTheme } from "./theme.js";
 import { initGestureGuards } from "./gestures.js";
 
 async function main() {
+  // Safety net: never trap the user behind the splash if init stalls (e.g. a
+  // hung PouchDB/IndexedDB open on Safari). hideSplash is idempotent.
+  setTimeout(hideSplash, 8000);
+
   initGestureGuards(); // block browser pinch / double-tap zoom that warps the layout
   initTheme(); // keep the pre-painted theme in sync + follow system changes
   // Best-effort durable storage (helps on browsers that honor it; iOS ignores).
   navigator.storage?.persist?.().catch(() => {});
 
   const db = createDb(window.PouchDB, "matterqr");
+  initStore(db); // sync: loads sort/filter prefs from localStorage
+  await initI18n();
+
+  // Paint the toolbar (sort pill, filters) from local state right away, before
+  // the DB work below. PouchDB's IndexedDB adapter can be slow/flaky on Safari,
+  // and we don't want a slow/failed seed to leave the sort pill blank (collapsed).
+  renderSort();
+  renderFilters();
+
   await db.ensureSeed();
   await db.migrateTypes(); // bring pre-standard installs up to the Matter type set
-  initStore(db);
-  await initI18n();
 
   // Re-render on any data change.
   onChange(() => {
