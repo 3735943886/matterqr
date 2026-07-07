@@ -47,11 +47,11 @@
     @media (max-width: 640px) {
       input, select, textarea { font-size: 16px !important; }
     }
-    /* Disable page pinch-zoom and double-tap-zoom app-wide (they break the fixed
-       layout), while keeping scroll/pan. touch-action restricts descendants by
-       intersection, so the root covers everything; the photo viewer opts back in
-       to gestures with its own touch-action:none + manual zoom. */
-    html { touch-action: pan-x pan-y; }
+    /* Kill double-tap-to-zoom app-wide: "manipulation" is the value WebKit
+       actually honours for that (pan-x/pan-y does NOT disable double-tap in
+       Safari). Pinch-zoom is blocked separately via the gesture* events in
+       app.js; the photo viewer opts back in with its own touch-action:none. */
+    html { touch-action: manipulation; }
     .safe-top { padding-top: env(safe-area-inset-top); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
     .safe-x { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
