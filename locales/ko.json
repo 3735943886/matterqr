@@ -104,6 +104,7 @@
 
   "backup.title": "백업 / 복원",
   "backup.export.json": "JSON 내보내기 (전체 백업)",
+  "backup.export.jsonLite": "JSON 내보내기 (사진 제외)",
   "backup.export.csv": "CSV 내보내기 (분석용)",
   "backup.import": "가져오기 (JSON)",
   "backup.import.title": "가져오기 미리보기",

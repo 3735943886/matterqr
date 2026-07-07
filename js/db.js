@@ -247,13 +247,19 @@ export function createDb(PouchDB, name = "matterqr") {
   }
 
   // --- backup helpers -----------------------------------------------------
-  // Full dump: devices + categories with attachments as base64, no _rev.
-  async function exportAll() {
-    const res = await db.allDocs({ include_docs: true, attachments: true, binary: false });
+  // Full dump: devices + categories, no _rev. With attachments:true photos are
+  // embedded as base64; with attachments:false they're dropped entirely (a
+  // smaller, metadata-only backup) — the _attachments stubs are stripped so the
+  // file stays importable.
+  async function exportAll({ attachments = true } = {}) {
+    const res = await db.allDocs({ include_docs: true, attachments, binary: false });
     const docs = res.rows
       .map((r) => r.doc)
       .filter((d) => d && (d.type === "device" || d.type === "category"))
-      .map(({ _rev, ...rest }) => rest);
+      .map(({ _rev, ...rest }) => {
+        if (!attachments) delete rest._attachments;
+        return rest;
+      });
     return { format: "matterqr-backup", version: 1, exportedAt: nowISO(), docs };
   }
 
@@ -265,6 +271,9 @@ export function createDb(PouchDB, name = "matterqr") {
     try {
       const existing = await db.get(clean._id);
       clean._rev = existing._rev;
+      // Keep an existing photo if the incoming doc carries none (e.g. a
+      // photos-excluded backup), so a metadata-only restore doesn't wipe photos.
+      if (!clean._attachments && existing._attachments) clean._attachments = existing._attachments;
     } catch (e) {
       if (e.status !== 404) throw e;
     }

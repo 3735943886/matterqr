@@ -104,6 +104,7 @@
 
   "backup.title": "Backup / Restore",
   "backup.export.json": "Export JSON (full backup)",
+  "backup.export.jsonLite": "Export JSON (no photos)",
   "backup.export.csv": "Export CSV (analysis)",
   "backup.import": "Import (JSON)",
   "backup.import.title": "Import preview",

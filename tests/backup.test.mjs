@@ -112,3 +112,22 @@ test("full round-trip through export → applyImport(replace) is stable", async 
 function bump(iso, ms) {
   return new Date(new Date(iso).getTime() + ms).toISOString();
 }
+
+test("exportAll({attachments:false}) drops photos; importing it keeps existing photos", async () => {
+  const db = freshDb();
+  const png = Buffer.from("iVBORw0KGgoAAAANSUhEUg==", "base64");
+  await db.putDevice({ identity: "p:1", codeKind: "manual", model: "withPhoto" }, { content_type: "image/png", data: png });
+
+  const full = await db.exportAll();
+  const lite = await db.exportAll({ attachments: false });
+  const devFull = full.docs.find((d) => d._id === "dev:p:1");
+  const devLite = lite.docs.find((d) => d._id === "dev:p:1");
+  assert.ok(devFull._attachments?.photo?.data, "full export embeds the photo");
+  assert.ok(!devLite._attachments, "lite export has no _attachments");
+
+  // Restoring the photo-less backup must not wipe the photo already on disk.
+  await applyImport(db, lite, { mode: "merge", conflict: "keepImport" });
+  const raw = await db.raw.get("dev:p:1");
+  assert.ok(raw._attachments?.photo, "existing photo preserved after metadata-only import");
+  await db.destroy();
+});

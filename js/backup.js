@@ -122,6 +122,14 @@ export function openBackupModal() {
     await db.saveSettings({ lastBackupAt: new Date().toISOString() });
   }
 
+  // Smaller backup without embedded photos (metadata only).
+  async function exportJSONNoPhotos() {
+    const backup = await db.exportAll({ attachments: false });
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+    await saveFile(blob, `matterqr-${todayStamp()}-nophotos.json`, "application/json");
+    await db.saveSettings({ lastBackupAt: new Date().toISOString() });
+  }
+
   async function exportCSV() {
     const csv = toCSV(getState().devices, catName);
     const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" }); // BOM for Excel
@@ -150,6 +158,7 @@ export function openBackupModal() {
 
   const body = h("div", { class: "space-y-2" }, [
     row(t("backup.export.json"), exportJSON, "bg-emerald-50 dark:bg-emerald-950/40"),
+    row(t("backup.export.jsonLite"), exportJSONNoPhotos),
     row(t("backup.export.csv"), exportCSV),
     row(t("backup.import"), () => fileInput.click()),
     fileInput,
