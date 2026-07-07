@@ -63,20 +63,6 @@ implemented from the Matter specification in [`js/matter.js`](js/matter.js).
 The camera requires a secure context (HTTPS or `localhost`); a manual-entry
 fallback is always available.
 
-## Deploy (GitHub Pages)
-
-The app is static, so GitHub Pages is the simplest host and gives you HTTPS
-automatically (needed for install + camera):
-
-1. Push this repository to GitHub (public repo → free Pages).
-2. **Settings → Pages** → deploy from branch `main`, folder `/` (root).
-3. Visit `https://<user>.github.io/<repo>/` and install it on your phone.
-
-All asset paths are **relative**, so it works from the `/<repo>/` subpath as-is.
-When you redeploy, bump `CACHE` in [`sw.js`](sw.js) (e.g. `matterqr-v2`) so
-clients pick up the new shell. Your data is local to each device, so a public
-repo only exposes the app code, never your inventory.
-
 ## Optional: CouchDB sync
 
 In **Settings → CouchDB sync**, enter a URL and credentials and enable sync to
