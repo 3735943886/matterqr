@@ -280,8 +280,10 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
 
   // --- photo ---
   // Tapping the thumbnail enlarges it; change/remove are separate icon buttons.
+  // Full-width, object-contain so the whole photo shows uncropped as a "hero"
+  // near the top of the detail. Tap enlarges it.
   const preview = h("img", {
-    class: "h-24 w-24 cursor-zoom-in rounded-lg object-cover ring-1 ring-slate-200 dark:ring-slate-700",
+    class: "max-h-56 w-full cursor-zoom-in rounded-xl bg-slate-100 object-contain ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700",
     hidden: true,
     alt: "",
   });
@@ -417,21 +419,26 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
     hintParts.length && h("div", { class: "mt-1 text-slate-500" }, hintParts.join("  ·  ")),
   ]);
 
+  // Not field(): field() wraps in a <label>, and a hidden file <input> inside a
+  // label fires on any click within it — so tapping the preview would also open
+  // the picker. A plain <div> keeps the preview tap = enlarge only.
+  const photoBlock = h("div", { class: "space-y-2" }, [
+    h("span", { class: "text-xs font-medium text-slate-500" }, t("device.photo")),
+    preview,
+    h("div", { class: "flex items-center gap-2" }, [addBtn, changeBtn, removeBtn, fileInput]),
+  ]);
+
+  // Order: identity first (QR → code), then what-it-is (photo → model → type),
+  // then where/state (location → status), with the rarely-read URL down by notes.
   const body = h("div", { class: "space-y-3" }, [
     qrPanel,
     field(t("device.code"), codeBox),
-    field(t("device.type"), typeSel.el),
+    photoBlock,
     field(t("device.model"), modelField),
-    field(t("device.url"), url),
-    // Not field(): field() wraps in a <label>, and a hidden file <input> inside a
-    // label fires on any click within it — so tapping the preview would also open
-    // the picker. A plain <div> keeps the preview tap = enlarge only.
-    h("div", { class: "space-y-1" }, [
-      h("span", { class: "text-xs font-medium text-slate-500" }, t("device.photo")),
-      h("div", { class: "flex items-center gap-3" }, [preview, changeBtn, removeBtn, addBtn, fileInput]),
-    ]),
+    field(t("device.type"), typeSel.el),
     field(t("device.location"), locSel.el),
     field(t("device.status"), statusSel.el),
+    field(t("device.url"), url),
     field(t("device.notes"), notes),
   ]);
 
