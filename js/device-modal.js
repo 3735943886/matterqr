@@ -382,18 +382,14 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
       qrImg,
     );
 
-  // For a QR-registered device, derive the numeric manual pairing code so it's
-  // available even though only the QR was scanned. (Manual-code devices already
-  // show that number as their raw code above, so don't repeat it.)
-  const derivedManual = codeKind === "matter_qr" ? manualPairingCode(matter) : null;
-  // Group the 11-digit code 4-3-4 for readability; copy the plain digits.
-  const prettyManual =
-    derivedManual?.length === 11
-      ? `${derivedManual.slice(0, 4)}-${derivedManual.slice(4, 7)}-${derivedManual.slice(7)}`
-      : derivedManual;
+  // The numeric manual pairing code to show/copy: for a manual-code device it's
+  // the code itself; for a QR device we derive it (only the QR was scanned).
+  const pairingDigits = codeKind === "manual" ? codeRaw : manualPairingCode(matter);
+  // Group an 11-digit code 4-3-4 for readability; copying still uses the digits.
+  const group434 = (c) => (c?.length === 11 ? `${c.slice(0, 4)}-${c.slice(4, 7)}-${c.slice(7)}` : c);
 
-  const manualRow =
-    derivedManual &&
+  const pairingRow =
+    pairingDigits &&
     h(
       "button",
       {
@@ -403,7 +399,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
         "aria-label": t("device.copy"),
         onClick: async () => {
           try {
-            await navigator.clipboard.writeText(derivedManual);
+            await navigator.clipboard.writeText(pairingDigits);
             toast(t("device.copied"), "success");
           } catch {
             toast(t("err.generic"), "error");
@@ -412,14 +408,16 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
       },
       [
         h("span", { class: "text-slate-500" }, t("device.manual")),
-        h("span", { class: "font-mono font-medium tracking-wide" }, prettyManual),
+        h("span", { class: "font-mono font-medium tracking-wide" }, group434(pairingDigits)),
         h("span", { class: "ml-auto text-sm opacity-70" }, "📋"),
       ],
     );
 
   const codeBox = h("div", { class: "rounded-lg bg-slate-100 px-3 py-2 text-xs dark:bg-slate-800" }, [
-    h("div", { class: "break-all font-mono" }, codeRaw || identity),
-    manualRow,
+    // QR devices show the raw MT: payload; for a manual device that raw string is
+    // the same numeric code shown in the pairing row below, so don't repeat it.
+    codeKind === "manual" ? null : h("div", { class: "break-all font-mono" }, codeRaw || identity),
+    pairingRow,
     hintParts.length ? h("div", { class: "mt-1 text-slate-500" }, hintParts.join("  ·  ")) : null,
   ]);
 

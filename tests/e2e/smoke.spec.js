@@ -91,8 +91,8 @@ test("manual-code device shows no QR (would misrepresent the real one)", async (
   await registerViaManual(page, "34970112332", "Hue A19");
   await page.locator("#device-list > *").first().click();
   await expect(page.getByText("Device details")).toBeVisible();
-  // The numeric code is still shown, but no regenerated QR.
-  await expect(page.getByText("34970112332")).toBeVisible();
+  // The numeric code is shown grouped 4-3-4, but no regenerated QR.
+  await expect(page.getByText("3497-011-2332")).toBeVisible();
   await expect(page.getByRole("img", { name: "QR" })).toHaveCount(0);
 });
 
