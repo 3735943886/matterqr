@@ -114,7 +114,9 @@
   <!-- Header -->
   <header class="safe-top safe-x sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90">
     <div class="mx-auto flex max-w-3xl items-center gap-2 px-3 py-2">
-      <h1 class="mr-auto flex items-center gap-2 text-base font-semibold">
+      <!-- select-none: on iOS a double-tap on plain text selects a word and
+           zooms; the buttons elsewhere don't, so only this title was affected. -->
+      <h1 class="mr-auto flex select-none items-center gap-2 text-base font-semibold">
         <span>🔳</span><span data-i18n="app.title">Matter QR Inventory</span>
       </h1>
       <span id="sync-badge" class="rounded-full px-2 py-0.5 text-xs font-medium"></span>
