@@ -5,6 +5,7 @@ import { h, toast, photoURL, resizeImage } from "./dom.js";
 import { t } from "./i18n.js";
 import { openModal, confirm, field } from "./modal.js";
 import { getState, reload } from "./store.js";
+import { isSeedCategory } from "./db.js";
 import { identity as identityOf, matterFields, manualPairingCode } from "./matter.js";
 import { vendorName, isTestVendor } from "./vendors.js";
 import { CATALOG } from "./catalog.js";
@@ -272,28 +273,46 @@ function openManageSheet(kind, onChanged) {
       return;
     }
     list.replaceChildren(
-      ...cats.map((c) =>
-        h("div", { class: "flex items-center gap-1 rounded-lg border border-slate-200 px-3 py-1.5 dark:border-slate-700" }, [
+      ...cats.map((c) => {
+        const seeded = isSeedCategory(kind, c.name); // built-in Matter type → read-only
+        const usage = getState().devices.filter((d) => d[USAGE_FIELD[kind]] === c.id).length;
+        const actions = [];
+        if (seeded) {
+          // Standard types are read-only: no rename, no delete, just a tag.
+          actions.push(
+            h("span", { class: "shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-400" }, t("cat.standard")),
+          );
+        } else {
+          actions.push(
+            rowBtn(t("action.edit"), "✏️", async () => {
+              const name = await promptText(t("cat.rename"), t("cat.add.prompt"), c.name);
+              if (!name || name === c.name) return;
+              await db.renameCategory(c.id, name);
+              await reload();
+              draw();
+              onChanged?.();
+            }),
+          );
+          if (usage) {
+            // In use → can't delete; relabel with rename or reassign first.
+            actions.push(h("span", { class: "shrink-0 text-[11px] text-slate-400" }, t("cat.inUse", { n: usage })));
+          } else {
+            actions.push(
+              rowBtn(t("action.delete"), "🗑", async () => {
+                if (!(await confirm(t("cat.deleteConfirm"), { danger: true }))) return;
+                await db.deleteCategory(c.id);
+                await reload();
+                draw();
+                onChanged?.();
+              }),
+            );
+          }
+        }
+        return h("div", { class: "flex items-center gap-1 rounded-lg border border-slate-200 px-3 py-1.5 dark:border-slate-700" }, [
           h("span", { class: "min-w-0 flex-1 truncate text-sm" }, c.name),
-          rowBtn(t("action.edit"), "✏️", async () => {
-            const name = await promptText(t("cat.rename"), t("cat.add.prompt"), c.name);
-            if (!name || name === c.name) return;
-            await db.renameCategory(c.id, name);
-            await reload();
-            draw();
-            onChanged?.();
-          }),
-          rowBtn(t("action.delete"), "🗑", async () => {
-            const usage = getState().devices.filter((d) => d[USAGE_FIELD[kind]] === c.id).length;
-            const msg = usage ? t("cat.deleteInUse", { n: usage }) : t("cat.deleteConfirm");
-            if (!(await confirm(msg, { danger: true }))) return;
-            await db.deleteCategory(c.id);
-            await reload();
-            draw();
-            onChanged?.();
-          }),
-        ]),
-      ),
+          ...actions,
+        ]);
+      }),
     );
   };
   draw();

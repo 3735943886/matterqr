@@ -67,6 +67,13 @@ const SEED = {
   loc: [], // locations are user-specific; "unassigned" is locationId=null
 };
 
+// A category is "standard" (built-in, read-only) when its name matches one of
+// the seeded defaults for its kind. Used to protect built-ins from edit/delete
+// without needing a schema flag or migration on existing installs.
+export function isSeedCategory(kind, name) {
+  return (SEED[kind] || []).some((n) => n.toLowerCase() === String(name ?? "").toLowerCase());
+}
+
 function uuid() {
   return globalThis.crypto.randomUUID();
 }

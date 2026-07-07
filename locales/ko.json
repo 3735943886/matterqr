@@ -72,7 +72,8 @@
   "cat.rename": "이름 변경",
   "cat.empty": "항목이 없습니다",
   "cat.deleteConfirm": "이 항목을 삭제할까요?",
-  "cat.deleteInUse": "{n}개 기기가 사용 중입니다. 삭제하면 해당 기기에서 이 값이 사라집니다. 계속할까요?",
+  "cat.standard": "표준",
+  "cat.inUse": "사용 중 {n}",
 
   "scan.title": "QR 스캔",
   "scan.start": "카메라 시작",

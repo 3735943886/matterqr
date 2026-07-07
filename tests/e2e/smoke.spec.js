@@ -164,23 +164,33 @@ test("changing language re-renders the open settings modal", async ({ page }) =>
   await expect(page.getByRole("heading", { name: "설정" })).toBeVisible();
 });
 
-test("manage categories: a type can be deleted", async ({ page }) => {
+test("manage categories: standard types are read-only, custom unused ones deletable", async ({ page }) => {
   await open(page);
   await registerViaManual(page, "34970112332", "Hue A19");
   await page.locator("#device-list > *").first().click();
   await expect(page.getByText("Device details")).toBeVisible();
 
-  // Type select → Manage (by the stable option value).
-  await page.locator("select").first().selectOption("__manage__");
-  await expect(page.getByText("Manage categories")).toBeVisible();
+  // Add a custom (unused) type via the Type select.
+  await page.locator("select").first().selectOption("__add__");
+  await page.getByPlaceholder("Enter a name").fill("My Custom Type");
+  await page.getByRole("button", { name: "Add", exact: true }).click();
+  // Wait for the category to be persisted (async) before opening Manage.
+  await expect(page.locator("select").first()).toContainText("My Custom Type");
 
-  const row = page.locator("div.flex.items-center.gap-1").filter({ hasText: "Air Purifier" });
-  await expect(row).toBeVisible();
-  await row.getByRole("button", { name: "Delete" }).click();
+  // Open Manage (scope row lookups to this dialog so background <option>s with
+  // the same text don't interfere).
+  await page.locator("select").first().selectOption("__manage__");
+  const sheet = page.getByRole("dialog").last();
+  await expect(sheet.getByText("Manage categories")).toBeVisible();
+
+  // Standard types show a read-only "Standard" tag and are not deletable, so the
+  // only Delete button in the sheet is the custom, unused type's.
+  await expect(sheet.getByText("Standard").first()).toBeVisible();
+  await expect(sheet.getByRole("button", { name: "Delete" })).toHaveCount(1);
+  await sheet.getByRole("button", { name: "Delete" }).click();
   await expect(page.getByText("Delete this category?")).toBeVisible();
   await page.getByRole("button", { name: "Yes", exact: true }).click();
-
-  await expect(page.getByText("Air Purifier", { exact: true })).toHaveCount(0);
+  await expect(sheet.getByText("My Custom Type", { exact: true })).toHaveCount(0);
 });
 
 test("persists across reload (IndexedDB)", async ({ page }) => {

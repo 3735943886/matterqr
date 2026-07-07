@@ -72,7 +72,8 @@
   "cat.rename": "Rename category",
   "cat.empty": "No categories yet",
   "cat.deleteConfirm": "Delete this category?",
-  "cat.deleteInUse": "{n} device(s) use this. Deleting removes the label from them. Continue?",
+  "cat.standard": "Standard",
+  "cat.inUse": "In use ({n})",
 
   "scan.title": "Scan QR",
   "scan.start": "Start camera",
