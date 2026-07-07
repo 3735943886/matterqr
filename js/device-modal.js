@@ -75,6 +75,9 @@ function catalogAutocomplete(input) {
 import { qrImage } from "./qr.js";
 
 const ADD = "__add__";
+const MANAGE = "__manage__";
+// Device field that references each category kind (for "in use" counts).
+const USAGE_FIELD = { type: "deviceTypeId", loc: "locationId", status: "statusId" };
 
 // Fullscreen-ish QR for scanning from another device's camera.
 function enlargeQR(text) {
@@ -168,12 +171,13 @@ function enlargePhoto(src) {
   openModal({ title: t("device.photo"), body: stage });
 }
 
-// Small text-input modal used by the "+add category" flow.
-function promptText(title, placeholder = "") {
+// Small text-input modal used by the "+add" / rename category flows.
+function promptText(title, placeholder = "", value = "") {
   return new Promise((resolve) => {
     const input = h("input", {
       class: "w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-800",
       placeholder,
+      value,
       autocapitalize: "off",
     });
     let done = false;
@@ -209,26 +213,92 @@ function buildSelect(kind, currentId, noneLabel) {
       h("option", { value: "" }, noneLabel),
       ...cats.map((c) => h("option", { value: c.id, selected: c.id === selectedId }, c.name)),
       h("option", { value: ADD }, t("cat.add")),
+      cats.length ? h("option", { value: MANAGE }, t("cat.manage")) : null,
     );
     sel.value = selectedId || "";
   }
   fill(currentId);
 
   sel.addEventListener("change", async () => {
-    if (sel.value !== ADD) return;
-    sel.value = currentId || "";
-    const name = await promptText(t("cat.add"), t("cat.add.prompt"));
-    if (!name) return;
-    const cat = await getState().db.addCategory(kind, name);
-    await reload(); // refresh global cats (filters etc.)
-    currentId = cat.id;
-    fill(cat.id);
+    if (sel.value === ADD) {
+      sel.value = currentId || "";
+      const name = await promptText(t("cat.add"), t("cat.add.prompt"));
+      if (!name) return;
+      const cat = await getState().db.addCategory(kind, name);
+      await reload(); // refresh global cats (filters etc.)
+      currentId = cat.id;
+      fill(cat.id);
+    } else if (sel.value === MANAGE) {
+      sel.value = currentId || "";
+      openManageSheet(kind, () => {
+        // A managed category may have been renamed or removed; if the current
+        // selection is gone, fall back to "none".
+        if (currentId && !getState().cats[kind].some((c) => c.id === currentId)) currentId = null;
+        fill(currentId);
+      });
+    }
   });
 
   return {
     el: sel,
-    value: () => (sel.value && sel.value !== ADD ? sel.value : null),
+    value: () => (sel.value && sel.value !== ADD && sel.value !== MANAGE ? sel.value : null),
   };
+}
+
+// Manage (rename / delete) the user's categories for one kind. Deleting only
+// removes the label; devices still referencing it simply show no value until
+// re-edited, so we warn when a category is in use.
+function openManageSheet(kind, onChanged) {
+  const db = getState().db;
+  const list = h("div", { class: "space-y-1.5" });
+
+  const rowBtn = (label, glyph, onClick) =>
+    h(
+      "button",
+      {
+        type: "button",
+        class: "grid h-8 w-8 shrink-0 place-items-center rounded-lg text-base hover:bg-slate-100 dark:hover:bg-slate-800",
+        "aria-label": label,
+        title: label,
+        onClick,
+      },
+      glyph,
+    );
+
+  const draw = () => {
+    const cats = getState().cats[kind];
+    if (!cats.length) {
+      list.replaceChildren(h("p", { class: "py-6 text-center text-sm text-slate-500" }, t("cat.empty")));
+      return;
+    }
+    list.replaceChildren(
+      ...cats.map((c) =>
+        h("div", { class: "flex items-center gap-1 rounded-lg border border-slate-200 px-3 py-1.5 dark:border-slate-700" }, [
+          h("span", { class: "min-w-0 flex-1 truncate text-sm" }, c.name),
+          rowBtn(t("action.edit"), "✏️", async () => {
+            const name = await promptText(t("cat.rename"), t("cat.add.prompt"), c.name);
+            if (!name || name === c.name) return;
+            await db.renameCategory(c.id, name);
+            await reload();
+            draw();
+            onChanged?.();
+          }),
+          rowBtn(t("action.delete"), "🗑", async () => {
+            const usage = getState().devices.filter((d) => d[USAGE_FIELD[kind]] === c.id).length;
+            const msg = usage ? t("cat.deleteInUse", { n: usage }) : t("cat.deleteConfirm");
+            if (!(await confirm(msg, { danger: true }))) return;
+            await db.deleteCategory(c.id);
+            await reload();
+            draw();
+            onChanged?.();
+          }),
+        ]),
+      ),
+    );
+  };
+  draw();
+
+  openModal({ title: t("cat.manage.title"), body: list });
 }
 
 /**

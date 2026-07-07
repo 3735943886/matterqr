@@ -67,6 +67,12 @@
 
   "cat.add": "＋ Add new",
   "cat.add.prompt": "Enter a name",
+  "cat.manage": "⚙︎ Manage…",
+  "cat.manage.title": "Manage categories",
+  "cat.rename": "Rename category",
+  "cat.empty": "No categories yet",
+  "cat.deleteConfirm": "Delete this category?",
+  "cat.deleteInUse": "{n} device(s) use this. Deleting removes the label from them. Continue?",
 
   "scan.title": "Scan QR",
   "scan.start": "Start camera",

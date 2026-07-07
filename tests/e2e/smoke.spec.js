@@ -164,6 +164,25 @@ test("changing language re-renders the open settings modal", async ({ page }) =>
   await expect(page.getByRole("heading", { name: "설정" })).toBeVisible();
 });
 
+test("manage categories: a type can be deleted", async ({ page }) => {
+  await open(page);
+  await registerViaManual(page, "34970112332", "Hue A19");
+  await page.locator("#device-list > *").first().click();
+  await expect(page.getByText("Device details")).toBeVisible();
+
+  // Type select → Manage (by the stable option value).
+  await page.locator("select").first().selectOption("__manage__");
+  await expect(page.getByText("Manage categories")).toBeVisible();
+
+  const row = page.locator("div.flex.items-center.gap-1").filter({ hasText: "Air Purifier" });
+  await expect(row).toBeVisible();
+  await row.getByRole("button", { name: "Delete" }).click();
+  await expect(page.getByText("Delete this category?")).toBeVisible();
+  await page.getByRole("button", { name: "Yes", exact: true }).click();
+
+  await expect(page.getByText("Air Purifier", { exact: true })).toHaveCount(0);
+});
+
 test("persists across reload (IndexedDB)", async ({ page }) => {
   await open(page);
   await registerViaManual(page, "34970112332", "Hue A19");
