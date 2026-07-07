@@ -12,8 +12,10 @@ import { openScanModal } from "./scan.js";
 import { openSettingsModal } from "./settings-modal.js";
 import { openBackupModal } from "./backup.js";
 import { startSync, setSyncBadge } from "./sync.js";
+import { initTheme } from "./theme.js";
 
 async function main() {
+  initTheme(); // keep the pre-painted theme in sync + follow system changes
   // Best-effort durable storage (helps on browsers that honor it; iOS ignores).
   navigator.storage?.persist?.().catch(() => {});
 
@@ -65,6 +67,15 @@ async function main() {
   }
 
   window.__matterqrReady = true; // readiness signal for e2e
+  hideSplash();
+}
+
+// Fade out and remove the first-run splash once the app is ready (or errored).
+function hideSplash() {
+  const splash = qs("#splash");
+  if (!splash) return;
+  splash.classList.add("hide");
+  setTimeout(() => splash.remove(), 400);
 }
 
 // Surface a tap-to-refresh prompt when a newer app version is installed and
@@ -150,4 +161,5 @@ function setupInstallBanner() {
 main().catch((e) => {
   console.error(e);
   toast(t("err.generic"), "error");
+  hideSplash(); // don't trap the user behind the splash on a fatal error
 });

@@ -141,12 +141,25 @@ test("edit: Save is gated on changes and closing with edits warns", async ({ pag
   await expect(page.locator("#device-list").getByText("Hue A19 v2")).toBeVisible();
 });
 
+test("theme selector toggles dark mode and persists", async ({ page }) => {
+  await open(page);
+  await page.locator("#btn-settings").click();
+  await expect(page.getByRole("heading", { name: "Settings" })).toBeVisible();
+  // Force dark from the second select (Theme).
+  await page.locator("select").nth(1).selectOption("dark");
+  await expect(page.locator("html")).toHaveClass(/dark/);
+  // Persisted across reload.
+  await page.reload();
+  await page.waitForFunction(() => window.__matterqrReady === true);
+  await expect(page.locator("html")).toHaveClass(/dark/);
+});
+
 test("changing language re-renders the open settings modal", async ({ page }) => {
   await open(page);
   await page.locator("#btn-settings").click();
   await expect(page.getByRole("heading", { name: "Settings" })).toBeVisible();
-  // Switch to Korean from within the still-open modal.
-  await page.getByRole("combobox").selectOption("ko");
+  // Switch to Korean from within the still-open modal (first select = Language).
+  await page.locator("select").first().selectOption("ko");
   // The modal itself updates without needing to be reopened.
   await expect(page.getByRole("heading", { name: "설정" })).toBeVisible();
 });

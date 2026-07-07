@@ -82,6 +82,10 @@
 
   "settings.title": "Settings",
   "settings.lang": "Language",
+  "settings.theme": "Theme",
+  "theme.system": "System",
+  "theme.light": "Light",
+  "theme.dark": "Dark",
   "settings.sync": "CouchDB sync",
   "settings.sync.enable": "Enable sync",
   "settings.url": "CouchDB URL",

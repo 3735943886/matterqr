@@ -285,7 +285,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   // Full-width, object-contain so the whole photo shows uncropped as a "hero"
   // near the top of the detail. Tap enlarges it.
   const preview = h("img", {
-    class: "max-h-56 w-full cursor-zoom-in rounded-xl bg-slate-100 object-contain ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700",
+    class: "max-h-56 min-w-0 flex-1 cursor-zoom-in rounded-xl bg-slate-100 object-contain ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700",
     hidden: true,
     alt: "",
   });
@@ -428,8 +428,14 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   // the picker. A plain <div> keeps the preview tap = enlarge only.
   const photoBlock = h("div", { class: "space-y-2" }, [
     h("span", { class: "text-xs font-medium text-slate-500" }, t("device.photo")),
-    preview,
-    h("div", { class: "flex items-center gap-2" }, [addBtn, changeBtn, removeBtn, fileInput]),
+    // Photo on the left; change/remove stacked vertically on the right so two
+    // buttons don't cost a whole extra row. Add button shows when there's none.
+    h("div", { class: "flex items-start gap-2" }, [
+      preview,
+      h("div", { class: "flex shrink-0 flex-col gap-2" }, [changeBtn, removeBtn]),
+      addBtn,
+      fileInput,
+    ]),
   ]);
 
   // Order: identity first (QR → code), then what-it-is (photo → model → type),
