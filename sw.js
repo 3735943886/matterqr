@@ -7,7 +7,7 @@
 // on activate). GENERATED — do not hand-edit: the source of truth is
 // package.json "version"; `npm run stamp` writes it here. See
 // scripts/stamp-version.mjs.
-const APP_VERSION = "0.0.1-alpha.24";
+const APP_VERSION = "0.0.1-alpha.25";
 
 const CACHE = `matterqr-${APP_VERSION}`;
 
