@@ -27,9 +27,7 @@ export function renderSort() {
   const el = qs("#sort-label");
   if (!el) return;
   const { key, dir } = getSort();
-  // Use the small centered triangles (▴/▾), not ↑/↓: Safari renders the arrow
-  // glyphs with ink low enough to overflow the pill's bottom edge (looks clipped).
-  el.textContent = `${t(LABEL[key] || "sort.updated")} ${dir === "asc" ? "▴" : "▾"}`;
+  el.textContent = `${t(LABEL[key] || "sort.updated")} ${dir === "asc" ? "↑" : "↓"}`;
 }
 
 function openSortSheet() {
@@ -54,7 +52,7 @@ function openSortSheet() {
       },
       [
         h("span", { class: "flex-1" }, t(o.label)),
-        h("span", { class: "text-slate-400" }, active ? (curDir === "asc" ? "▴" : "▾") : ""),
+        h("span", { class: "text-slate-400" }, active ? (curDir === "asc" ? "↑" : "↓") : ""),
       ],
     );
   });
