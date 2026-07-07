@@ -106,6 +106,12 @@ export function openScanModal() {
       manual.value = "";
     }
   });
+  // On phones the on-screen keyboard can cover this field (it sits below the
+  // camera). Once the keyboard has animated in, scroll it into the visible area
+  // of the modal body. The delay lets the viewport finish resizing first.
+  manual.addEventListener("focus", () => {
+    setTimeout(() => manual.scrollIntoView({ block: "center", behavior: "smooth" }), 300);
+  });
 
   function tick() {
     if (video.readyState === video.HAVE_ENOUGH_DATA && window.jsQR) {
