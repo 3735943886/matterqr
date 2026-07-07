@@ -89,12 +89,83 @@ function enlargeQR(text) {
   });
 }
 
-// Enlarged view of the device photo (tap the thumbnail to open).
+// Enlarged view of the device photo (tap the thumbnail to open). Pinch zooms
+// the photo itself (not the page) and you can pan when zoomed in; double-tap
+// toggles a 2× zoom. The stage sets touch-action:none so the browser hands us
+// the raw gestures instead of zooming the whole viewport.
 function enlargePhoto(src) {
-  openModal({
-    title: t("device.photo"),
-    body: h("img", { src, class: "mx-auto max-h-[70dvh] w-auto rounded-lg", alt: "" }),
+  const img = h("img", {
+    src,
+    alt: "",
+    draggable: "false",
+    class: "max-h-full max-w-full select-none rounded-lg",
+    style: "transform-origin:center center;will-change:transform;",
   });
+  const stage = h(
+    "div",
+    { class: "relative flex h-[72dvh] w-full items-center justify-center overflow-hidden", style: "touch-action:none;" },
+    img,
+  );
+
+  let scale = 1, tx = 0, ty = 0;
+  const pointers = new Map();
+  let startDist = 0, startScale = 1, startMid = { x: 0, y: 0 }, startTx = 0, startTy = 0;
+  let lastTap = 0;
+
+  const apply = (animate) => {
+    img.style.transition = animate ? "transform .2s ease" : "none";
+    img.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`;
+  };
+  const reset = (animate) => { scale = 1; tx = 0; ty = 0; apply(animate); };
+  const anchorFrom = (x, y) => { startMid = { x, y }; startTx = tx; startTy = ty; };
+
+  stage.addEventListener("pointerdown", (e) => {
+    stage.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const pts = [...pointers.values()];
+    if (pts.length === 2) {
+      startDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+      startScale = scale;
+      anchorFrom((pts[0].x + pts[1].x) / 2, (pts[0].y + pts[1].y) / 2);
+    } else {
+      anchorFrom(e.clientX, e.clientY);
+    }
+  });
+
+  stage.addEventListener("pointermove", (e) => {
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const pts = [...pointers.values()];
+    if (pts.length === 2) {
+      const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+      scale = Math.min(5, Math.max(1, startScale * (dist / (startDist || dist))));
+      const mid = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+      tx = startTx + (mid.x - startMid.x);
+      ty = startTy + (mid.y - startMid.y);
+      apply(false);
+    } else if (scale > 1) {
+      tx = startTx + (e.clientX - startMid.x);
+      ty = startTy + (e.clientY - startMid.y);
+      apply(false);
+    }
+  });
+
+  const up = (e) => {
+    pointers.delete(e.pointerId);
+    // Double-tap toggles between fit and 2× (only on a clean single-finger tap).
+    if (pointers.size === 0) {
+      const now = Date.now();
+      if (now - lastTap < 300) { scale > 1 ? reset(true) : ((scale = 2), apply(true)); lastTap = 0; }
+      else lastTap = now;
+    }
+    if (scale <= 1.01) reset(true); // snap back if pinched below fit
+    const rest = [...pointers.values()];
+    if (rest.length === 1) anchorFrom(rest[0].x, rest[0].y); // avoid a jump when one finger lifts
+  };
+  stage.addEventListener("pointerup", up);
+  stage.addEventListener("pointercancel", up);
+
+  openModal({ title: t("device.photo"), body: stage });
 }
 
 // Small text-input modal used by the "+add category" flow.
