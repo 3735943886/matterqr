@@ -133,6 +133,7 @@
 
   "confirm.delete": "이 디바이스를 삭제할까요?",
   "confirm.discard": "저장하지 않은 변경사항을 취소할까요?",
+  "confirm.removePhoto": "이 사진을 삭제할까요?",
   "confirm.yes": "예",
   "confirm.no": "아니오",
   "err.generic": "오류가 발생했습니다",

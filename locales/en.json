@@ -133,6 +133,7 @@
 
   "confirm.delete": "Delete this device?",
   "confirm.discard": "Discard unsaved changes?",
+  "confirm.removePhoto": "Remove this photo?",
   "confirm.yes": "Yes",
   "confirm.no": "No",
   "err.generic": "Something went wrong",

@@ -346,7 +346,8 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
       fileInput.value = ""; // let the same file be re-picked later
     }
   });
-  removeBtn.addEventListener("click", () => {
+  removeBtn.addEventListener("click", async () => {
+    if (!(await confirm(t("confirm.removePhoto"), { danger: true }))) return;
     photoState = "remove";
     clearPreview();
     markDirty();
