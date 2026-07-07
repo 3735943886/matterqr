@@ -420,7 +420,7 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   const codeBox = h("div", { class: "rounded-lg bg-slate-100 px-3 py-2 text-xs dark:bg-slate-800" }, [
     h("div", { class: "break-all font-mono" }, codeRaw || identity),
     manualRow,
-    hintParts.length && h("div", { class: "mt-1 text-slate-500" }, hintParts.join("  ·  ")),
+    hintParts.length ? h("div", { class: "mt-1 text-slate-500" }, hintParts.join("  ·  ")) : null,
   ]);
 
   // Not field(): field() wraps in a <label>, and a hidden file <input> inside a
@@ -474,7 +474,10 @@ export async function openDeviceModal({ device = null, decoded = null } = {}) {
   const cancel = h("button", { class: "rounded-lg px-4 py-2 text-sm", onClick: () => m.close() }, t("action.cancel"));
   const save = h(
     "button",
-    { class: "rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-500" },
+    {
+      class:
+        "rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 disabled:hover:bg-slate-300 dark:disabled:bg-slate-700 dark:disabled:text-slate-500",
+    },
     t("action.save"),
   );
   save.addEventListener("click", async () => {
