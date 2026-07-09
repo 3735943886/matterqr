@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-07-08 · 3550 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-07-09 · 3550 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-07-08";
+export const CATALOG_UPDATED = "2026-07-09";
 export const CATALOG = [
   ["-Made Discus Floor Lamp in Gold/Black","","Other"],
   ["-Made Mega LED Wall Sconce in Black","","Other"],
