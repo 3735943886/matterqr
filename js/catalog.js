@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-07-11 · 3550 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-07-12 · 3550 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-07-11";
+export const CATALOG_UPDATED = "2026-07-12";
 export const CATALOG = [
   ["-Made Discus Floor Lamp in Gold/Black","","Other"],
   ["-Made Mega LED Wall Sconce in Black","","Other"],
@@ -234,7 +234,7 @@ export const CATALOG = [
   ["arre home arre Motion Sensor","arre home","Smart Home"],
   ["arre home arre Smart Lock","arre home","Door Lock"],
   ["arre home arre Temperature Sensor","arre home","Sensor"],
-  ["arre Smart Button with Matter & Thread Support","arre","Buttons"],
+  ["arre Smart Button with Matter & Thread Support","arre","Switches"],
   ["ART DOM Smart Socket Setti+ SP401M","ART DOM","Lighting"],
   ["Arumny Power Strip Smart Multi Outlet Electric Extension Socket Cable Adapter Eu Kr Plug","Arumny","Other"],
   ["Assa Abloy AB Sweden Aura Reach","","Smart Home"],
@@ -1028,7 +1028,7 @@ export const CATALOG = [
   ["IKEA KLIPPBOK water leak sensor","IKEA","Sensors"],
   ["Ikea Myggbett Door/window Sensor With Matter Support","IKEA","Sensors"],
   ["IKEA of Sweden ALPSTUGA air quality monitor","IKEA","Smart Home"],
-  ["IKEA of Sweden BILRESA scroll wheel","IKEA of Sweden","Smart Home"],
+  ["IKEA of Sweden BILRESA scroll wheel","IKEA of Sweden","Switches"],
   ["IKEA of Sweden DUBBELKISEL 30W","IKEA of Sweden","Lighting"],
   ["IKEA of Sweden DUBBELKISEL 30W NA","IKEA of Sweden","Lighting"],
   ["IKEA of Sweden GRILLPLATS plug","IKEA of Sweden","Lighting"],
