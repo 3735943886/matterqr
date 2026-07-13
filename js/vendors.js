@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-07-06 · 446 vendors.
+// 2026-07-13 · 448 vendors.
 const VENDORS = {
   1: "Panasonic",
   4107: "Signify",
@@ -437,6 +437,7 @@ const VENDORS = {
   5718: "IFLYTEK",
   5720: "Wing Tech",
   5721: "Airam",
+  5722: "Sense Say Technology",
   5726: "Mobile Labs",
   5728: "NuWatt",
   5729: "ARTCILUX",
@@ -446,6 +447,7 @@ const VENDORS = {
   5741: "Anchen",
   5745: "3T-Components",
   5746: "Gmerit",
+  5748: "wukong",
   5749: "Veto",
   5753: "Yozewit Intelligent",
   5787: "Musen Connect",
