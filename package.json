@@ -1,6 +1,6 @@
 {
   "name": "matterqr",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": true,
   "type": "module",
   "description": "Matter QR device inventory — offline-first PWA",
