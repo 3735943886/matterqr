@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-07-21 · 3587 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-07-22 · 3586 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-07-21";
+export const CATALOG_UPDATED = "2026-07-22";
 export const CATALOG = [
   ["-Made Arca Portable Lamp in Black","Unknown","Other"],
   ["-Made Discus Floor Lamp in Gold/Black","","Other"],
@@ -1107,7 +1107,6 @@ export const CATALOG = [
   ["iRobot (W155000) Roomba Max 705 Vac","iRobot","Climate"],
   ["iRobot (W155020) Roomba Max 705 Vac","iRobot","Climate"],
   ["iRobot (W155042) Roomba Max 705 Vac","iRobot","Climate"],
-  ["iRobot (W155060) Roomba Max 705 Vac","iRobot","Climate"],
   ["iRobot (X100000) Roomba Max 705 Combo","iRobot","Uncategorized"],
   ["iRobot (X100010) Roomba Max 705 Combo","iRobot","Uncategorized"],
   ["iRobot (X100020) Roomba Max 705 Combo","iRobot","Uncategorized"],
@@ -1437,7 +1436,7 @@ export const CATALOG = [
   ["Leviton D36HD Decora Smart Wi-Fi Dimmer","Leviton","Uncategorized"],
   ["Leviton Decora Evolve Smart Switch Module VM2S1-1W","Leviton","On/Off Light"],
   ["Leviton Decora Smart Plug Indoor Wi-Fi D215P-1BW","Leviton","On/Off Plug-in Unit"],
-  ["Leviton Decora Smart Plug, Wi-fi 2nd Gen, Works With, My, Alexa","Leviton","Plugs"],
+  ["Leviton Decora Smart Wi-Fi 2nd Gen Mini Plug-In Switch","Leviton","Plugs"],
   ["Leviton Decora Smart Wi-Fi 2nd Gen Mini Plug-In Switch","Leviton","Lighting"],
   ["Leviton Decora Smart Wi-Fi 2nd Gen Outlet","Leviton","Lighting"],
   ["Leviton Decora Smart Wi-Fi 2nd Gen Switch","Leviton","Lighting"],
@@ -2800,6 +2799,7 @@ export const CATALOG = [
   ["SONOFF Basic Gen5","SONOFF","Uncategorized"],
   ["SONOFF Basic Gen5 Over WiFi Smart Switch","SONOFF","Other"],
   ["SONOFF Basic Gen5 Over WiFi Smart Switch","SONOFF","Switches"],
+  ["SONOFF iPlug Gen2 S41S Matter Smart Plug-In Unit","SONOFF","Smart Home"],
   ["SONOFF iPlug Gen2 S41s Over WiFi Smart Plug","SONOFF","Plugs"],
   ["SONOFF M5 Smart Wall Switch","SONOFF","Switches"],
   ["SONOFF Matter Smart Plug S41S 4-Pack","SONOFF","Plugs"],
@@ -2819,7 +2819,6 @@ export const CATALOG = [
   ["Sonoff Over Wi-fi Air Quality Monitor Indoor Pm2.5 Pm10 4-in-1","SONOFF","Sensors"],
   ["SONOFF S41s","SONOFF","Uncategorized"],
   ["SONOFF S61s","SONOFF","Uncategorized"],
-  ["SONOFF Smart Plug-In Unit","SONOFF","Smart Home"],
   ["SONOFF Smart Wall Switch","SONOFF","Switches"],
   ["SONOFF Smart Wall Switch","SONOFF","Plugs & Switches"],
   ["Sonoff Smart Wall Switch with Physical Button M5-120W White","SONOFF","Switches"],
@@ -2972,7 +2971,6 @@ export const CATALOG = [
   ["TP-Link Systems Inc. Tapo Smart Outdoor Plug","TP-Link Systems Inc.","Lighting"],
   ["TP-Link Systems Inc. Tapo Smart Wi-Fi In-wall Outlet","TP-Link Systems Inc.","Lighting"],
   ["TP-Link Systems Inc. Tapo Smart Wi-Fi Outlet Extender","TP-Link Systems Inc.","Lighting"],
-  ["TP-Link Systems Inc. Tapo Smart Wi-Fi Power Strip","TP-Link Systems Inc.","Lighting"],
   ["TP-Link Systems Mini Smart Wi-Fi Plug, Energy Monitoring","Ring","Smart Home"],
   ["Tp-link Tapo Outdoor Smart Plug 2 Outlets Ip65 Wifi Alexa","TP-Link","Plugs"],
   ["Tp-link Tapo Outdoor Smart Plug, 2 Individual Outlets, Ip65","TP-Link","Plugs"],
@@ -2986,6 +2984,7 @@ export const CATALOG = [
   ["TP-Link Tapo P125M Smart Plug Mini","TP-Link","Other"],
   ["TP-Link Tapo P210M Matter Smart In-Wall Outlet","TP-Link","Plugs"],
   ["TP-Link Tapo P210M Smart Plug","TP-Link","Plugs"],
+  ["TP-Link Tapo P316M Matter Smart Wi-Fi Power Strip","TP-Link Systems Inc.","Lighting"],
   ["TP-Link Tapo Smart 3 Way Dimmer Switch KIT, Compatible, Energy White","TP-Link","Switches"],
   ["TP-Link Tapo Smart Dimmer Switch, Single Pole, Neutral Wiring & 2.4 GHz WiFi Required","TP-Link","Switches"],
   ["Tp-link Tapo Smart Dimmer Switch: Voice Control W/siri, Alexa","TP-Link","Switches"],
