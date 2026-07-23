@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-07-22 · 3586 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-07-23 · 3586 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-07-22";
+export const CATALOG_UPDATED = "2026-07-23";
 export const CATALOG = [
   ["-Made Arca Portable Lamp in Black","Unknown","Other"],
   ["-Made Discus Floor Lamp in Gold/Black","","Other"],
@@ -271,7 +271,6 @@ export const CATALOG = [
   ["Beken BK7235 ACK Smart Plug","Beken","Smart Home"],
   ["Beken Corporation Beken Light Bulb","Beken Corporation","Lighting"],
   ["Beken Corporation BK7235 ACK Smart Plug","Beken","Plugs"],
-  ["Best Connect Matter Smart Plug - Intelligent Socket Compatible With","Best Connect","Plugs"],
   ["BHT-009GCLW-MT Boiler Heating WiFi Smart Home LED Thermostat with (Black)","","Thermostats"],
   ["Big Ass Fans Bison","Big Ass Fans","Fan"],
   ["Big Ass Fans Haiku H/I Series","Big Ass Fans","Fan"],
@@ -388,6 +387,7 @@ export const CATALOG = [
   ["Customized Tuya Smart Zigbee","Tuya","Hubs"],
   ["Cync Certified","Cync","Sensors"],
   ["Cync Full Color Bulb","GE","Lighting"],
+  ["Cync Indoor Smart Plug (3-Pack)","GE Cync","Plugs"],
   ["Cync Indoor Smart Plug Wi-Fi Outlet (3-Pack)","Cync","Plugs"],
   ["Cync Indoor Smart Plug Wi‑Fi Outlet (3-Pack)","Cync","Sensors"],
   ["Cync Indoor Smart Plug Wi‑Fi Outlet (3-Pack)","Cync","Switches"],
@@ -1699,7 +1699,6 @@ export const CATALOG = [
   ["Matter Smart Switch Homekit By , Tasmota Preflashed On This Esp32 Chip","","Switches"],
   ["Matter Smart WiFi LED Light Switch EU 1/2/3 No Neutral Wire Required Remote Control Homekit Alexa","","Switches"],
   ["Matter Wi-Fi Smart Plug EU Socket","Generic","Plugs"],
-  ["Matter Wifi 1 2 3 4 6 Gangs Smart Wall Light Switch US AU Push Button Black Switch","","Other"],
   ["Matter WiFi 1-Channel Switch Module — Verification Needed","Unverified","Switches"],
   ["Matter Wifi Smart Home 15a Plugin Socket With Voice Control & Oem Support","","Plugs"],
   ["Matter WiFi Smart Light Switch App Control Neutral Wire & Grounding Required","","Switches"],
@@ -3251,6 +3250,7 @@ export const CATALOG = [
   ["Wi-Fi Smart Light Bulb with Remote","","Lighting"],
   ["Wi-Fi Smart Light Switch","","Other"],
   ["Wi-Fi Smart Light Switch - Voice Control & Scheduling","","Sensors"],
+  ["Wi-Fi Smart Light Switch (3-Gang)","","Non-Matter / Review Needed"],
   ["Wi-Fi Smart Light Switch 1/2/3 Gang 110-240V Need Neutral Wire Control Works With Smart","","Switches"],
   ["Wi-Fi Smart Light Switches Touch Glass Design, Needs Neutral","","Sensors"],
   ["Wi-Fi Smart Light Switches Touch Glass Design, Needs Neutral Wire, Sin...","","Switches"],
