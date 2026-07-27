@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-07-20 · 451 vendors.
+// 2026-07-27 · 451 vendors.
 const VENDORS = {
   1: "Panasonic",
   4107: "Signify",
