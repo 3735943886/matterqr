@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-07-27 · 451 vendors.
+// 2026-08-03 · 457 vendors.
 const VENDORS = {
   1: "Panasonic",
   4107: "Signify",
@@ -54,6 +54,7 @@ const VENDORS = {
   4711: "ARC Technology Co., Ltd.",
   4718: "Xiaomi",
   4724: "Trust International BV",
+  4727: "Adeo",
   4735: "Nordic Semiconductor ASA",
   4736: "Siterwell",
   4738: "SEI",
@@ -385,6 +386,7 @@ const VENDORS = {
   5600: "Leaguer MicroElectronics",
   5601: "NOVO",
   5603: "YCZNWL",
+  5605: "Verizon",
   5606: "Mysa",
   5607: "Fresh Electric",
   5608: "Doorma",
@@ -432,7 +434,10 @@ const VENDORS = {
   5698: "TWOPAGES",
   5699: "KINGFISHER",
   5702: "Seasonal Specialties",
+  5705: "MANHOT",
   5707: "Giant Lighting Technology",
+  5708: "Sleekpoint",
+  5711: "Qingping",
   5715: "murora",
   5716: "GREENBANK",
   5718: "IFLYTEK",
@@ -454,6 +459,7 @@ const VENDORS = {
   5753: "Yozewit Intelligent",
   5786: "Sombra Shades",
   5787: "Musen Connect",
+  5809: "Refoss",
   24582: "Google LLC",
 };
 
