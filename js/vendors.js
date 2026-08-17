@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-08-10 · 458 vendors.
+// 2026-08-17 · 460 vendors.
 const VENDORS = {
   1: "Panasonic",
   4107: "Signify",
@@ -402,6 +402,7 @@ const VENDORS = {
   5625: "Narwal",
   5627: "nomos system AG",
   5630: "Senscomm",
+  5633: "Owl Home Inc.",
   5634: "Levven Electronics",
   5637: "REZEFLOW",
   5641: "TETNET",
@@ -461,6 +462,7 @@ const VENDORS = {
   5786: "Sombra Shades",
   5787: "Musen Connect",
   5809: "Refoss",
+  5825: "Surplife",
   24582: "Google LLC",
 };
 
