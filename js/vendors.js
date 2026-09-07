@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-08-31 · 839 vendors.
+// 2026-09-07 · 844 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -773,10 +773,10 @@ const VENDORS = {
   5767: "Taco Inc.",
   5768: "Ningbo Zhengxin Intelligent Technology Co., Ltd.",
   5769: "Meta Inc.",
-  5770: "Lowe's [ Harbor Breeze ]",
-  5771: "Lowe's [ Holiday Living ]",
-  5772: "Lowe's [ Reliabilt ]",
-  5773: "Lowe's [ Master Forge ]",
+  5770: "Harbor Breeze",
+  5771: "Holiday Living",
+  5772: "Reliabilt",
+  5773: "Master Forge",
   5774: "BellaVista Solution LLC",
   5775: "Advanced Card Systems Inc.",
   5776: "Nan Ya Plastic Corp.",
@@ -821,13 +821,13 @@ const VENDORS = {
   5815: "Enerco Group Inc.",
   5816: "Allra Limited",
   5817: "DKI Technology Co., Ltd.",
-  5818: "Lampgoedkoop.nl. B.V.",
+  5818: "Lampgoedkoop",
   5819: "Proxmius nv",
   5820: "ROBB BV",
   5821: "SHENZHEN HOION LIGHTING CO.,LIMITED",
   5822: "iolo AG",
   5823: "Fujian Yihong Technology Co., Ltd",
-  5824: "Fujian ManewAIoT Lighting Co., Ltd.",
+  5824: "ManewAIoT",
   5825: "Surplife",
   5826: "Shenzhen Daybetter Optoelectronics Co., Ltd.",
   5827: "Fuyang Hongxin Semiconductor Co., Ltd.",
@@ -839,7 +839,12 @@ const VENDORS = {
   5833: "Tronico Technology Company Limited",
   5834: "OMEC Smart Card Inc.",
   5835: "Shanghai GeeTrick Technology Co., Ltd.",
-  5836: "Lowe's [ Haunted Living ]",
+  5836: "Haunted Living",
+  5837: "Liniq (Singapore) Pte. Ltd.",
+  5838: "Ningbo Yinzhou Sixin Import & Export Co., Ltd.",
+  5839: "Shenzhen Rti-Tek Co., Ltd.",
+  5840: "WIFLY-CITY SYSTEM INC.",
+  5841: "RESIDENCE SUPPLY S CORP",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
