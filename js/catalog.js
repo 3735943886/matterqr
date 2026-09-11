@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-09-10 · 3586 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-09-11 · 3587 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-09-10";
+export const CATALOG_UPDATED = "2026-09-11";
 export const CATALOG = [
   ["-Made Arca Portable Lamp in Black","Unknown","Other"],
   ["-Made Discus Floor Lamp in Gold/Black","","Other"],
@@ -189,6 +189,7 @@ export const CATALOG = [
   ["Aqara Light Switch H2","Aqara","Lighting"],
   ["Aqara Lumi United Technology Co., Ltd. Thermostat Hub W200","Aqara","Thermostats"],
   ["Aqara Matter Lighting Device 1823 — Verification Needed","Aqara","Lighting"],
+  ["Aqara Motion and Light Sensor P2","Aqara","Sensors"],
   ["Aqara Multi-State Sensor P100","Aqara","Bridge"],
   ["Aqara Panel Hub AX100S","Aqara","Blinds"],
   ["Aqara Power Plug H2 EU","Aqara","Lighting"],
