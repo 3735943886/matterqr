@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-09-07 · 844 vendors.
+// 2026-09-14 · 850 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -695,7 +695,7 @@ const VENDORS = {
   5689: "Ferguson",
   5690: "FAMMIX",
   5691: "SmartSphere",
-  5692: "7Z",
+  5692: "7z",
   5693: "JISIM",
   5694: "Zhejiang Hooeasy Technology Co., Ltd.",
   5695: "ADT",
@@ -845,6 +845,12 @@ const VENDORS = {
   5839: "Shenzhen Rti-Tek Co., Ltd.",
   5840: "WIFLY-CITY SYSTEM INC.",
   5841: "RESIDENCE SUPPLY S CORP",
+  5842: "Helenoftroy",
+  5843: "Reliance Worldwide Corporation (Aust.) Pty. Ltd.",
+  5844: "Hoermann KG Antriebstechnik",
+  5845: "Allen + Roth",
+  5846: "Origin 21",
+  5847: "EchoStar Corporate",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
