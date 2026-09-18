@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-09-17 · 3589 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-09-18 · 3589 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-09-17";
+export const CATALOG_UPDATED = "2026-09-18";
 export const CATALOG = [
   ["-Made Arca Portable Lamp in Black","Unknown","Other"],
   ["-Made Discus Floor Lamp in Gold/Black","","Other"],
@@ -213,7 +213,7 @@ export const CATALOG = [
   ["Aqara Smart Lock U100","Aqara","Locks"],
   ["Aqara Smart Lock U200 Kit, Over Thread, Quiet Unlock Mode, Auto Lock, NFC & Apple Home Keys, Silent Unlock Mode & Auto Lock, Includes Fingerpri","Aqara","Locks"],
   ["Aqara Smart Lock U200 Lite","Aqara","Door Lock"],
-  ["Aqara Smart Lock U200 with Fingerprint Keypad, Matter over Thread, Black","Aqara","Locks"],
+  ["Aqara Smart Lock U200 with Fingerprint Keypad, Matter over Thread, Silver","Aqara","Locks"],
   ["Aqara Smart Lock U300","Aqara","Door Lock"],
   ["Aqara Smart Lock U400","Aqara","Door Lock"],
   ["Aqara Smart Rim Lock U500","Aqara","Door Lock"],
