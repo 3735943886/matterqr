@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-09-19 · 3589 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-09-19 · 3590 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-09-19";
 export const CATALOG = [
@@ -625,16 +625,16 @@ export const CATALOG = [
   ["Eve Energy (Switzerland)","Eve","Lighting"],
   ["Eve Energy (U.K.)","Eve","Smart Plug"],
   ["Eve Energy (U.S. & Canada)","Eve","Lighting"],
+  ["Eve Energy In-Wall Outlet (US/CA)","Eve","Plugs"],
   ["Eve Energy Matter 3 Pack Smart Plug, 100% Privacy, automate Lights & appliances,","Eve","Other"],
   ["Eve Energy Matter Smart Plug & Power Meter 2-Pack","Eve","Smart Plugs"],
   ["Eve Energy Outdoor (Europe)","Eve","Lighting"],
   ["Eve Energy Outlet () Smart Outlet & Power Meter, App & Voice Control, No Bridge, Thread","Eve","Plugs"],
   ["Eve Energy Outlet () Smart Outlet & Power Meter, App & Voice Control, No Bridge, Thread","Eve","Other"],
   ["Eve Energy Outlet (U.S. & Canada)","Eve","Lighting"],
-  ["Eve Energy Outlet Smart Outlet 2pk","Eve","Plugs"],
   ["Eve Energy Outlet with","Eve","Plugs"],
   ["Eve Energy Smart Plug (2-Pack)","Eve","Plugs"],
-  ["Eve Energy Smart Plug (Over Thread)","Eve","Plugs"],
+  ["Eve Energy Smart Plug (US/CA)","Eve","Plugs"],
   ["Eve Energy Smart Plug with Meter Sensor","Eve","Plugs"],
   ["Eve free@home System Access Point 2.0","Eve","Blinds"],
   ["Eve Light Switch","Eve","Lighting"],
@@ -1753,6 +1753,7 @@ export const CATALOG = [
   ["Meross MOP320MA-EU Outdoor Socket","Meross","Plugs"],
   ["Meross MS600","Meross","Sensors"],
   ["Meross MS600 Matter Smart Presence Sensor","Meross","Sensors"],
+  ["Meross MSS115 Smart Plug Mini (US/CA)","Meross","Plugs"],
   ["Meross MTS215 Matter Smart Thermostat for Electric Baseboard Heater","Meross","Thermostats"],
   ["Meross MTS215B EU boiler / water-heating control","Meross","Thermostats"],
   ["Meross MTS215MA US","Meross","Thermostats"],
