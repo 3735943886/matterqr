@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-09-14 · 850 vendors.
+// 2026-09-21 · 855 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -551,6 +551,7 @@ const VENDORS = {
   5542: "DigiCert, Inc.",
   5543: "Hunter Fan Co",
   5544: "LOCKIN (U.S.) INC.",
+  5545: "Paulo Chainho",
   5546: "GLEDOPTO",
   5547: "Accurate Lock & Hardware",
   5548: "SWAN Lite",
@@ -730,7 +731,7 @@ const VENDORS = {
   5724: "Ugreen Group Limited",
   5725: "TREY GmbH",
   5726: "Mobile Labs",
-  5727: "X-Sense Innovations Co., Ltd.",
+  5727: "X-Sense",
   5728: "NuWatt",
   5729: "ARTCILUX",
   5730: "LIGHTCOMM TECHNOLOGY CO.,LIMITED",
@@ -831,7 +832,7 @@ const VENDORS = {
   5825: "Surplife",
   5826: "Shenzhen Daybetter Optoelectronics Co., Ltd.",
   5827: "Fuyang Hongxin Semiconductor Co., Ltd.",
-  5828: "NINGBO GERWIN MECHANIC&ELECTRONICS TECHNOLOGY CO.,LTD.",
+  5828: "GerwinMotor",
   5829: "AUPU Intelligent Technology Corporation Limited",
   5830: "Jiangyin Wonder Electronic Co., Ltd.",
   5831: "GCS TIMES GROUP COMPANY LIMITED",
@@ -851,6 +852,10 @@ const VENDORS = {
   5845: "Allen + Roth",
   5846: "Origin 21",
   5847: "EchoStar Corporate",
+  5848: "QROMA AG",
+  5849: "Zhejiang Dahua Technology Co., Ltd.",
+  5850: "Dongguan Zornher Electronic Technology Co. Ltd",
+  5851: "Domus Line S.r.l.",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
