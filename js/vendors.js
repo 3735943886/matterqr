@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-09-28 · 858 vendors.
+// 2026-10-05 · 862 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -99,6 +99,7 @@ const VENDORS = {
   4617: "Bosch",
   4619: "HEIMAN",
   4631: "Alexa Elements",
+  4632: "Paulmann Licht GmbH",
   4633: "ORVIBO",
   4634: "TCI Telecommunications",
   4635: "Mueller-Licht International Inc.",
@@ -859,6 +860,9 @@ const VENDORS = {
   5852: "Hangzhou Meari Technology Co., Ltd.",
   5853: "P.I.E. Intel Sp. z o.o.",
   5854: "Hangzhou Key to the Future Technology Co., Ltd.",
+  5855: "Pura Scents, Inc.",
+  5856: "Xiamen Longstar Lighting Co., Ltd.",
+  5857: "Mersian",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
