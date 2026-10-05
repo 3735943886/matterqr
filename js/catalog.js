@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-04 · 2770 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-02 · 2766 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-10-04";
+export const CATALOG_UPDATED = "2026-10-02";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -400,7 +400,7 @@ export const CATALOG = [
   ["Dyson Spot+Scrub Ai Robot Vacuum (586179-01)","Dyson","Robot Vacuums"],
   ["Easfina Light Soy Flex","Easfina","Lighting"],
   ["EcoFlow PowerInsight Home Energy Manager","EcoFlow","Hubs"],
-  ["Econet Controls Bulldog GateLock","Econet Controls","Other"],
+  ["Econet Controls Bulldog GateLock","Econet Controls","Locks"],
   ["ECOVACS DEEBOT X2 OMNI Floor Cleaning Robot","Ecovacs","Robot Vacuums"],
   ["ECOVACS DEEBOT X8 ProPlus AI Floor Cleaning Robot","Ecovacs","Robot Vacuums"],
   ["Ecovacs Floor Cleaning Robot","Ecovacs","Robot Vacuums"],
@@ -482,7 +482,6 @@ export const CATALOG = [
   ["eufy Smart Lock C34","Anker Innovations  Technology","Locks"],
   ["eufy Smart Lock E30","Anker Innovations  Technology","Locks"],
   ["eufy Smart Lock E31","Anker Innovations  Technology","Locks"],
-  ["eufy Smart Lock E35","Anker Innovations  Technology","Locks"],
   ["eufy Video Smart Lock S3","Anker Innovations  Technology","Locks"],
   ["eufy Video Smart Lock S3 Pro","Anker Innovations  Technology","Locks"],
   ["Eurotronic Comet","Eurotronic Technology GmbH","Thermostats"],
@@ -1952,7 +1951,6 @@ export const CATALOG = [
   ["Shelly 1L Gen3","Shelly","Switches"],
   ["Shelly 1PM Gen3","Shelly","Switches"],
   ["Shelly 1PM Gen4","Shelly","Switches"],
-  ["Shelly 1PM Gen4 Smart Relay Switch, Wi-Fi + Zigbee, Power Metering","Shelly","Switches"],
   ["Shelly 1PM Mini Gen3","Shelly","Switches"],
   ["Shelly 1PM Mini Gen4","Shelly","Switches"],
   ["Shelly 2L Gen3","Shelly","Switches"],
@@ -2218,8 +2216,6 @@ export const CATALOG = [
   ["Tapo Smart Wi-Fi Outlet Extender","TP-Link Systems Inc.","Plugs"],
   ["Tapo T31 KIT Door & Window Sensor Starter Kit, 3 Sensors + Hub","Tapo","Sensors"],
   ["TARUIE AC Remote","Ductech","Climate"],
-  ["Tasmota Wifi Plug Works with Home Assistant Electric Consumption Monitoring","","Plugs"],
-  ["TASMOTA WiFi Plug Works With Matter Home Assitant Electric Consumption Monitoring 16A","","Plugs"],
   ["TCL Dehumidifier","TCL","Climate"],
   ["TCL Portable AC","TCL","Climate"],
   ["TCL Split AC","TCL","Climate"],
@@ -2271,10 +2267,10 @@ export const CATALOG = [
   ["TP-Link Smart HomeBase","TP-Link Systems Inc.","Hubs"],
   ["TP-Link Smart Multicolor Bulb","TP-Link Systems Inc.","Lighting"],
   ["TP-Link Smart P430M Outdoor Plug-In Dimmer","TP-Link","Plugs"],
-  ["TP-Link Smart Wi-Fi Power Strip","TP-Link Systems Inc.","Plugs"],
   ["TP-Link Tapo P110M Smart Plug Mini Energy Monitoring 15A (4-Pack)","TP-Link","Plugs"],
   ["TP-Link Tapo P210M Matter Smart In-Wall Outlet","TP-Link","Plugs"],
   ["TP-Link Tapo P316M Matter Smart Wi-Fi Power Strip","TP-Link Systems Inc.","Plugs"],
+  ["TP-Link Tapo P316M Smart Wi-Fi Power Strip","TP-Link Systems Inc.","Plugs"],
   ["TP-Link Tapo P400M Smart Outdoor Plug, 2 Outlets","TP-Link Systems Inc.","Plugs"],
   ["TP-Link Tapo S505D Smart Dimmer Switch, Single Pole, Neutral Required","TP-Link","Switches"],
   ["TP-Link Tapo S515 Smart Light Switch, Single-Pole/3-Way/4-Way","TP-Link","Switches"],
