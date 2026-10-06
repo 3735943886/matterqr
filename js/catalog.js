@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-05 · 2754 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-05 · 2759 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-10-05";
 export const CATALOG = [
@@ -231,6 +231,8 @@ export const CATALOG = [
   ["CAME S.p.A. TH/ONE WIFI WALL CRONOTER. 230V","CAME S.p.A.","Thermostats"],
   ["Candelabra Smart Light Bulbs 60W Equivalent, 500LM 6W E12 LED Bulb Com...","","Lighting"],
   ["CANDY HOUSE Hub3","CANDY HOUSE","Hubs"],
+  ["Carrier Smart Thermostat Advanced with InteliSense (TSTATCCIAWF-01)","Carrier","Thermostats"],
+  ["Carrier Smart Thermostat with InteliSense (TSTATCCIEWF-01)","Carrier","Thermostats"],
   ["Caupureye A19 Smart WiFi LightBulbs","Caupureye","Lighting"],
   ["Caveman Smart A19/A60 Light Bulb","Caveman","Lighting"],
   ["Caveman SQCM01","Caveman","Lighting"],
@@ -1808,6 +1810,9 @@ export const CATALOG = [
   ["REHAU Smart Privacy","REHAU","Blinds"],
   ["Renesas RRQ61051","Renesas","Other"],
   ["Resideo ElitePRO/X8/X7 Smart Thermostat","Resideo","Thermostats"],
+  ["REZEFLOW M1 Pro Smart Curtain Track, 42-66 in","REZEFLOW","Blinds"],
+  ["REZEFLOW M5 All-in-One Smart Curtain Rod","REZEFLOW","Blinds"],
+  ["REZEFLOW P3 Motorized Smart Sheer Shades","REZEFLOW","Blinds"],
   ["REZEFLOW P5 Motorized Roller Shades","REZEFLOW","Blinds"],
   ["REZEFLOW Seamless Cellular Shades P7","REZEFLOW","Blinds"],
   ["REZEFLOW Seamless Roller Shades P7","REZEFLOW","Blinds"],
