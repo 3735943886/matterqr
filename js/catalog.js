@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-05 · 2759 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-06 · 2767 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-10-05";
+export const CATALOG_UPDATED = "2026-10-06";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -66,6 +66,8 @@ export const CATALOG = [
   ["Amazon Basics Smart Indoor Plug - Single outlet","Amazon Basics","Plugs"],
   ["Amazon Basics Smart Indoor Plug – Single outlet","Amazon","Plugs"],
   ["Amazon Basics Smart Plug","Amazon Basics","Plugs"],
+  ["Amazon Echo Hub","Amazon","Hubs"],
+  ["Amazon Echo Show 8 (2025 release)","Amazon","Hubs"],
   ["Amazon Lab126 Smart A19/E26 Bulb, Color Changing","Amazon","Lighting"],
   ["Amazon Lab126 Smart A19/E26 Bulb, Dimmable","Amazon","Lighting"],
   ["Amazon Lab126 Smart A60/B22 Bulb, Color Changing","Amazon","Lighting"],
@@ -83,6 +85,9 @@ export const CATALOG = [
   ["APICAL Floodlight Camera","APICAL","Other"],
   ["APICAL indoor camera","APICAL","Other"],
   ["APICAL Outdoor Camera","APICAL","Other"],
+  ["Apple HomePod (2nd generation)","Apple","Hubs"],
+  ["Apple HomePod mini","Apple","Hubs"],
+  ["Apple TV 4K (3rd generation) Wi-Fi + Ethernet, 128GB","Apple","Hubs"],
   ["APYNOV Priska Open","APYNOV","Plugs"],
   ["Aqara 0813","Aqara","Hubs"],
   ["Aqara 2042","Aqara","Sensors"],
@@ -465,7 +470,7 @@ export const CATALOG = [
   ["Essentials 80\" Smart LED Lightstrip Smarter Kit (2 m), White and Colors","Nanoleaf","Lighting"],
   ["Essentials connected bulb A19 3 Pack - set of 20u.","","Lighting"],
   ["EU Smart Power Strip","","Plugs"],
-  ["eufy C33 / E31 Fingerprint Keyless Entry Door Lock with Apple Home, for Front Door or Back","eufy","Locks"],
+  ["eufy E31 Fingerprint Keyless Entry Door Lock with Apple Home, for Front Door or Back","eufy","Locks"],
   ["eufy FamiLock E32","Anker Innovations  Technology","Locks"],
   ["eufy FamiLock E34","eufy","Locks"],
   ["eufy FamiLock E35","eufy","Locks"],
@@ -584,16 +589,19 @@ export const CATALOG = [
   ["geo SeeZero Thermostat","geo","Thermostats"],
   ["GIRIER Tuya ZigBee Hub, Smart Wired","GIRIER","Hubs"],
   ["GL-C-208/218M LED Controller Smart RGBCCT Strip Controller 12V 24V PWM Dimming APP Voice","","Lighting"],
-  ["GLEDOPTO RGBCCT LED Controller","GLEDOPTO","Lighting"],
   ["GLEDOPTO RGBCCT LED Strip Controller, 12-24V (GL-C-218M)","Gledopto","Lighting"],
   ["Gledopto Smart LED Controller","Gledopto","Lighting"],
   ["Globe RGBCCT Light","Globe Electric Company","Lighting"],
   ["Goods iQ Cabinet Lights","Goods iQ","Lighting"],
+  ["Google Home Speaker","Google","Hubs"],
   ["Google Nest Cam Indoor (wired, 3rd gen)","Google","Other"],
   ["Google Nest Cam Outdoor (wired, 2nd gen)","Google","Other"],
   ["Google Nest Doorbell (wired, 3rd gen)","Google","Other"],
+  ["Google Nest Hub (2nd gen)","Google","Hubs"],
   ["Google Nest Learning Thermostat (4th Gen) with 2 Temperature Sensors, Polished Obsidian","Google","Thermostats"],
   ["Google Nest Thermostat","Google","Thermostats"],
+  ["Google Nest Wifi Pro (Wi-Fi 6E)","Google","Hubs"],
+  ["Google TV Streamer (4K)","Google","Hubs"],
   ["GOQUAL Thread Smart Motion Sensor","GOQUAL Inc.","Sensors"],
   ["GOQUAL Wi-Fi Plug","GOQUAL","Plugs"],
   ["Govee 20-Inch Ceiling Fan With Lights (H1370)","Govee","Fans"],
