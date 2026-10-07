@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-06 · 2767 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-06 · 2757 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-10-06";
 export const CATALOG = [
@@ -487,7 +487,6 @@ export const CATALOG = [
   ["eufy Robotic Vacuum","eufy","Robot Vacuums"],
   ["eufy Smart Lock C34","Anker Innovations  Technology","Locks"],
   ["eufy Smart Lock E30","Anker Innovations  Technology","Locks"],
-  ["eufy Smart Lock E31","Anker Innovations  Technology","Locks"],
   ["eufy Video Smart Lock S3","Anker Innovations  Technology","Locks"],
   ["eufy Video Smart Lock S3 Pro","Anker Innovations  Technology","Locks"],
   ["Eurotronic Comet","Eurotronic Technology GmbH","Thermostats"],
@@ -981,7 +980,6 @@ export const CATALOG = [
   ["Laticrete STRATA_HEAT Smart LCD Thermostat 0804-0404-TW","Laticrete","Thermostats"],
   ["LAUNRAY Smart A19 LED Bulb","HONG KONG LAUNRAY INDUSTRY LIMITED","Lighting"],
   ["Leaguer MicroElectronics PLC Bridge","Leaguer (Shenzhen) MicroElectronics","Hubs"],
-  ["LED Controller","MiBoxer","Lighting"],
   ["Led controller Relay Controller Compatible with homekit switch,1 Piece","","Lighting"],
   ["Ledeast NAS-WR10WM Wi-Fi Smart Plug, EU 16A","Tuya","Plugs"],
   ["Ledvance Classic A RGBW","LEDVANCE","Lighting"],
@@ -1063,9 +1061,6 @@ export const CATALOG = [
   ["LEDVANCE SMART+ B280 RGBW 818 MAGAM E27","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ B280 RGBW 827 MAGFIL E27","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ B40 RGBW 827 FR E14","LEDVANCE","Lighting"],
-  ["LEDVANCE SMART+ FloorCorn 140 MGC RGBTW Black","LEDVANCE","Lighting"],
-  ["LEDVANCE SMART+ FloorCorn 140 MGC RGBTW White","LEDVANCE","Lighting"],
-  ["LEDVANCE SMART+ FloorCorn 200 MGC RGBTW Black","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ G95 100 TW 827 E27","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ G95 RGBW 827 FR E27","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ P300 RGBW 818 MAGAM E27","LEDVANCE","Lighting"],
@@ -1075,9 +1070,6 @@ export const CATALOG = [
   ["LEDVANCE SMART+ PAR16 RGBW GU10","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ W250 RGBW 818 MAGAM E27","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ WG200 RGBW 818 MAGAM E27","LEDVANCE","Lighting"],
-  ["LEDVANCE SMART+ WiFi Orbis DL 200 TW WT","LEDVANCE","Lighting"],
-  ["LEDVANCE SMART+ WiFi Orbis DL 400 TW WT","LEDVANCE","Lighting"],
-  ["LEDVANCE SMART+ WiFi Orbis DL SQ400 TW WT","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ WiFi Orbis Wall Bath W400 IP44 TW Matter Light","LEDVANCE","Lighting"],
   ["LEDVANCE SMART+ WiFi Plug UK","LEDVANCE","Plugs"],
   ["LEDVANCE SMART+ WiFi Wall Switch 1G","LEDVANCE","Switches"],
@@ -2046,7 +2038,6 @@ export const CATALOG = [
   ["SMART MAT B40 TW 827 FR E14","LEDVANCE","Lighting"],
   ["SMART MAT E40 FIL RGBW 827 E27","LEDVANCE","Lighting"],
   ["SMART MAT E60 DIM FIL 827 E27","LEDVANCE","Lighting"],
-  ["SMART MAT FLOORCORN200 MGC RGBTW WT","LEDVANCE","Lighting"],
   ["SMART MAT G40 FIL RGBW 827 E27","LEDVANCE","Lighting"],
   ["SMART MAT G53 DIM FILGD 824 E27","LEDVANCE","Lighting"],
   ["SMART MAT G60 DIM FIL 827 E27","LEDVANCE","Lighting"],
@@ -2750,7 +2741,6 @@ export const CATALOG = [
   ["Zemismart Zigbee Smart Home Hub","Zemismart","Hubs"],
   ["Zemismart ZM106 Matter over WiFi EU Smart Push Button Switch","Zemismart","Switches"],
   ["Zemismart ZM206 Wi-Fi DIY Name Switch with Display Screen, US","Zemismart","Switches"],
-  ["Zemismart ZME2 Matter over WiFi DIY Smart Light Switch Module","Zemismart","Switches"],
   ["ZFL SMART STRIP DRIVER","ZFL SMART","Lighting"],
   ["Zhenghui Smart Switch","Shenzhen Zhenghui Technology","Switches"],
   ["Zhuhai Shengchang Smart Dimmable Driver","Zhuhai Shengchang","Lighting"],
