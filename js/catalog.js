@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-06 · 2757 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-06 · 2759 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-10-06";
 export const CATALOG = [
@@ -146,7 +146,6 @@ export const CATALOG = [
   ["Arlec RGBW Strip Light Controller","Arlec","Lighting"],
   ["Arlec Smart Gateway Pro Hub","Arlec","Hubs"],
   ["Arpobot Smart Shade","Arpobot","Blinds"],
-  ["arre Button","arre home","Remotes & Buttons"],
   ["Arre Contact Sensor","Arre","Sensors"],
   ["arre Leak Sensor","arre home","Sensors"],
   ["arre Motion Sensor","arre home","Sensors"],
@@ -1583,13 +1582,18 @@ export const CATALOG = [
   ["Nanoleaf Smart Permanent Outdoor Lights Smarter Kit","Nanoleaf","Lighting"],
   ["Nanoleaf Thread Smart Bulb E27/A60, RGBCW, Dimmable (4-pack)","Nanoleaf","Lighting"],
   ["Nanoleaf Wi-Fi A19 Smart Bulb","Nanoleaf","Lighting"],
-  ["Nanoleaf Wi-Fi A19 Smart Bulb (4 Pack)","Nanoleaf","Lighting"],
   ["Nanoleaf x FANTAQI Smart LED Monitor Stand","Nanoleaf","Lighting"],
   ["Narwal Flow","Narwal","Robot Vacuums"],
   ["Narwal Flow 2 Robot Vacuum and Mop","Narwal","Robot Vacuums"],
   ["Nature Remo Lapis Matter Controller/Bridge","Nature","Hubs"],
   ["Nature Remo nano","Nature","Hubs"],
   ["NEEWER NF01 Smart Floor Lamp","NEEWER","Lighting"],
+  ["NEEWER NF04 Smart Floor Lamp","NEEWER","Lighting"],
+  ["NEEWER NF06 Smart Floor Lamp","NEEWER","Lighting"],
+  ["NEEWER NR01 Smart Outdoor String Lights","NEEWER","Lighting"],
+  ["NEEWER NR02 Smart Permanent Outdoor Lights","NEEWER","Lighting"],
+  ["NEEWER NS01 Smart Neon Rope Light (Front-Lit)","NEEWER","Lighting"],
+  ["NEEWER NS02 Smart Neon Rope Light (Side-Lit)","NEEWER","Lighting"],
   ["Neo Smart Blinds Controller","Neo Smart Blinds","Blinds"],
   ["Neonlite Smart Bulb RGBW","Neonlite Distribution Ltd.","Lighting"],
   ["Neonlite Wi-Fi A60 Filament Bulb Tunable White","Neonlite","Lighting"],
@@ -2183,7 +2187,6 @@ export const CATALOG = [
   ["SwitchBot Video Doorbell Monitor","SwitchBot","Other"],
   ["SwitchBot Wi-Fi Humidity Sensor 4-Pack with Hub 2, IP65 (W3400010)","SwitchBot","Sensors"],
   ["SwitchBot Wi-Fi Smart Garage Door Opener (W5502330)","SwitchBot","Other"],
-  ["SwitchBot WiFi Switch Relay Module","SwitchBot","Switches"],
   ["tado° Smart Radiator Thermostat X","tado°","Thermostats"],
   ["tado° Wireless Temperature Sensor X","tado°","Sensors"],
   ["TALTBREX V-MTS01 Smart Switch Module, DIY Light Relay, 16A, 2-Pack","TALTBREX","Switches"],
@@ -2689,7 +2692,6 @@ export const CATALOG = [
   ["Zemismart Micro Intelligent Knob Switch Wireless Dimmer Rotary Control Wi-Fi Downlight","Zemismart","Switches"],
   ["Zemismart Motion Detector","Zemismart","Sensors"],
   ["Zemismart MT01 Slide Curtain","Zemismart","Blinds"],
-  ["Zemismart MT25B Matter over Thread Roller Blind Motor","Zemismart","Blinds"],
   ["Zemismart Over Thread Built-in Battery Blind Driver Retrofit Roller Shade","Zemismart","Blinds"],
   ["Zemismart Over Wifi 2n Roller Shade Motor For 37-1.5 In Tube","Zemismart","Blinds"],
   ["Zemismart Over WiFi RGBCW CCT LED Strip Light Driver Smart Controller","Zemismart","Lighting"],
