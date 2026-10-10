@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-06 · 2759 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-10 · 2767 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-10-06";
+export const CATALOG_UPDATED = "2026-10-10";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -597,7 +597,6 @@ export const CATALOG = [
   ["Google Nest Doorbell (wired, 3rd gen)","Google","Other"],
   ["Google Nest Hub (2nd gen)","Google","Hubs"],
   ["Google Nest Learning Thermostat (4th Gen) with 2 Temperature Sensors, Polished Obsidian","Google","Thermostats"],
-  ["Google Nest Thermostat","Google","Thermostats"],
   ["Google Nest Wifi Pro (Wi-Fi 6E)","Google","Hubs"],
   ["Google TV Streamer (4K)","Google","Hubs"],
   ["GOQUAL Thread Smart Motion Sensor","GOQUAL Inc.","Sensors"],
@@ -948,7 +947,6 @@ export const CATALOG = [
   ["Kincmo Hub","Kincmo","Hubs"],
   ["Klite A19 Color","Klite","Lighting"],
   ["Klite A21 Color","Klite","Lighting"],
-  ["Klite A60 Color","Klite","Lighting"],
   ["Klite A60 FIL CCT","Klite","Lighting"],
   ["Klite A70 Color","Klite","Lighting"],
   ["Klite BR30 Color","Klite","Lighting"],
@@ -1740,7 +1738,17 @@ export const CATALOG = [
   ["Philips GU10 Warm White","Signify","Lighting"],
   ["Philips Hero","Signify","Lighting"],
   ["Philips Hue Bridge","Philips","Hubs"],
-  ["Philips Hue Light","Signify","Lighting"],
+  ["Philips Hue Essential White and Color Ambiance A19 E26 Smart Bulb (800 lm)","Philips Hue","Lighting"],
+  ["Philips Hue Essential White and Color Ambiance BR30 E26 Smart Bulb (650 lm)","Philips Hue","Lighting"],
+  ["Philips Hue Light","Philips Hue","Lighting"],
+  ["Philips Hue White Ambiance A19 E26 Smart Bulb, 60W Equivalent (810 lm), 2-Pack","Philips Hue","Lighting"],
+  ["Philips Hue White Ambiance A19 E26 Smart Bulb, 75W Equivalent (1100 lm), 2-Pack","Philips Hue","Lighting"],
+  ["Philips Hue White and Color Ambiance A19 E26 Smart Bulb, 60W Equivalent (810 lm)","Philips Hue","Lighting"],
+  ["Philips Hue White and Color Ambiance A19 E26 Smart Bulb, 75W Equivalent (1100 lm)","Philips Hue","Lighting"],
+  ["Philips Hue White and Color Ambiance A21 E26 Smart Bulb, 100W Equivalent (1600 lm)","Philips Hue","Lighting"],
+  ["Philips Hue White and Color Ambiance B39 Candle E12 Smart Bulb","Philips Hue","Lighting"],
+  ["Philips Hue White and Color Ambiance Slim Downlight, 4 Inch","Philips Hue","Lighting"],
+  ["Philips Hue White and Color Ambiance Slim Downlight, 6 Inch","Philips Hue","Lighting"],
   ["Philips Indoor Smart Plug (JDT3793W/37)","Philips","Plugs"],
   ["Philips LED Strip","Signify","Lighting"],
   ["Philips LED Strip RGBICWW","Signify","Lighting"],
@@ -1972,7 +1980,7 @@ export const CATALOG = [
   ["Shelly Pro Dimmer 0/1-10V PM","Shelly","Switches"],
   ["Shelly Pro Dimmer 1PM","Shelly","Switches"],
   ["Shelly Pro Dimmer 2PM","Shelly","Switches"],
-  ["Shelly Pro RGBWW PM","Shelly","Switches"],
+  ["Shelly Pro RGBWW PM","Shelly","Lighting"],
   ["Shelly Smart Plug for Black","Shelly","Plugs"],
   ["Shelly Wall Display XL","Shelly","Switches"],
   ["Shenzhen Realwe Smart Plug","Shenzhen Realwe","Plugs"],
@@ -2051,7 +2059,7 @@ export const CATALOG = [
   ["SMART MAT PAR16 TW 827 GU10","LEDVANCE","Lighting"],
   ["SMART MAT W250 RGBW 827 MAGFIL E27","LEDVANCE","Lighting"],
   ["SMART MAT WG200 RGBW 827 MAGFIL E27","LEDVANCE","Lighting"],
-  ["Smart Mechanical Keyboard MK1","ThirdReality","Switches"],
+  ["Smart Mechanical Keyboard MK1","ThirdReality","Remotes & Buttons"],
   ["Smart Motorized Blinds Kit With Hub Mini - Solar Powered & Wifi","","Blinds"],
   ["Smart Motorized Roller Blinds with Remote Control","Tuya","Blinds"],
   ["Smart Neon LED Strip","Hama","Lighting"],
