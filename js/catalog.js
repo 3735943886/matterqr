@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-12 · 2798 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-12 · 2807 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-10-12";
 export const CATALOG = [
@@ -403,6 +403,7 @@ export const CATALOG = [
   ["Dyson Purifier Cool De-NOx","Dyson","Air Purifiers"],
   ["Dyson Purifier Hot+Cool De-NOx","Dyson","Air Purifiers"],
   ["Dyson Purifier Humidify+Cool De-NOx","Dyson","Air Purifiers"],
+  ["Dyson R3 Nurovi Spot+Scrub UV Robot Vacuum (686860-01)","Dyson","Robot Vacuums"],
   ["Dyson Spot+Scrub Ai Robot Vacuum (586179-01)","Dyson","Robot Vacuums"],
   ["Easfina Light Soy Flex","Easfina","Lighting"],
   ["EcoFlow PowerInsight Home Energy Manager","EcoFlow","Hubs"],
@@ -603,9 +604,15 @@ export const CATALOG = [
   ["GOQUAL Wi-Fi Plug","GOQUAL","Plugs"],
   ["Govee 20-Inch Ceiling Fan With Lights (H1370)","Govee","Fans"],
   ["Govee 4-Inch Recessed Lights Pro with Night Light (H601E)","Govee","Lighting"],
+  ["Govee 6-Inch Smart Retrofit Recessed Can Lights (H601C)","Govee","Lighting"],
+  ["Govee 6-Inch Smart RGBWW Recessed Lights (H601A)","Govee","Lighting"],
+  ["Govee A19 Smart LED Light Bulbs E26 1000lm (H6006)","Govee","Lighting"],
+  ["Govee A19 Smart LED Light Bulbs E26 800lm (H6008)","Govee","Lighting"],
+  ["Govee A19 Smart RGBWW Bulbs E26 1200lm (H600A)","Govee","Lighting"],
   ["Govee AI Sync Box 2","Govee","Lighting"],
   ["Govee AI Sync Box Kit 2","Govee","Lighting"],
   ["Govee Ball Lights","Govee","Lighting"],
+  ["Govee BR30 Smart RGBWW Bulbs E26 1200lm (H6010)","Govee","Lighting"],
   ["Govee C9 String Lights","Govee","Lighting"],
   ["Govee Ceiling Fan With Lights","Govee","Fans"],
   ["Govee Ceiling Light","Govee","Lighting"],
@@ -613,6 +620,7 @@ export const CATALOG = [
   ["Govee Ceiling Light Pro","Govee","Lighting"],
   ["Govee Ceiling Light Ultra","Govee","Lighting"],
   ["Govee Christmas 2-in-1 String Lights (H6250)","Govee","Lighting"],
+  ["Govee Christmas String Lights 2, 66 ft (H70C4)","Govee","Lighting"],
   ["Govee Christmas Tree Lights","Govee","Lighting"],
   ["Govee Cob LED Strip Light Pro, LED Lights for Bedroom","Govee","Lighting"],
   ["Govee COB Strip Light 2 Pro, 16.4 ft (H1AA5)","Govee","Lighting"],
@@ -633,6 +641,7 @@ export const CATALOG = [
   ["Govee Galaxy Light Projector Pro (H6092)","Govee","Lighting"],
   ["Govee Gaming Light","Govee","Lighting"],
   ["Govee Gaming Light Bars Pro","Govee","Lighting"],
+  ["Govee Gaming Wall Light (H6063)","Govee","Lighting"],
   ["Govee Glide Hexagon Light Panels Ultra","Govee","Lighting"],
   ["Govee Glide Wall Light","Govee","Lighting"],
   ["Govee H6013 BR30 Wi-Fi Smart Light Bulbs, RGBWW, 850 lm, 6-Pack","Govee","Lighting"],
