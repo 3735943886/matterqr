@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-12 · 2807 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-13 · 2808 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-10-12";
+export const CATALOG_UPDATED = "2026-10-13";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -633,6 +633,7 @@ export const CATALOG = [
   ["Govee Cone Tree Lights","Govee","Lighting"],
   ["Govee Curtain Lights","Govee","Lighting"],
   ["Govee Curtain Lights Pro","Govee","Lighting"],
+  ["Govee E12 Smart Candle Light Bulbs B11 450lm (H600B)","Govee","Lighting"],
   ["Govee Floor Lamp 2 (H607C)","Govee","Lighting"],
   ["Govee Floor Lamp 2 Pro","Govee","Lighting"],
   ["Govee Floor Lamp 3","Govee","Lighting"],
@@ -660,6 +661,7 @@ export const CATALOG = [
   ["Govee Neon Light","Govee","Lighting"],
   ["Govee Neon Light for skirting","Govee","Lighting"],
   ["Govee Neon Rope Light 2","Govee","Lighting"],
+  ["Govee Neon Rope Light 2, 9.8 ft (H61D3)","Govee","Lighting"],
   ["Govee Net lights","Govee","Lighting"],
   ["Govee Outdoor Chromatic String Lights","Govee","Lighting"],
   ["Govee Outdoor Clear Bulb String Lights","Govee","Lighting"],
@@ -885,7 +887,6 @@ export const CATALOG = [
   ["IKEA KAJPLATS E12 CWS globe 800lm","IKEA","Lighting"],
   ["IKEA KAJPLATS E12 WS B38 CL 450lm","IKEA","Lighting"],
   ["IKEA KAJPLATS E12 WS globe 800lm","IKEA","Lighting"],
-  ["IKEA KAJPLATS E14 CWS globe 806lm","IKEA","Lighting"],
   ["IKEA KAJPLATS E14 WS B38 CL 470lm","IKEA","Lighting"],
   ["IKEA KAJPLATS E26 CWS globe 1100lm","IKEA","Lighting"],
   ["IKEA KAJPLATS E26 WS globe 1100lm","IKEA","Lighting"],
@@ -973,7 +974,7 @@ export const CATALOG = [
   ["Kasa KS205 Matter Smart Wi‑Fi Light Switch","Kasa","Switches"],
   ["Kasa KS225 (KS225P3, 3-pack)","Kasa","Switches"],
   ["Kasa Smart IoT Hub","TP-Link Systems Inc.","Hubs"],
-  ["Kasa Smart Plug Mini","Kasa","Plugs"],
+  ["Kasa Smart Wi-Fi Plug Slim with Energy Monitoring (KP125M)","Kasa","Plugs"],
   ["Kasa Smart Wifi Plug, Energy Monitoring","TP-Link Systems Inc.","Plugs"],
   ["KASTA Dimmer","KASTA TECHNOLOGIES","Switches"],
   ["KASTA Relay","KASTA TECHNOLOGIES","Switches"],
@@ -2344,7 +2345,6 @@ export const CATALOG = [
   ["Tuya BHT-18 Wi-Fi Smart Thermostat for Electric Heating","Tuya","Thermostats"],
   ["Tuya Ceiling Fans Light Driver TY-W-FSD-X1","Tuya","Lighting"],
   ["Tuya Door Window Sensor_Thread","Tuya","Sensors"],
-  ["Tuya Fingerprint Smart Lock Apple Homekit Tuya Smart Door Lock Smart Door Lock","Tuya","Locks"],
   ["Tuya Lite","Tuya","Lighting"],
   ["Tuya Matter Temperature and Humidity Sensor","Tuya","Sensors"],
   ["Tuya Matter Wi-Fi Smart Thermostat for Floor Heating and Boiler Control","Tuya","Thermostats"],
@@ -2355,6 +2355,7 @@ export const CATALOG = [
   ["Tuya Power statistics socket","Tuya","Plugs"],
   ["Tuya Smart Bulb E27 2.4G WiFi","Tuya","Lighting"],
   ["Tuya Smart Control Panel L","Tuya","Hubs"],
+  ["Tuya Smart Door Lock LD05-T","Tuya","Locks"],
   ["Tuya Smart EU Plug Wi-Fi Socket, 16A","Tuya","Plugs"],
   ["Tuya Smart Gateway and Tuya Zigbee Wired Gateway are compatible with HomeKit, Google Home","Tuya","Hubs"],
   ["Tuya Smart Home","Tuya","Sensors"],
