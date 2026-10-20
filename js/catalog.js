@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-13 · 2808 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-20 · 2810 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-10-13";
+export const CATALOG_UPDATED = "2026-10-20";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -2151,6 +2151,8 @@ export const CATALOG = [
   ["SMARTSPEC SMART GU10 4.5WATT LAMP","SMARTSPEC","Lighting"],
   ["Smartthings Alexa Compatible - Over Thread Bulbs","","Lighting"],
   ["SmartWings Levitate with DUCTECH","SmartWings","Blinds"],
+  ["SmartWings Matter Motor for Roller Shade","SmartWings","Blinds"],
+  ["SmartWings Matter over Ethernet Motor for Roller Shade","SmartWings","Blinds"],
   ["SmartWings Motorized Blinds with Motor","SmartWings","Blinds"],
   ["SmartWings Smart Lighting","SmartWings","Lighting"],
   ["SmartWings Window Covering","SmartWings Home LLC","Blinds"],
