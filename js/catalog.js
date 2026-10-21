@@ -622,7 +622,7 @@ export const CATALOG = [
   ["Govee Christmas 2-in-1 String Lights (H6250)","Govee","Lighting"],
   ["Govee Christmas String Lights 2, 66 ft (H70C4)","Govee","Lighting"],
   ["Govee Christmas Tree Lights","Govee","Lighting"],
-  ["Govee Cob LED Strip Light Pro, LED Lights for Bedroom","Govee","Lighting"],
+  ["Govee COB LED Strip Light Pro 9.8 ft (H61E5)","Govee","Lighting"],
   ["Govee COB Strip Light 2 Pro, 16.4 ft (H1AA5)","Govee","Lighting"],
   ["Govee COB Strip Light 2 Pro, 6.56 ft (H1AA2)","Govee","Lighting"],
   ["Govee COB Strip Light 2, 16.4 ft (H1AB2)","Govee","Lighting"],
