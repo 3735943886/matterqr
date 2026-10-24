@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-20 · 2810 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-24 · 2811 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-10-20";
+export const CATALOG_UPDATED = "2026-10-24";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -2689,6 +2689,7 @@ export const CATALOG = [
   ["WiZ Wall Light Classic","Signify","Lighting"],
   ["WM5 12 to 24VDC CCT RGB LED Strip WiFi Controller","","Lighting"],
   ["Wozart Switch Controller Mini","Wozart","Switches"],
+  ["X-Sense Matter Base Station (SBS0A)","X-Sense","Hubs"],
   ["xCREAS Brivo300s Smart Air Purifier with H13 Filter, 1937 sq ft","xCREAS","Air Purifiers"],
   ["xCREAS smart air purifier","xCREAS","Air Purifiers"],
   ["Xenon Smart Power Outlet, Usb C Strip 20w, -301-pa20w","XENON","Plugs"],
