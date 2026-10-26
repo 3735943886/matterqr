@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-10-19 · 875 vendors.
+// 2026-10-26 · 882 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -876,6 +876,13 @@ const VENDORS = {
   5867: "Get Lit TX LLC",
   5868: "Reum Technologies Pty Ltd",
   5869: "Midea Group Co., Ltd.",
+  5871: "EDF R&D",
+  5872: "Reolink Technology Pte. Ltd.",
+  5873: "Prado Family BV",
+  5874: "FritsJurgens B.V.",
+  5875: "OBI Group Sourcing GmbH",
+  5876: "KeyLife International Technology Limited",
+  5877: "Gallagher Group Limited",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
