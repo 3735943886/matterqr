@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-10-24 · 2811 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-10-31 · 2815 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-10-24";
+export const CATALOG_UPDATED = "2026-10-31";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -429,10 +429,12 @@ export const CATALOG = [
   ["Enbrighten In-Wall Countdown Dim","Enbrighten","Switches"],
   ["Enbrighten In-Wall Motion Switch","Enbrighten","Switches"],
   ["Enbrighten In-wall Switch","Enbrighten","Switches"],
+  ["Enbrighten Indoor FlexSwitch Ext Cord (88322)","Enbrighten","Plugs"],
   ["Enbrighten Indoor Plug-in Receiver","Jasco Products Company LLC","Plugs"],
   ["Enbrighten JascoProSeries 4Button Scene Controller","Enbrighten","Switches"],
   ["Enbrighten JascoProSeries EmergencyFlash SingleButton","Enbrighten","Lighting"],
   ["Enbrighten Micro Plug","Enbrighten","Plugs"],
+  ["Enbrighten Outdoor EZGrip Ext Cord (88154/88155/88156)","Enbrighten","Plugs"],
   ["Enbrighten Outdoor Plug-in Receiver","Enbrighten","Plugs"],
   ["Enbrighten Pro In-Wall Extended Countdown Smart Dimmer (80979)","Enbrighten","Switches"],
   ["Enbrighten Pro In-Wall MyBright Smart Dimmer (80977)","Enbrighten","Switches"],
@@ -1594,6 +1596,7 @@ export const CATALOG = [
   ["Motorized Smart Dual Shades, Blackout and Light Filtering","","Blinds"],
   ["Motorized Zebra Blinds","","Blinds"],
   ["Mysa Smart Thermostat for Central HVAC","Mysa","Thermostats"],
+  ["Nanoleaf Cordless Circulator Fan (W9502054)","Nanoleaf","Fans"],
   ["Nanoleaf Essentials A19-A60","Nanoleaf","Lighting"],
   ["Nanoleaf Essentials BR30 bulbs (set of 12)","Nanoleaf","Lighting"],
   ["Nanoleaf Essentials Downlight","Nanoleaf","Lighting"],
@@ -2235,6 +2238,7 @@ export const CATALOG = [
   ["SwitchBot Robot Vacuum K11+ Pro","SwitchBot","Robot Vacuums"],
   ["SwitchBot Smart Floor Lamp, RGBICWW","SwitchBot","Lighting"],
   ["SwitchBot Video Doorbell Monitor","SwitchBot","Other"],
+  ["SwitchBot ViewStation","SwitchBot","Hubs"],
   ["SwitchBot Wi-Fi Humidity Sensor 4-Pack with Hub 2, IP65 (W3400010)","SwitchBot","Sensors"],
   ["SwitchBot Wi-Fi Smart Garage Door Opener (W5502330)","SwitchBot","Other"],
   ["tado° Smart Radiator Thermostat X","tado°","Thermostats"],
