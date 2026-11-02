@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-10-26 · 882 vendors.
+// 2026-11-02 · 888 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -825,7 +825,7 @@ const VENDORS = {
   5816: "Allra Limited",
   5817: "DKI Technology Co., Ltd.",
   5818: "Lampgoedkoop",
-  5819: "Proxmius nv",
+  5819: "Proximus nv",
   5820: "ROBB BV",
   5821: "SHENZHEN HOION LIGHTING CO.,LIMITED",
   5822: "iolo AG",
@@ -843,7 +843,7 @@ const VENDORS = {
   5834: "OMEC Smart Card Inc.",
   5835: "Shanghai GeeTrick Technology Co., Ltd.",
   5836: "Haunted Living",
-  5837: "Liniq (Singapore) Pte. Ltd.",
+  5837: "Intflo",
   5838: "Ningbo Yinzhou Sixin Import & Export Co., Ltd.",
   5839: "Shenzhen Rti-Tek Co., Ltd.",
   5840: "WIFLY-CITY SYSTEM INC.",
@@ -883,6 +883,12 @@ const VENDORS = {
   5875: "OBI Group Sourcing GmbH",
   5876: "KeyLife International Technology Limited",
   5877: "Gallagher Group Limited",
+  5878: "Sysgrok",
+  5879: "Nanjing Shangjingtian Technology Co., Ltd.",
+  5880: "Zhongshan Zhimima Technology Co., Ltd.",
+  5881: "Midea Group Co., Ltd.",
+  5882: "Leading Edge Smart Homes, LLC",
+  5884: "The Shadery, Inc.",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
