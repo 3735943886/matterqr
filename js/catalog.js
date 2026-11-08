@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-02 · 3004 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-08 · 3006 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-11-02";
+export const CATALOG_UPDATED = "2026-11-08";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -83,6 +83,7 @@ export const CATALOG = [
   ["Ambi Climate Mini 2","Ambi Labs Limited","Climate"],
   ["AMP iQ Smart Gateway","AMP Lighting","Hubs"],
   ["AnablepSecurity 5 in 1 Presence Sensor","AnablepSecurity","Sensors"],
+  ["Anker eufy Smart Lock S4 Max (T85M1)","eufy","Locks"],
   ["Anona Holo","Anona Security","Locks"],
   ["ANWIO A19 Wi-Fi Smart Light Bulbs (2-Pack)","ANWIO","Lighting"],
   ["ANWIO Matter Smart Light Bulbs A19 E26 Color Changing, 4-Pack","ANWIO","Lighting"],
@@ -102,6 +103,7 @@ export const CATALOG = [
   ["Aqara Blind Tilt Controller C100 (AM069)","Aqara","Blinds"],
   ["Aqara Camera Hub","Aqara","Hubs"],
   ["Aqara Camera Hub G350","Aqara","Hubs"],
+  ["Aqara Ceiling Light V1 (SL007)","Aqara","Lighting"],
   ["Aqara Climate Sensor W100","Aqara","Sensors"],
   ["Aqara Curtain Controller C100 (AM074)","Aqara","Blinds"],
   ["Aqara Day Night Honeycomb Blinds (AM075)","Aqara","Blinds"],
