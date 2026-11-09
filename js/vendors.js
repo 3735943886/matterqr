@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-11-02 · 888 vendors.
+// 2026-11-09 · 897 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -888,7 +888,16 @@ const VENDORS = {
   5880: "Zhongshan Zhimima Technology Co., Ltd.",
   5881: "Midea Group Co., Ltd.",
   5882: "Leading Edge Smart Homes, LLC",
+  5883: "Tstar Technology Co., Ltd.",
   5884: "The Shadery, Inc.",
+  5885: "Groupe LIEBOT",
+  5886: "Shenzhen You Lai Mi Technology Co., Ltd.",
+  5887: "Starsg Technology Pte. Limited",
+  5888: "Lifud Technology Co., Ltd.",
+  5889: "Voxo Smart Technologies LLC",
+  5890: "AIFA Technology Corp.",
+  5891: "Fluxrite AB",
+  5892: "Smartinn Control Systems Trading LLC",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
