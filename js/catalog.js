@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-11 · 4674 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-11 · 4667 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-11-11";
 export const CATALOG = [
@@ -396,7 +396,6 @@ export const CATALOG = [
   ["Aqara Smart Wall Hub V1 Pro (SG004)","Aqara","Hubs"],
   ["Aqara Smoke Alarm P100 (AS081)","Aqara","Sensors"],
   ["Aqara Spatial Multi-Sensor FP400","Aqara","Sensors"],
-  ["Aqara Spatial Multi-Sensor FP400 (AS093)","Aqara","Sensors"],
   ["Aqara Test Product 1044 (AP029)","Aqara","Plugs"],
   ["Aqara Test Product 1046 (AP029)","Aqara","Plugs"],
   ["Aqara Test Product 1825 (AL241)","Aqara","Lighting"],
@@ -561,7 +560,6 @@ export const CATALOG = [
   ["Changhong Network Door Sensor","Changhong Network","Sensors"],
   ["Chuan Dian Intelligent drive power supply","Chuan Dian","Lighting"],
   ["CLIO Fine Light Switch","CLIO","Switches"],
-  ["CLIO Smart Plug/Outlet (CIO-S1V-11-V1.0)","CLIO","Plugs"],
   ["CLIO Smart Plug/Outlet Matter Plug","CLIO","Plugs"],
   ["Color LED Smart Light Bulb","","Lighting"],
   ["Comcast Gateway","Comcast","Hubs"],
@@ -768,7 +766,6 @@ export const CATALOG = [
   ["Dooya M-Box-564","Dooya","Hubs"],
   ["Dooya ME-Box","Dooya","Hubs"],
   ["Dooya Thread window covering","Dooya","Blinds"],
-  ["Dooya Wi-Fi Window Covering","Dooya","Blinds"],
   ["Dooya Window Covering","Dooya","Blinds"],
   ["Dooya Window Covering (DM45ED/SWM)","Dooya","Blinds"],
   ["Dreame Aqua10 AE","Dreame","Robot Vacuums"],
@@ -1058,7 +1055,6 @@ export const CATALOG = [
   ["eufy FamiLock E32","Anker Innovations  Technology","Locks"],
   ["eufy FamiLock E34","eufy","Locks"],
   ["eufy FamiLock E35","eufy","Locks"],
-  ["eufy FamiLock E35 (T85P1)","eufy","Locks"],
   ["eufy FamiLock E40","Anker Innovations  Technology","Locks"],
   ["eufy FamiLock S3 (T85V0C)","eufy","Locks"],
   ["eufy FamiLock S3 Max","eufy","Locks"],
@@ -3374,10 +3370,8 @@ export const CATALOG = [
   ["Sengled LED Smart Light Bulb (A19), Multicolor","Sengled","Lighting"],
   ["Sengled LED Smart Light Bulb G2, Color Changing, 60W Equivalent","Sengled","Lighting"],
   ["Sengled Smart Color bulb (2333D1000000023)","Sengled","Lighting"],
-  ["Sengled Smart Matter A60 bulb (2233D10000028)","Sengled","Lighting"],
   ["Sengled Smart Plug","Sengled","Plugs"],
   ["Sengled Smart Plug (Bluetooth Mesh, 2-Pack)","Sengled","Plugs"],
-  ["Sengled Wi-Fi Plug (2313D5000048)","Sengled","Plugs"],
   ["Senscomm Ceiling Light","Senscomm","Lighting"],
   ["Senscomm Classic LED-A60-PA-E26","Senscomm","Lighting"],
   ["Senscomm Classic LED-A60-PA-E27","Senscomm","Lighting"],
@@ -4198,7 +4192,6 @@ export const CATALOG = [
   ["Uascent Smart Light","Uascent","Lighting"],
   ["Uascent Smart Light Switch (M027)","Uascent","Lighting"],
   ["Uascent Smart Onoff Light","Uascent","Lighting"],
-  ["Uascent Smart Plug (M023)","Uascent","Plugs"],
   ["Uascent Smart Wi-Fi Plug","Uascent","Plugs"],
   ["Uascent SmartHomePlug","Uascent","Plugs"],
   ["Uascent SmartSwitch","Uascent","Other"],
