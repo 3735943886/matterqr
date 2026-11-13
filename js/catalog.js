@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-11 · 4667 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-13 · 4677 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-11-11";
+export const CATALOG_UPDATED = "2026-11-13";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -2706,6 +2706,14 @@ export const CATALOG = [
   ["Morelinks Color Temperature Light D1MLD12","Morelinks","Lighting"],
   ["Morelinks Color Temperature Light D1MLD13","Morelinks","Lighting"],
   ["Morelinks CT light (MTTD1MLD01)","Morelinks","Lighting"],
+  ["Morelinks Smart Switch","Morelinks","Remotes & Buttons"],
+  ["Morelinks Smart Switch C1MLC02","Morelinks","Other"],
+  ["Morelinks Smart Switch C1MLC03","Morelinks","Other"],
+  ["Morelinks Smart Switch C1MLC04","Morelinks","Other"],
+  ["Morelinks Smart Switch C1MLC05","Morelinks","Other"],
+  ["Morelinks Smart Switch C1ZXC01","Morelinks","Other"],
+  ["Morelinks Smart Switch C1ZXC02","Morelinks","Other"],
+  ["Morelinks Smart Switch C1ZXC03","Morelinks","Other"],
   ["Morelinks Window Covering A1GEM01 (MTTA1GEM01)","Morelinks","Blinds"],
   ["Morelinks Window Covering A1MLM00","Morelinks","Blinds"],
   ["Morelinks window covering A1RXM01 (MTTA1RXM01)","Morelinks","Blinds"],
@@ -2811,6 +2819,7 @@ export const CATALOG = [
   ["Neonlite Wi-Fi A60 Filament Bulb Tunable White","Neonlite","Lighting"],
   ["Nest Learning Thermostat (4th gen)","Google","Thermostats"],
   ["Nest Thermostat (2020)","Google","Thermostats"],
+  ["NETGEAR Matter device (certificate CSA264O9MAT55465)","NETGEAR, Inc.","Other"],
   ["Newlab NEWLAB-MATW","Newlab","Other"],
   ["Newlab NEWLAB-MATW","Newlab S.R.L.","Other"],
   ["NEXAS MOTORS Smart Roller Blind Motor","NEXAS MOTORS","Blinds"],
@@ -3821,6 +3830,7 @@ export const CATALOG = [
   ["Sunricher Smart LED Dimmer Controller","Sunricher","Lighting"],
   ["SuperBrightLEDS LED Smart Light","SuperBrightLEDS","Lighting"],
   ["Supported Relay Switch 16a - Smart Control Over Wifi","","Switches"],
+  ["Surplife Smart Light (ZJ-WB-L321-S-C5-IIC-MR-B)","Surplife","Lighting"],
   ["SWAN Lite LED Fan Ceiling Light (FCE-570)","SWAN Lite","Fans"],
   ["SwitchBot AI Hub","SwitchBot","Hubs"],
   ["SwitchBot AI Hub Show","SwitchBot","Hubs"],
