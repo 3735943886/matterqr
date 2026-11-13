@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-13 · 4677 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-13 · 4689 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-11-13";
 export const CATALOG = [
@@ -529,8 +529,20 @@ export const CATALOG = [
   ["BSH Home Appliances Spotless2 Cleaning Robot","BSH Home Appliances","Robot Vacuums"],
   ["Burg Wachter ENTRY 7670 Matter Bridge","Burg Wachter","Hubs"],
   ["Busch-Jaeger Busch-VoiceControl KNX Gateway","Busch-Jaeger","Hubs"],
+  ["Bweetech","Bweetech Electronics","Lighting"],
   ["Bweetech Electronics Cct Bulb","Bweetech Electronics","Lighting"],
   ["Bweetech Electronics Full Color Bulb","Bweetech Electronics","Lighting"],
+  ["Bweetech Electronics Matter device (certificate CSA265OXMAT56785)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265OYMAT56786)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265OZMAT56787)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P0MAT56788)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P2MAT56790)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P3MAT56791)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P4MAT56792)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P5MAT56793)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P6MAT56794)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P7MAT56795)","Bweetech Electronics","Other"],
+  ["Bweetech Electronics Matter device (certificate CSA265P8MAT56796)","Bweetech Electronics","Other"],
   ["Bweetech Electronics Smart Hub","Bweetech Electronics","Hubs"],
   ["Calex LSC Smart Light Bulb CCT (5126000602)","Calex","Lighting"],
   ["Calex LSC Smart Light Bulb RGB (5026000404/5026000504)","Calex","Lighting"],
