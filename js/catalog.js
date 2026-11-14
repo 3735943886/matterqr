@@ -1,6 +1,6 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-13 · 4689 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-13 · 4693 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
 export const CATALOG_UPDATED = "2026-11-13";
 export const CATALOG = [
@@ -1076,6 +1076,7 @@ export const CATALOG = [
   ["eufy Robot Vacuum Omni C28 (T211A)","eufy","Robot Vacuums"],
   ["eufy Robot Vacuum Omni C30 (T210S)","eufy","Robot Vacuums"],
   ["eufy Robot Vacuum Omni C30 Edge","eufy","Robot Vacuums"],
+  ["eufy Robot Vacuum Omni C30 Lite","eufy","Robot Vacuums"],
   ["eufy Robot Vacuum Omni E25 (T2353)","eufy","Robot Vacuums"],
   ["eufy Robot Vacuum Omni E28 (T2352)","eufy","Robot Vacuums"],
   ["eufy Robot Vacuum Omni E35 (T210M)","eufy","Robot Vacuums"],
@@ -2639,6 +2640,7 @@ export const CATALOG = [
   ["Midea_AC","Midea","Climate"],
   ["Mikrotik IAQM-THC2P-G","Mikrotik","Sensors"],
   ["Mikrotik IAQM-THC2P-W","Mikrotik","Sensors"],
+  ["Mikrotik IAQM-THC2PV-G","Mikrotik","Sensors"],
   ["Mikrotik IAQM-THC2PV-W","Mikrotik","Sensors"],
   ["Mikrotik IAQM-THC2V","Mikrotik","Sensors"],
   ["Mikrotik IAQM-THC2V-G","Mikrotik","Sensors"],
@@ -3392,6 +3394,7 @@ export const CATALOG = [
   ["Sengled LED Smart Light Bulb G2, Color Changing, 60W Equivalent","Sengled","Lighting"],
   ["Sengled Smart Color bulb (2333D1000000023)","Sengled","Lighting"],
   ["Sengled Smart Plug","Sengled","Plugs"],
+  ["Sengled Smart Plug (2333D1000000023)","Sengled","Plugs"],
   ["Sengled Smart Plug (Bluetooth Mesh, 2-Pack)","Sengled","Plugs"],
   ["Senscomm Ceiling Light","Senscomm","Lighting"],
   ["Senscomm Classic LED-A60-PA-E26","Senscomm","Lighting"],
@@ -4599,6 +4602,7 @@ export const CATALOG = [
   ["Zemismart Hub","Zemismart","Hubs"],
   ["Zemismart iFi Smart Switch (ZM806-4)","Zemismart","Lighting"],
   ["Zemismart IR Thermostat","Zemismart","Thermostats"],
+  ["Zemismart IR Thermostat (ZMSIR02)","Zemismart","Thermostats"],
   ["Zemismart Led Filament Bulbs - Smart, Dimmable, And Vintage","Zemismart","Lighting"],
   ["Zemismart M1 Smart Home Hub, Zigbee 3.0 + Thread, White","Zemismart","Hubs"],
   ["Zemismart M6 Zigbee Hub with External Antenna","Zemismart","Hubs"],
