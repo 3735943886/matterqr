@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-13 · 4693 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-15 · 4694 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-11-13";
+export const CATALOG_UPDATED = "2026-11-15";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -1181,6 +1181,7 @@ export const CATALOG = [
   ["FUTLIGHT OPTOELECTRONICS CO Smart Lighting","FUTLIGHT OPTOELECTRONICS CO.,LIMITED","Lighting"],
   ["G6 Smart Gateway, Bluetooth to Wi-Fi for Remote Unlock","TTLock","Hubs"],
   ["G6 Wi-Fi Gateway Hub for TTLock App, 2.4G","TTLock","Hubs"],
+  ["Gamder Electric Appliance Matter device (certificate CSA265PAMAT56798)","Zhongshan Gamder Electric Appliance Co., Ltd.","Other"],
   ["GE Appliances Window AC","GE","Climate"],
   ["GE Cync Compatible Color Changing LED Light Bulb (2-Pack)","GE","Lighting"],
   ["GE Cync Decorative DC FC B11 E12 +Savant (2-Pack)","GE","Lighting"],
