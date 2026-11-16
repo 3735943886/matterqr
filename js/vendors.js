@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-11-09 · 897 vendors.
+// 2026-11-16 · 900 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -758,7 +758,7 @@ const VENDORS = {
   5749: "Veto",
   5750: "NEC Platforms, Ltd.",
   5751: "Guangdong Langsen M. & E. Co., Ltd.",
-  5752: "Drop Air Co., Ltd.",
+  5752: "DROP AIR K.K.",
   5753: "Yozewit Intelligent",
   5754: "Daikin Industries, Ltd. [ Affiliate: DAIKIN Airconditioning (Singapore) ]",
   5755: "Hangzhou Lifesmart Technology Co., Ltd.",
@@ -898,6 +898,9 @@ const VENDORS = {
   5890: "AIFA Technology Corp.",
   5891: "Fluxrite AB",
   5892: "Smartinn Control Systems Trading LLC",
+  5893: "Shenzhen Lite IoT Innovation Technology Co., Ltd.",
+  5894: "2644508 Alberta Inc.",
+  5895: "Gebr. Kemper GmbH + Co. KG",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
