@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-15 · 4694 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-17 · 4710 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-11-15";
+export const CATALOG_UPDATED = "2026-11-17";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -933,6 +933,22 @@ export const CATALOG = [
   ["Dyson Find+Follow Purifier Cool PC3","Dyson","Air Purifiers"],
   ["Dyson HushJet Cool Pure Formaldehyde","Dyson","Air Purifiers"],
   ["Dyson HushJet Cool Pure Ioniser+UV","Dyson","Air Purifiers"],
+  ["Dyson Matter device (certificate CSA265PHMAT56805)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PIMAT56806)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PJMAT56807)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PKMAT56808)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PLMAT56809)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PMMAT56810)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PNMAT56811)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265POMAT56812)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PPMAT56813)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PQMAT56814)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PRMAT56815)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PSMAT56816)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PTMAT56817)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PUMAT56818)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PVMAT56819)","Dyson","Other"],
+  ["Dyson Matter device (certificate CSA265PWMAT56820)","Dyson","Other"],
   ["Dyson Purifier Cool De-NOx","Dyson","Air Purifiers"],
   ["Dyson Purifier Hot+Cool De-NOx","Dyson","Air Purifiers"],
   ["Dyson Purifier Humidify+Cool De-NOx","Dyson","Air Purifiers"],
