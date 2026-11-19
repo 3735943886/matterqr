@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-17 · 4710 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-18 · 4727 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-11-17";
+export const CATALOG_UPDATED = "2026-11-18";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -963,6 +963,7 @@ export const CATALOG = [
   ["EcoFlow Smart Plug (0x0001)","EcoFlow","Plugs"],
   ["Econet Controls Bulldog GateLock","Econet Controls","Locks"],
   ["Econet Controls WIFI Relay Controller Board (0000000000000000000000000000001)","Econet Controls","Plugs"],
+  ["Ecosense EcoQube Apex (EA200)","Ecosense, Inc.","Sensors"],
   ["ECOVACS DEEBOT X2 OMNI Floor Cleaning Robot","Ecovacs","Robot Vacuums"],
   ["ECOVACS DEEBOT X8 ProPlus AI Floor Cleaning Robot","Ecovacs","Robot Vacuums"],
   ["Ecovacs Floor Cleaning Robot","Ecovacs","Robot Vacuums"],
@@ -1045,6 +1046,18 @@ export const CATALOG = [
   ["Espressif Systems ESP32-C Series","Espressif Systems","Lighting"],
   ["Espressif Systems Fan","Espressif Systems","Fans"],
   ["Espressif Systems Fan light","Espressif Systems","Fans"],
+  ["Espressif Systems Matter device (certificate CSA265Q2MAT56826)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265Q3MAT56827)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265Q4MAT56828)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265Q5MAT56829)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265Q6MAT56830)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265Q7MAT56831)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265Q8MAT56832)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265Q9MAT56833)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265QAMAT56834)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265QBMAT56835)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265QCMAT56836)","Espressif Systems","Other"],
+  ["Espressif Systems Matter device (certificate CSA265QDMAT56837)","Espressif Systems","Other"],
   ["Espressif Systems Smart lightbulb","Espressif Systems","Lighting"],
   ["Espressif Systems Smart Plug","Espressif Systems","Plugs"],
   ["Espressif Systems Thread 4-Channel Switch On/Off","Espressif Systems","Plugs"],
@@ -4572,6 +4585,7 @@ export const CATALOG = [
   ["Xsmart Century Sleepal AI Lamp","Beijing Xsmart Century Technology Co., Ltd.","Lighting"],
   ["xxter Pairot KNX Bridge","xxter","Hubs"],
   ["Yale Ash Keyed Deadbolt Smart Lock with Google Matter, YRD510-MT1-ASH","Yale","Locks"],
+  ["Yale Connect Plus Hub 2","Yale","Hubs"],
   ["Yale Durus Smart Lock","Yale","Locks"],
   ["Yale Linus Smart Lock L2","Yale","Locks"],
   ["Yale Linus Smart Lock L2 Lite","Yale","Locks"],
@@ -4708,6 +4722,9 @@ export const CATALOG = [
   ["Zigbee Wired Gateway, Smart Home Network Hub","","Hubs"],
   ["Zigbee Wired Hub with Antenna, Smart Home Bridge Gateway","Tuya","Hubs"],
   ["Zimi Matter Connect Bridge (ZMC)","Zimi","Hubs"],
+  ["Zimi Matter device (certificate CSA265PYMAT56822)","Zimi","Other"],
+  ["Zimi Matter device (certificate CSA265PZMAT56823)","Zimi","Other"],
+  ["Zimi Matter device (certificate CSA265Q0MAT56824)","Zimi","Other"],
   ["Zimi Smarter Switch (Accessibility), 3 Button","Zimi","Other"],
   ["Zimi Smarter Switch, 1 Button","Zimi","Other"],
   ["Zimi Smarter Switch, 2 Button","Zimi","Other"],
