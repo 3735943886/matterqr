@@ -1,8 +1,8 @@
 // GENERATED slim snapshot of the MatterCatalog product list, for offline
 // model-name autocomplete. Regenerate with `node scripts/fetch-catalog.mjs`.
-// Source: https://mattercatalog.com/api/products.json · updated 2026-11-18 · 4727 products.
+// Source: https://mattercatalog.com/api/products.json · updated 2026-11-22 · 4732 products.
 // Each row is [title, brand, category]; images are intentionally excluded.
-export const CATALOG_UPDATED = "2026-11-18";
+export const CATALOG_UPDATED = "2026-11-22";
 export const CATALOG = [
   ["10A Wi-Fi Switch for Household Appliances","","Switches"],
   ["16a Eu Wireless Wifi Smart Home Plug Mini Socket","","Plugs"],
@@ -1338,6 +1338,8 @@ export const CATALOG = [
   ["Govee Linear Pendant Light","Govee","Lighting"],
   ["Govee M1 1 M LED Lightstrip","Govee","Lighting"],
   ["Govee Matter 6-Inch Recessed Downlight 4-Pack","Govee","Lighting"],
+  ["Govee Matter device (certificate CSA265VGMAT57020)","Govee","Other"],
+  ["Govee Matter device (certificate CSA265VHMAT57021)","Govee","Other"],
   ["Govee Meteor shower Lights","Govee","Lighting"],
   ["Govee Mini Panel Lights","Govee","Lighting"],
   ["Govee Monitor Light Bar (H2800)","Govee","Lighting"],
@@ -1508,6 +1510,7 @@ export const CATALOG = [
   ["Hager Group Application Module Push Button 1-gang for Matter system used on Power Modules (WAC1010)","Hager Group","Hubs"],
   ["Hager Group Application Module Push Button 2-gang for Matter system used on Power Modules (WAC1020)","Hager Group","Hubs"],
   ["Hager Group Domovea server plus","Hager Group","Hubs"],
+  ["Hager Group Matter device (certificate CSA265VFMAT57019)","Hager Group","Other"],
   ["Hager Group Matter Rotary Dimmer (WAC4010)","Hager Group","Lighting"],
   ["Hager Group Surface Mounted Push Button","Hager Group","Remotes & Buttons"],
   ["Haier GE Appliances Window AC","Qingdao Haier Technology Co., Ltd","Climate"],
@@ -3313,6 +3316,7 @@ export const CATALOG = [
   ["Realtek RTL8777 Matter Platform","Realtek","Lighting"],
   ["Recessed Lighting","Juyingguang","Lighting"],
   ["Rechargeable Wi-Fi Tubular Roller Blind Motor, Type-C","","Blinds"],
+  ["Refoss Matter device (certificate CSA265QUMAT56854)","Refoss","Other"],
   ["Refoss RRS105 (0F01B000)","Refoss","Blinds"],
   ["Refoss Tasmota Wi-Fi Smart Plug P11, EU Version (1/2/4-pack)","Refoss","Plugs"],
   ["REHAU Smart Privacy","REHAU","Blinds"],
@@ -3998,6 +4002,7 @@ export const CATALOG = [
   ["Tink Basics Smart Bulb GU10 (TNKGU1241)","tink","Lighting"],
   ["tink Basics Smart Plug (TNKPLU261)","tink","Plugs"],
   ["tink Matter device (certificate CSA264ZGMAT55868)","tink GmbH","Other"],
+  ["tink Matter device (certificate CSA265QVMAT56855)","tink GmbH","Other"],
   ["tink Neon Light Strip","tink","Lighting"],
   ["TJOY 60-Watt Equivalent A19 Matter Smart LED Light Bulb (4-Pack)","TJOY","Lighting"],
   ["TJOY 60-Watt Equivalent A19 Smart LED Light Bulb (6-Pack)","TJOY","Lighting"],
