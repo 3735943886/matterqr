@@ -2,7 +2,7 @@
 // GENERATED bundled snapshot of the CSA Distributed Compliance Ledger vendor
 // registry (https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors), so lookups work fully offline.
 // Regenerate with `node scripts/fetch-vendors.mjs`.
-// 2026-11-16 · 900 vendors.
+// 2026-11-23 · 903 vendors.
 const VENDORS = {
   1: "Panasonic",
   2: "Sony",
@@ -580,7 +580,7 @@ const VENDORS = {
   5569: "Nobily",
   5570: "Kaadas",
   5571: "HUMINGBIRD TECHNOLOGY CO., LTD",
-  5572: "FASTCR",
+  5572: "RETLUX",
   5573: "DAB PUMPS SPA",
   5574: "Wozart",
   5575: "Homewell Technology Co., Ltd.",
@@ -786,7 +786,7 @@ const VENDORS = {
   5777: "Wessel-Licht für Möbel GmbH",
   5778: "Shenzhen Jashi Gateway Intelligent Technology Co., Ltd.",
   5779: "Ecosense, Inc.",
-  5780: "Zhongshan Gamder Electric Appliance Co., Ltd.",
+  5780: "Zhongshan Gamder Electric",
   5781: "GUANGZHOU SKYDANCE CO. LTD",
   5782: "Naber GmbH",
   5783: "VOLTUM",
@@ -901,6 +901,9 @@ const VENDORS = {
   5893: "Shenzhen Lite IoT Innovation Technology Co., Ltd.",
   5894: "2644508 Alberta Inc.",
   5895: "Gebr. Kemper GmbH + Co. KG",
+  5896: "Nanjing Huifeng Intelligent Control Technology Co., Ltd.",
+  5897: "Shenzhen Comnect Smarthome Co., Ltd.",
+  5898: "Lumi United Technology Co., Ltd.",
   6548: "Gewiss S.p.A.",
   10132: "Climax Technology Co., Ltd.",
   24582: "Google LLC",
